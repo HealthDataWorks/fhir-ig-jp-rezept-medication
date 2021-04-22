@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-ConfirmationCategory",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T13:06:27.011+00:00",
+		"source": "#3m8vWx8au1N7P1aH"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-ConfirmationCategory",
+	"name": "ConfirmationCategory",
+	"title": "確認区分コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている確認区分コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-ConfirmationCategory"
+			}
+		]
+	}
+}

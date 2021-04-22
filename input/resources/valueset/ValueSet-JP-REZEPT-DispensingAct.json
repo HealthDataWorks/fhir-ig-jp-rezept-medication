@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-DispensingAct",
+	"meta": {
+		"versionId": "2",
+		"lastUpdated": "2021-04-05T09:31:41.269+00:00",
+		"source": "#r1zTQyXsMQRcA5aL"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-DispensingAct",
+	"name": "DispensingAct",
+	"title": "調剤行為",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている調剤行為が含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/kihonmasta_03.html"
+			}
+		]
+	}
+}

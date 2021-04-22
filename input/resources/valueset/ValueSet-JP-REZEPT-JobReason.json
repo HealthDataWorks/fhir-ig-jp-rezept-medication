@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-JobReason",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T13:06:26.441+00:00",
+		"source": "#BwnZhza7D1gs2fbX"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-JobReason",
+	"name": "JobReason",
+	"title": "職務上の事由コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている職務上の事由コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-JobReason"
+			}
+		]
+	}
+}

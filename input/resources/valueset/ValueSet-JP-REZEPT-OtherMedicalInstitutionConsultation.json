@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-OtherMedicalInstitutionConsultation",
+	"meta": {
+		"versionId": "3",
+		"lastUpdated": "2021-04-15T10:55:38.251+00:00",
+		"source": "#B5UZPIkzhBzPH6Rn"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-OtherMedicalInstitutionConsultation",
+	"name": "OtherMedicalInstitutionConsultation",
+	"title": "他医療機関受診コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている他医療機関受診が含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-OtherMedicalInstitutionConsultation"
+			}
+		]
+	}
+}

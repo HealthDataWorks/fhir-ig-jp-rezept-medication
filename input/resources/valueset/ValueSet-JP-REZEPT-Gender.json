@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-Gender",
+	"meta": {
+		"versionId": "2",
+		"lastUpdated": "2021-04-06T13:15:04.694+00:00",
+		"source": "#Rbu93xMV11ptV7II"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-Gender",
+	"name": "Gender",
+	"title": "男女区分コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている男女区分コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-Gender"
+			}
+		]
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-ExaminationAndPaymentInstitution",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T13:06:27.219+00:00",
+		"source": "#HyUd7V7EaDWdJwOW"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-ExaminationAndPaymentInstitution",
+	"name": "ExaminationAndPaymentInstitution",
+	"title": "審査支払機関コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている審査支払機関コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-ExaminationAndPaymentInstitution"
+			}
+		]
+	}
+}

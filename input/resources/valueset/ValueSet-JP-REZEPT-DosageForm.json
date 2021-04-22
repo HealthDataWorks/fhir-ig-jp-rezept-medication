@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-DosageForm",
+	"meta": {
+		"versionId": "3",
+		"lastUpdated": "2021-04-15T11:07:39.420+00:00",
+		"source": "#Fe3vcUJ6MqsqjLO3"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-DosageForm",
+	"name": "DosageForm",
+	"title": "剤形コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている剤形が含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-DosageForm"
+			}
+		]
+	}
+}

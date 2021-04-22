@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-RezeptCategory",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T13:06:26.684+00:00",
+		"source": "#M3lEYJ6zQQ0a5qKM"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-RezeptCategory",
+	"name": "RezeptCategory",
+	"title": "レセプト種別コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されているレセプト種別コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-RezeptCategory"
+			}
+		]
+	}
+}

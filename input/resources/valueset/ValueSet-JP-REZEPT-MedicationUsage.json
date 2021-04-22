@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-MedicationUsage",
+	"meta": {
+		"versionId": "3",
+		"lastUpdated": "2021-04-15T10:54:58.220+00:00",
+		"source": "#sgdcSHGlkfa1tokt"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-MedicationUsage",
+	"name": "MedicationUsage",
+	"title": "用法コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている用法が含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-MedicationUsage"
+			}
+		]
+	}
+}

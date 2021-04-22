@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-ReceptionCategory",
+	"meta": {
+		"versionId": "3",
+		"lastUpdated": "2021-04-15T10:56:15.736+00:00",
+		"source": "#4sixPVzWC1V274Qp"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-ReceptionCategory",
+	"name": "ReceptionCategory",
+	"title": "受付等区分コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている受付等区分が含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-ReceptionCategory"
+			}
+		]
+	}
+}

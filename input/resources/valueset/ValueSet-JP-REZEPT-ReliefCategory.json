@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-ReliefCategory",
+	"meta": {
+		"versionId": "5",
+		"lastUpdated": "2021-04-06T13:06:26.663+00:00",
+		"source": "#7MxRIpkmybzEsY3z"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-ReliefCategory",
+	"name": "ReliefCategory",
+	"title": "減免区分コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている減免区分コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-ReliefCategory"
+			}
+		]
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-SpecificEquipmentUnit",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T13:06:26.884+00:00",
+		"source": "#2FQPxo6KPI5Q7kDe"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-SpecificEquipmentUnit",
+	"name": "SpecificEquipmentUnit",
+	"title": "特定器材単位コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている特定器材単位コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-SpecificEquipmentUnit"
+			}
+		]
+	}
+}

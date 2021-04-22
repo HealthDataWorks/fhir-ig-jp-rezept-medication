@@ -1,0 +1,3744 @@
+{
+	"resourceType": "StructureDefinition",
+	"id": "JP-REZEPT-ExtensionClaimCommonInformation",
+	"meta": {
+		"versionId": "13",
+		"lastUpdated": "2021-04-16T11:25:35.478+00:00",
+		"source": "#MFICx3ci03Jqdbbg"
+	},
+	"url": "https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimCommonInformation",
+	"name": "ExtensionClaimCommonInformation",
+	"title": "レセプト情報の共通の拡張情報",
+	"status": "draft",
+	"description": "レセプト情報の共通の拡張情報です。",
+	"fhirVersion": "4.0.1",
+	"mapping": [
+		{
+			"identity": "JP-REZEPT-MEDICAL-Mapping",
+			"uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+			"name": "医科",
+			"comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+		},
+		{
+			"identity": "JP-REZEPT-DPC-Mapping",
+			"uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+			"name": "DPC",
+			"comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+		},
+		{
+			"identity": "JP-REZEPT-DENTAL-Mapping",
+			"uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+			"name": "歯科",
+			"comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+		},
+		{
+			"identity": "JP-REZEPT-MEDICATION-Mapping",
+			"uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+			"name": "調剤",
+			"comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+		}
+	],
+	"kind": "resource",
+	"abstract": false,
+	"context": [
+		{
+			"type": "fhirpath",
+			"expression": "Claim"
+		}
+	],
+	"type": "Extension",
+	"baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+	"derivation": "constraint",
+	"snapshot": {
+		"element": [
+			{
+				"id": "Extension",
+				"path": "Extension",
+				"short": "レセプト情報の共通の拡張情報",
+				"definition": "レセプト情報の共通の拡張情報です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Extension",
+					"min": 0,
+					"max": "*"
+				},
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
+				"isModifier": false
+			},
+			{
+				"id": "Extension.id",
+				"path": "Extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension",
+				"path": "Extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:benefitRate",
+				"path": "Extension.extension",
+				"sliceName": "benefitRate",
+				"short": "給付割合",
+				"definition": "給付割合です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:benefitRate.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:benefitRate.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:benefitRate.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:benefitRate.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "給付割合",
+				"definition": "給付割合です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "Ratio"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:burdenClassification",
+				"path": "Extension.extension",
+				"sliceName": "burdenClassification",
+				"short": "一部負担金・食事療養費・生活療養費標準負担額区分",
+				"definition": "一部負担金・食事療養費・生活療養費標準負担額区分です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:burdenClassification.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:burdenClassification.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:burdenClassification.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:burdenClassification.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "一部負担金・食事療養費・生活療養費標準負担額区分",
+				"definition": "一部負担金・食事療養費・生活療養費標準負担額区分です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "Coding"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"binding": {
+					"strength": "required",
+					"valueSet": "https://xxx/ValueSet-JP-REZEPT-ClassificationOfCoPayment"
+				},
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:notice",
+				"path": "Extension.extension",
+				"sliceName": "notice",
+				"short": "レセプト特記事項",
+				"definition": "レセプト特記事項です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:notice.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:notice.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:notice.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:notice.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "レセプト特記事項",
+				"definition": "レセプト特記事項です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "Coding"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"binding": {
+					"strength": "required",
+					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptSpecialInstruction"
+				},
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:bed",
+				"path": "Extension.extension",
+				"sliceName": "bed",
+				"short": "病床数",
+				"definition": "病床数です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:bed.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:bed.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:bed.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:bed.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "病床数",
+				"definition": "病床数です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:cardNo",
+				"path": "Extension.extension",
+				"sliceName": "cardNo",
+				"short": "カルテ番号等",
+				"definition": "カルテ番号等です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:cardNo.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:cardNo.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:cardNo.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:cardNo.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "カルテ番号等",
+				"definition": "カルテ番号等です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:discountPointUnitprice",
+				"path": "Extension.extension",
+				"sliceName": "discountPointUnitprice",
+				"short": "割引点数単価",
+				"definition": "割引点数単価です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:discountPointUnitprice.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:discountPointUnitprice.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:discountPointUnitprice.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:discountPointUnitprice.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "割引点数単価",
+				"definition": "割引点数単価です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:SearchNo",
+				"path": "Extension.extension",
+				"sliceName": "SearchNo",
+				"short": "検索番号",
+				"definition": "検索番号です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:SearchNo.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:SearchNo.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:SearchNo.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:SearchNo.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "検索番号",
+				"definition": "検索番号です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:version",
+				"path": "Extension.extension",
+				"sliceName": "version",
+				"short": "記録条件仕様年月情報",
+				"definition": "記録条件仕様年月情報です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:version.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:version.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:version.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:version.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "記録条件仕様年月情報",
+				"definition": "記録条件仕様年月情報です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:billingInformation",
+				"path": "Extension.extension",
+				"sliceName": "billingInformation",
+				"short": "請求情報",
+				"definition": "請求情報です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:billingInformation.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:billingInformation.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:billingInformation.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:billingInformation.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "請求情報",
+				"definition": "請求情報です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentName",
+				"path": "Extension.extension",
+				"sliceName": "departmentName",
+				"short": "診療科名",
+				"definition": "診療科名です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:departmentName.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentName.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentName.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentName.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "診療科名",
+				"definition": "診療科名です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentHumanBodyPart",
+				"path": "Extension.extension",
+				"sliceName": "departmentHumanBodyPart",
+				"short": "人体の部位等",
+				"definition": "人体の部位等です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:departmentHumanBodyPart.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentHumanBodyPart.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentHumanBodyPart.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentHumanBodyPart.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "人体の部位等",
+				"definition": "人体の部位等です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentGender",
+				"path": "Extension.extension",
+				"sliceName": "departmentGender",
+				"short": "性別等",
+				"definition": "性別等です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:departmentGender.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentGender.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentGender.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentGender.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "性別等",
+				"definition": "性別等です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "Coding"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"binding": {
+					"strength": "required",
+					"valueSet": "https://xxx/ValueSet-JP-REZEPT-Gender"
+				},
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentMedicalProcedure",
+				"path": "Extension.extension",
+				"sliceName": "departmentMedicalProcedure",
+				"short": "医学的処置",
+				"definition": "医学的処置です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:departmentMedicalProcedure.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentMedicalProcedure.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentMedicalProcedure.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentMedicalProcedure.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "医学的処置",
+				"definition": "医学的処置です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentSpecificDisease",
+				"path": "Extension.extension",
+				"sliceName": "departmentSpecificDisease",
+				"short": "特定疾病",
+				"definition": "特定疾病です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:departmentSpecificDisease.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentSpecificDisease.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentSpecificDisease.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentSpecificDisease.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "特定疾病",
+				"definition": "特定疾病です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:patientStatus",
+				"path": "Extension.extension",
+				"sliceName": "patientStatus",
+				"short": "患者の状態",
+				"definition": "患者の状態です。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false
+			},
+			{
+				"id": "Extension.extension:patientStatus.id",
+				"path": "Extension.extension.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:patientStatus.extension",
+				"path": "Extension.extension.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:patientStatus.url",
+				"path": "Extension.extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:patientStatus.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "患者の状態",
+				"definition": "患者の状態です。",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					}
+				]
+			},
+			{
+				"id": "Extension.url",
+				"path": "Extension.url",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "identifies the meaning of the extension",
+				"definition": "Source of the definition for the extension code - a logical name or a URL.",
+				"comment": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Extension.url",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"_code": {
+							"extension": [
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type",
+									"valueString": "string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type",
+									"valueString": "xsd:string"
+								},
+								{
+									"url": "http://hl7.org/fhir/StructureDefinition/regex",
+									"valueString": "((http|https)://([A-Za-z0-9\\\\\\.\\:\\%\\$]*\\/)*)?(Account|ActivityDefinition|AdverseEvent|AllergyIntolerance|Appointment|AppointmentResponse|AuditEvent|Basic|Binary|BiologicallyDerivedProduct|BodyStructure|Bundle|CapabilityStatement|CarePlan|CareTeam|CatalogEntry|ChargeItem|ChargeItemDefinition|Claim|ClaimResponse|ClinicalImpression|CodeSystem|Communication|CommunicationRequest|CompartmentDefinition|Composition|ConceptMap|Condition|Consent|Contract|Coverage|CoverageEligibilityRequest|CoverageEligibilityResponse|DetectedIssue|Device|DeviceDefinition|DeviceMetric|DeviceRequest|DeviceUseStatement|DiagnosticReport|DocumentManifest|DocumentReference|EffectEvidenceSynthesis|Encounter|Endpoint|EnrollmentRequest|EnrollmentResponse|EpisodeOfCare|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|ExplanationOfBenefit|FamilyMemberHistory|Flag|Goal|GraphDefinition|Group|GuidanceResponse|HealthcareService|ImagingStudy|Immunization|ImmunizationEvaluation|ImmunizationRecommendation|ImplementationGuide|InsurancePlan|Invoice|Library|Linkage|List|Location|Measure|MeasureReport|Media|Medication|MedicationAdministration|MedicationDispense|MedicationKnowledge|MedicationRequest|MedicationStatement|MedicinalProduct|MedicinalProductAuthorization|MedicinalProductContraindication|MedicinalProductIndication|MedicinalProductIngredient|MedicinalProductInteraction|MedicinalProductManufactured|MedicinalProductPackaged|MedicinalProductPharmaceutical|MedicinalProductUndesirableEffect|MessageDefinition|MessageHeader|MolecularSequence|NamingSystem|NutritionOrder|Observation|ObservationDefinition|OperationDefinition|OperationOutcome|Organization|OrganizationAffiliation|Patient|PaymentNotice|PaymentReconciliation|Person|PlanDefinition|Practitioner|PractitionerRole|Procedure|Provenance|Questionnaire|QuestionnaireResponse|RelatedPerson|RequestGroup|ResearchDefinition|ResearchElementDefinition|ResearchStudy|ResearchSubject|RiskAssessment|RiskEvidenceSynthesis|Schedule|SearchParameter|ServiceRequest|Slot|Specimen|SpecimenDefinition|StructureDefinition|StructureMap|Subscription|Substance|SubstanceNucleicAcid|SubstancePolymer|SubstanceProtein|SubstanceReferenceInformation|SubstanceSourceMaterial|SubstanceSpecification|SupplyDelivery|SupplyRequest|Task|TerminologyCapabilities|TestReport|TestScript|ValueSet|VerificationResult|VisionPrescription)\\/[A-Za-z0-9\\-\\.]{1,64}(\\/_history\\/[A-Za-z0-9\\-\\.]{1,64})?"
+								}
+							]
+						}
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Extension.value[x]",
+				"path": "Extension.value[x]",
+				"short": "Value of extension",
+				"definition": "Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Extension.value[x]",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "base64Binary"
+					},
+					{
+						"code": "boolean"
+					},
+					{
+						"code": "canonical"
+					},
+					{
+						"code": "code"
+					},
+					{
+						"code": "date"
+					},
+					{
+						"code": "dateTime"
+					},
+					{
+						"code": "decimal"
+					},
+					{
+						"code": "id"
+					},
+					{
+						"code": "instant"
+					},
+					{
+						"code": "integer"
+					},
+					{
+						"code": "markdown"
+					},
+					{
+						"code": "oid"
+					},
+					{
+						"code": "positiveInt"
+					},
+					{
+						"code": "string"
+					},
+					{
+						"code": "time"
+					},
+					{
+						"code": "unsignedInt"
+					},
+					{
+						"code": "uri"
+					},
+					{
+						"code": "url"
+					},
+					{
+						"code": "uuid"
+					},
+					{
+						"code": "Address"
+					},
+					{
+						"code": "Age"
+					},
+					{
+						"code": "Annotation"
+					},
+					{
+						"code": "Attachment"
+					},
+					{
+						"code": "CodeableConcept"
+					},
+					{
+						"code": "Coding"
+					},
+					{
+						"code": "ContactPoint"
+					},
+					{
+						"code": "Count"
+					},
+					{
+						"code": "Distance"
+					},
+					{
+						"code": "Duration"
+					},
+					{
+						"code": "HumanName"
+					},
+					{
+						"code": "Identifier"
+					},
+					{
+						"code": "Money"
+					},
+					{
+						"code": "Period"
+					},
+					{
+						"code": "Quantity"
+					},
+					{
+						"code": "Range"
+					},
+					{
+						"code": "Ratio"
+					},
+					{
+						"code": "Reference"
+					},
+					{
+						"code": "SampledData"
+					},
+					{
+						"code": "Signature"
+					},
+					{
+						"code": "Timing"
+					},
+					{
+						"code": "ContactDetail"
+					},
+					{
+						"code": "Contributor"
+					},
+					{
+						"code": "DataRequirement"
+					},
+					{
+						"code": "Expression"
+					},
+					{
+						"code": "ParameterDefinition"
+					},
+					{
+						"code": "RelatedArtifact"
+					},
+					{
+						"code": "TriggerDefinition"
+					},
+					{
+						"code": "UsageContext"
+					},
+					{
+						"code": "Dosage"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			}
+		]
+	},
+	"differential": {
+		"element": [
+			{
+				"id": "Extension",
+				"path": "Extension",
+				"short": "レセプト情報の共通の拡張情報",
+				"definition": "レセプト情報の共通の拡張情報です。"
+			},
+			{
+				"id": "Extension.extension:benefitRate",
+				"path": "Extension.extension",
+				"sliceName": "benefitRate",
+				"short": "給付割合",
+				"definition": "給付割合です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:benefitRate.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "給付割合",
+				"definition": "給付割合です。",
+				"type": [
+					{
+						"code": "Ratio"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).給付割合"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:burdenClassification",
+				"path": "Extension.extension",
+				"sliceName": "burdenClassification",
+				"short": "一部負担金・食事療養費・生活療養費標準負担額区分",
+				"definition": "一部負担金・食事療養費・生活療養費標準負担額区分です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:burdenClassification.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "一部負担金・食事療養費・生活療養費標準負担額区分",
+				"definition": "一部負担金・食事療養費・生活療養費標準負担額区分です。",
+				"type": [
+					{
+						"code": "Coding"
+					}
+				],
+				"mustSupport": true,
+				"binding": {
+					"strength": "required",
+					"valueSet": "https://xxx/ValueSet-JP-REZEPT-ClassificationOfCoPayment"
+				},
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:notice",
+				"path": "Extension.extension",
+				"sliceName": "notice",
+				"short": "レセプト特記事項",
+				"definition": "レセプト特記事項です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:notice.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "レセプト特記事項",
+				"definition": "レセプト特記事項です。",
+				"type": [
+					{
+						"code": "Coding"
+					}
+				],
+				"mustSupport": true,
+				"binding": {
+					"strength": "required",
+					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptSpecialInstruction"
+				},
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).レセプト特記事項"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:bed",
+				"path": "Extension.extension",
+				"sliceName": "bed",
+				"short": "病床数",
+				"definition": "病床数です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:bed.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "病床数",
+				"definition": "病床数です。",
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).病床数"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:cardNo",
+				"path": "Extension.extension",
+				"sliceName": "cardNo",
+				"short": "カルテ番号等",
+				"definition": "カルテ番号等です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:cardNo.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "カルテ番号等",
+				"definition": "カルテ番号等です。",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).カルテ番号等"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:discountPointUnitprice",
+				"path": "Extension.extension",
+				"sliceName": "discountPointUnitprice",
+				"short": "割引点数単価",
+				"definition": "割引点数単価です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:discountPointUnitprice.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "割引点数単価",
+				"definition": "割引点数単価です。",
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).割引点数単価"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:SearchNo",
+				"path": "Extension.extension",
+				"sliceName": "SearchNo",
+				"short": "検索番号",
+				"definition": "検索番号です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:SearchNo.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "検索番号",
+				"definition": "検索番号です。",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).検索番号"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:version",
+				"path": "Extension.extension",
+				"sliceName": "version",
+				"short": "記録条件仕様年月情報",
+				"definition": "記録条件仕様年月情報です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:version.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "記録条件仕様年月情報",
+				"definition": "記録条件仕様年月情報です。",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:billingInformation",
+				"path": "Extension.extension",
+				"sliceName": "billingInformation",
+				"short": "請求情報",
+				"definition": "請求情報です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:billingInformation.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "請求情報",
+				"definition": "請求情報です。",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).請求情報"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentName",
+				"path": "Extension.extension",
+				"sliceName": "departmentName",
+				"short": "診療科名",
+				"definition": "診療科名です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:departmentName.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "診療科名",
+				"definition": "診療科名です。",
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).診療科名"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentHumanBodyPart",
+				"path": "Extension.extension",
+				"sliceName": "departmentHumanBodyPart",
+				"short": "人体の部位等",
+				"definition": "人体の部位等です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:departmentHumanBodyPart.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "人体の部位等",
+				"definition": "人体の部位等です。",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).人体の部位等"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentGender",
+				"path": "Extension.extension",
+				"sliceName": "departmentGender",
+				"short": "性別等",
+				"definition": "性別等です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:departmentGender.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "性別等",
+				"definition": "性別等です。",
+				"type": [
+					{
+						"code": "Coding"
+					}
+				],
+				"mustSupport": true,
+				"binding": {
+					"strength": "required",
+					"valueSet": "https://xxx/ValueSet-JP-REZEPT-Gender"
+				},
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).性別等"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentMedicalProcedure",
+				"path": "Extension.extension",
+				"sliceName": "departmentMedicalProcedure",
+				"short": "医学的処置",
+				"definition": "医学的処置です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:departmentMedicalProcedure.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "医学的処置",
+				"definition": "医学的処置です。",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).医学的処置"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:departmentSpecificDisease",
+				"path": "Extension.extension",
+				"sliceName": "departmentSpecificDisease",
+				"short": "特定疾病",
+				"definition": "特定疾病です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:departmentSpecificDisease.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "特定疾病",
+				"definition": "特定疾病です。",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).特定疾病"
+					}
+				]
+			},
+			{
+				"id": "Extension.extension:patientStatus",
+				"path": "Extension.extension",
+				"sliceName": "patientStatus",
+				"short": "患者の状態",
+				"definition": "患者の状態です。",
+				"mustSupport": true
+			},
+			{
+				"id": "Extension.extension:patientStatus.value[x]",
+				"path": "Extension.extension.value[x]",
+				"short": "患者の状態",
+				"definition": "患者の状態です。",
+				"type": [
+					{
+						"code": "CodeableConcept"
+					}
+				],
+				"mustSupport": true,
+				"mapping": [
+					{
+						"identity": "JP-REZEPT-MEDICAL-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					},
+					{
+						"identity": "JP-REZEPT-DPC-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					},
+					{
+						"identity": "JP-REZEPT-DENTAL-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					},
+					{
+						"identity": "JP-REZEPT-MEDICATION-Mapping",
+						"map": "レセプト共通レコード(RE).患者の状態"
+					}
+				]
+			}
+		]
+	}
+}

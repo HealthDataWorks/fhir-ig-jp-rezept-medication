@@ -1,0 +1,23 @@
+{
+	"resourceType": "CodeSystem",
+	"id": "CodeSystem-JP-REZEPT-ComprehensiveManagementFee",
+	"meta": {
+		"versionId": "2",
+		"lastUpdated": "2021-04-05T09:38:30.102+00:00",
+		"source": "#kK1FBZ8YBgmgjaIe"
+	},
+	"url": "https://xxx/CodeSystem-JP-REZEPT-ComprehensiveManagementFee",
+	"name": "ComprehensiveManagementFee",
+	"title": "包括管理料等コード",
+	"status": "draft",
+	"description": "レセプト電算処理システムで使用されている包括管理料等コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表18 包括管理料等コード」に記載されています。",
+	"valueSet": "https://xxx/ValueSet-JP-REZEPT-ComprehensiveManagementFee",
+	"content": "complete",
+	"concept": [
+		{
+			"code": "01",
+			"display": "かかりつけ薬剤師包括管理料",
+			"definition": "かかりつけ薬剤師包括管理料"
+		}
+	]
+}

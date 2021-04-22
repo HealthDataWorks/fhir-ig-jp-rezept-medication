@@ -1,0 +1,18 @@
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li><a href="index.html">IG Home</a></li>
+  <li><a href="toc.html">Table of Contents</a></li>
+  <li><a href="summary.html">概要</a></li>
+
+  <li><a href="usecase.html">ユースケース</a></li>
+
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">ガイダンス<b class="caret">
+      </b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="mapping.html">調剤レセプトとFHIRリソースのデータマッピング</a></li>
+      <li><a href="search.html">データ検索の方法</a></li>
+      <li><a href="structure.html">構造定義</a></li>
+      <li><a href="terminology.html">使用するコード体系</a></li>    </ul>
+  </li>  <li><a href="artifacts.html">Artifact Index</a></li>
+</ul>

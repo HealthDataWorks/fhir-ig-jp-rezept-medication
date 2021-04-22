@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-BurdenClass",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T13:06:27.018+00:00",
+		"source": "#WgTSFVOy4h6nsvMo"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-BurdenClass",
+	"name": "BurdenClass",
+	"title": "負担区分コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている負担区分コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-BurdenClass"
+			}
+		]
+	}
+}

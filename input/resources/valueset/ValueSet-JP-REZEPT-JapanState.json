@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-JapanState",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T13:06:26.453+00:00",
+		"source": "#l10aQeDerUy8wQqT"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-JapanState",
+	"name": "JapanState",
+	"title": "都道府県コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている都道府県コードが含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-JapanState"
+			}
+		]
+	}
+}

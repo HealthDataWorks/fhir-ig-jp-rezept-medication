@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-SpecificEquipment",
+	"meta": {
+		"versionId": "4",
+		"lastUpdated": "2021-04-06T12:52:37.218+00:00",
+		"source": "#Hn0IVowJufGqTaDc"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-SpecificEquipment",
+	"name": "SpecificEquipment",
+	"title": "特定器材",
+	"status": "draft",
+	"description": "この ValueSet には、レセプト電算処理システムで定義されている特定器材の種類が含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/kihonmasta_05.html"
+			}
+		]
+	}
+}

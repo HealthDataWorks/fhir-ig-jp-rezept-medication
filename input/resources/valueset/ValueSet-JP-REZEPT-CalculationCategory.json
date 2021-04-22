@@ -1,0 +1,21 @@
+{
+	"resourceType": "ValueSet",
+	"id": "ValueSet-JP-REZEPT-CalculationCategory",
+	"meta": {
+		"versionId": "3",
+		"lastUpdated": "2021-04-15T10:53:16.149+00:00",
+		"source": "#6eAgBarqpgetPrlM"
+	},
+	"url": "https://xxx/ValueSet-JP-REZEPT-CalculationCategory",
+	"name": "CalculationCategory",
+	"title": "算定区分コード",
+	"status": "draft",
+	"description": "このバリューセットには、レセプト電算処理システムで定義されている算定区分が含まれます。",
+	"compose": {
+		"include": [
+			{
+				"system": "https://xxx/CodeSystem-JP-REZEPT-CalculationCategory"
+			}
+		]
+	}
+}

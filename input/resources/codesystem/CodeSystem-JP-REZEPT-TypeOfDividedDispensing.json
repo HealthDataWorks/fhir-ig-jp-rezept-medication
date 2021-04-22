@@ -1,0 +1,28 @@
+{
+	"resourceType": "CodeSystem",
+	"id": "CodeSystem-JP-REZEPT-TypeOfDividedDispensing",
+	"meta": {
+		"versionId": "2",
+		"lastUpdated": "2021-04-05T11:12:54.285+00:00",
+		"source": "#YyyZAqROaVfFu4T5"
+	},
+	"url": "https://xxx/CodeSystem-JP-REZEPT-TypeOfDividedDispensing",
+	"name": "TypeOfDividedDispensing",
+	"title": "分割調剤種類コード",
+	"status": "draft",
+	"description": "レセプト電算処理システムで使用されている分割調剤種類コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表15 分割調剤種類コード」に記載されています。",
+	"valueSet": "https://xxx/ValueSet-JP-REZEPT-TypeOfDividedDispensing",
+	"content": "complete",
+	"concept": [
+		{
+			"code": "1",
+			"display": "長期投薬に係る分割調剤",
+			"definition": "長期投薬に係る分割調剤"
+		},
+		{
+			"code": "2",
+			"display": "後発医薬品に係る分割調剤",
+			"definition": "後発医薬品に係る分割調剤"
+		}
+	]
+}
