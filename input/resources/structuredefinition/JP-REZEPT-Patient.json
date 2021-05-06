@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Patient",
 	"meta": {
-		"versionId": "105",
-		"lastUpdated": "2021-04-20T07:13:27.461+00:00",
-		"source": "#ZLyityaufTd4pHg5"
+		"versionId": "107",
+		"lastUpdated": "2021-05-06T04:40:17.403+00:00",
+		"source": "#UpEw5RTrhSqDXM7I"
 	},
-	"url": "https://xxx/StructureDefinition/JP-REZEPT-Patient",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Patient.html",
 	"name": "Patient",
 	"title": "患者情報",
 	"status": "draft",

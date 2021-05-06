@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-ExtensionClaimCommonInformation",
 	"meta": {
-		"versionId": "13",
-		"lastUpdated": "2021-04-16T11:25:35.478+00:00",
-		"source": "#MFICx3ci03Jqdbbg"
+		"versionId": "15",
+		"lastUpdated": "2021-05-06T04:32:33.325+00:00",
+		"source": "#INpvYWDeI09jWKkz"
 	},
-	"url": "https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimCommonInformation",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html",
 	"name": "ExtensionClaimCommonInformation",
 	"title": "レセプト情報の共通の拡張情報",
 	"status": "draft",

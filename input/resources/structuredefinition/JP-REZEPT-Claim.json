@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Claim",
 	"meta": {
-		"versionId": "38",
-		"lastUpdated": "2021-04-19T14:48:51.135+00:00",
-		"source": "#BwGGzJI4iG3jIyaT"
+		"versionId": "45",
+		"lastUpdated": "2021-05-06T08:29:07.266+00:00",
+		"source": "#cDlKpGOoVz7ZWhN3"
 	},
-	"url": "https://healthdataworks.net/StructureDefinition/JP-REZEPT-Claim",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Claim.html",
 	"name": "Claim",
 	"title": "レセプト情報",
 	"status": "draft",
@@ -349,29 +349,9 @@
 						]
 					}
 				],
-				"condition": [
-					"ele-1"
-				],
-				"constraint": [
-					{
-						"key": "ele-1",
-						"severity": "error",
-						"human": "All FHIR elements must have a @value or children",
-						"expression": "hasValue() or (children().count() > id.count())",
-						"xpath": "@value|f:*|h:div",
-						"source": "Element"
-					},
-					{
-						"key": "ext-1",
-						"severity": "error",
-						"human": "Must have either extensions or value[x], not both",
-						"expression": "extension.exists() != value.exists()",
-						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
-						"source": "Extension"
-					}
-				],
 				"mustSupport": true,
-				"isModifier": false
+				"isModifier": false,
+				"isSummary": false
 			},
 			{
 				"id": "Claim.extension:insurerInformation",
@@ -394,29 +374,9 @@
 						]
 					}
 				],
-				"condition": [
-					"ele-1"
-				],
-				"constraint": [
-					{
-						"key": "ele-1",
-						"severity": "error",
-						"human": "All FHIR elements must have a @value or children",
-						"expression": "hasValue() or (children().count() > id.count())",
-						"xpath": "@value|f:*|h:div",
-						"source": "Element"
-					},
-					{
-						"key": "ext-1",
-						"severity": "error",
-						"human": "Must have either extensions or value[x], not both",
-						"expression": "extension.exists() != value.exists()",
-						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
-						"source": "Extension"
-					}
-				],
 				"mustSupport": true,
-				"isModifier": false
+				"isModifier": false,
+				"isSummary": false
 			},
 			{
 				"id": "Claim.extension:commonInformation",
@@ -439,29 +399,9 @@
 						]
 					}
 				],
-				"condition": [
-					"ele-1"
-				],
-				"constraint": [
-					{
-						"key": "ele-1",
-						"severity": "error",
-						"human": "All FHIR elements must have a @value or children",
-						"expression": "hasValue() or (children().count() > id.count())",
-						"xpath": "@value|f:*|h:div",
-						"source": "Element"
-					},
-					{
-						"key": "ext-1",
-						"severity": "error",
-						"human": "Must have either extensions or value[x], not both",
-						"expression": "extension.exists() != value.exists()",
-						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
-						"source": "Extension"
-					}
-				],
 				"mustSupport": true,
-				"isModifier": false
+				"isModifier": false,
+				"isSummary": false
 			},
 			{
 				"id": "Claim.extension:comprehensiveEvaluation",
@@ -484,29 +424,9 @@
 						]
 					}
 				],
-				"condition": [
-					"ele-1"
-				],
-				"constraint": [
-					{
-						"key": "ele-1",
-						"severity": "error",
-						"human": "All FHIR elements must have a @value or children",
-						"expression": "hasValue() or (children().count() > id.count())",
-						"xpath": "@value|f:*|h:div",
-						"source": "Element"
-					},
-					{
-						"key": "ext-1",
-						"severity": "error",
-						"human": "Must have either extensions or value[x], not both",
-						"expression": "extension.exists() != value.exists()",
-						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
-						"source": "Extension"
-					}
-				],
 				"mustSupport": true,
-				"isModifier": false
+				"isModifier": false,
+				"isSummary": false
 			},
 			{
 				"id": "Claim.modifierExtension",

@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-ExtensionDeviceUnitPrice",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-16T02:26:58.429+00:00",
-		"source": "#VhlPPTgD5YCuku2y"
+		"versionId": "6",
+		"lastUpdated": "2021-05-06T04:45:23.900+00:00",
+		"source": "#HAXPJ1vL3qlNoI2v"
 	},
-	"url": "https://xxx/StructureDefinition/JP-REZEPT-ExtensionDeviceUnitPrice",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceUnitPrice.html",
 	"name": "ExtentionDeviceUnitPrice",
 	"title": "特定器材の単価",
 	"status": "draft",

@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-ExtensionProcedureAddition",
 	"meta": {
-		"versionId": "6",
-		"lastUpdated": "2021-04-16T04:10:53.504+00:00",
-		"source": "#vgIrVSMTwvXSmKk8"
+		"versionId": "8",
+		"lastUpdated": "2021-05-06T04:44:06.276+00:00",
+		"source": "#jIx2iJgN4vj0XJXF"
 	},
-	"url": "https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureAddition",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureAddition.html",
 	"name": "ExtentionProcedureAddition",
 	"title": "診療行為の加算情報",
 	"status": "draft",

@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-ExtensionClaimPatientInformation",
 	"meta": {
-		"versionId": "8",
-		"lastUpdated": "2021-04-16T04:10:08.617+00:00",
-		"source": "#a8VRDrMpA1VEGIwJ"
+		"versionId": "10",
+		"lastUpdated": "2021-05-06T04:35:43.134+00:00",
+		"source": "#TigzgYDTwlt0FlAf"
 	},
-	"url": "https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimPatientInformation",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimPatientInformation.html",
 	"name": "ExtensionClaimPatientInformation",
 	"title": "患者の拡張情報",
 	"status": "draft",

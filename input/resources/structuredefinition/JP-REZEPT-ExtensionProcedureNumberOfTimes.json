@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-ExtensionProcedureNumberOfTimes",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-16T02:28:29.193+00:00",
-		"source": "#I9oEl5fa4i8OZEQO"
+		"versionId": "6",
+		"lastUpdated": "2021-05-06T04:43:20.064+00:00",
+		"source": "#rKnjANsMlIjfE4o0"
 	},
-	"url": "https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureNumberOfTimes",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureNumberOfTimes.html",
 	"name": "ExtentionProcedureNumberOfTimes",
 	"title": "診療行為の回数",
 	"status": "draft",

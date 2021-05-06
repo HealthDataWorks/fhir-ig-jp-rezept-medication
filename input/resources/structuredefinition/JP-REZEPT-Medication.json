@@ -2,11 +2,11 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Medication",
 	"meta": {
-		"versionId": "35",
-		"lastUpdated": "2021-04-20T09:10:08.521+00:00",
-		"source": "#thGODqQG6tHlY4UT"
+		"versionId": "37",
+		"lastUpdated": "2021-05-06T04:42:37.507+00:00",
+		"source": "#dXK3lMvqcFyxRI6p"
 	},
-	"url": "https://healthdataworks.net/hl7-fhir/StructureDefinition/JP-REZEPT-Medication",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Medication.html",
 	"name": "Medication",
 	"title": "医薬品情報",
 	"status": "draft",
