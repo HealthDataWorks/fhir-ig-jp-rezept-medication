@@ -1,16 +1,16 @@
 {
 	"id": "jp-rezept-medication",
 	"meta": {
-		"versionId": "23",
-		"lastUpdated": "2021-05-06T11:49:41.009+00:00",
-		"source": "#EtrrZOWONl4zwc0F"
+		"versionId": "24",
+		"lastUpdated": "2021-05-07T01:11:20.261+00:00",
+		"source": "#Hdu7RaYC6fGlvAAA"
 	},
 	"resourceType": "ImplementationGuide",
 	"status": "draft",
 	"fhirVersion": [
 		"4.0.1"
 	],
-	"url": "https://igs.healthdataworks.net/jp-rezept-medication/index.html",
+	"url": "https://healthdataworks.net/hl7-fhir/ImplementationGuide/jp-rezept-medication",
 	"version": "0.8.0",
 	"name": "JP_rezept_medication",
 	"title": "調剤レセプト",
