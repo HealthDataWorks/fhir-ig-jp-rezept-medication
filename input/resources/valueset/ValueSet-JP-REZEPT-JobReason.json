@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-JobReason",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-06T13:06:26.441+00:00",
-		"source": "#BwnZhza7D1gs2fbX"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T02:58:30.026+00:00",
+		"source": "#APelkeKKqm0Ckzv1"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-JobReason",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-JobReason.html",
 	"name": "JobReason",
 	"title": "職務上の事由コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-JobReason"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-JobReason.html"
 			}
 		]
 	}

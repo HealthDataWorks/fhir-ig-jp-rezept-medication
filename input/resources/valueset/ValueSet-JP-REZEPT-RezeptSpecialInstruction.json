@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-RezeptSpecialInstruction",
 	"meta": {
-		"versionId": "3",
-		"lastUpdated": "2021-04-06T12:52:36.701+00:00",
-		"source": "#CusowshgRBcfKX8k"
+		"versionId": "5",
+		"lastUpdated": "2021-05-07T03:02:22.239+00:00",
+		"source": "#haRNIKjp2mGXHILP"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-RezeptSpecialInstruction",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptSpecialInstruction.html",
 	"name": "RezeptSpecialInstruction",
 	"title": "レセプト特記事項コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-RezeptSpecialInstructions"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-RezeptSpecialInstructions.html"
 			}
 		]
 	}

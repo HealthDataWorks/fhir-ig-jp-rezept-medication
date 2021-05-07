@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-MedicationUsage",
 	"meta": {
-		"versionId": "2",
-		"lastUpdated": "2021-04-05T11:10:47.222+00:00",
-		"source": "#ZAjEje1aAF2XSsqL"
+		"versionId": "4",
+		"lastUpdated": "2021-05-07T03:24:26.718+00:00",
+		"source": "#j3l0YqkS7CQJjXJ1"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-MedicationUsage",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-MedicationUsage.html",
 	"name": "MedicationUsage",
 	"title": "用法コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されている用法コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表12 用法コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-MedicationUsage",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationUsage.html",
 	"content": "complete",
 	"concept": [
 		{

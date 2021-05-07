@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-OtherMedicalInstitutionConsultation",
 	"meta": {
-		"versionId": "3",
-		"lastUpdated": "2021-04-15T10:55:38.251+00:00",
-		"source": "#B5UZPIkzhBzPH6Rn"
+		"versionId": "5",
+		"lastUpdated": "2021-05-07T02:59:50.924+00:00",
+		"source": "#39kk55vNQrNjIEN2"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-OtherMedicalInstitutionConsultation",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-OtherMedicalInstitutionConsultation.html",
 	"name": "OtherMedicalInstitutionConsultation",
 	"title": "他医療機関受診コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-OtherMedicalInstitutionConsultation"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-OtherMedicalInstitutionConsultation.html"
 			}
 		]
 	}

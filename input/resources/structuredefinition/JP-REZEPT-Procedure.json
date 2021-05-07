@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Procedure",
 	"meta": {
-		"versionId": "20",
-		"lastUpdated": "2021-05-06T04:39:44.962+00:00",
-		"source": "#CkKW262OTC93caWK"
+		"versionId": "21",
+		"lastUpdated": "2021-05-07T01:02:26.828+00:00",
+		"source": "#jpYLelLIppfyXrsc"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Procedure.html",
 	"name": "Procedure",
@@ -343,13 +343,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureQuantity"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureQuantity.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Procedure.extension:numberOfTimes",
@@ -368,13 +388,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureNumberOfTimes"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureNumberOfTimes.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Procedure.extension:addition",
@@ -393,13 +433,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureAddition"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureAddition.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Procedure.modifierExtension",
@@ -3130,7 +3190,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureQuantity"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureQuantity.html"
 						]
 					}
 				],
@@ -3146,7 +3206,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureNumberOfTimes"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureNumberOfTimes.html"
 						]
 					}
 				],
@@ -3162,7 +3222,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionProcedureAddition"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureAddition.html"
 						]
 					}
 				],

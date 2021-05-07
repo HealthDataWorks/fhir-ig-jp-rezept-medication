@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-CounterBurdenCategory",
 	"meta": {
-		"versionId": "3",
-		"lastUpdated": "2021-04-06T12:52:36.136+00:00",
-		"source": "#5LCi7PK2h6iqy6q0"
+		"versionId": "5",
+		"lastUpdated": "2021-05-07T02:55:23.974+00:00",
+		"source": "#79kiDGGpyiS4zvrI"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-CounterBurdenCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-CounterBurdenCategory.html",
 	"name": "CounterBurdenCategory",
 	"title": "窓口負担額区分コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-CounterBurdenCategory"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-CounterBurdenCategory.html"
 			}
 		]
 	}

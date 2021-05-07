@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-ExaminationAndPaymentInstitution",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-06T13:06:27.219+00:00",
-		"source": "#HyUd7V7EaDWdJwOW"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T02:56:53.750+00:00",
+		"source": "#spsj8L4LWcAQVsXp"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-ExaminationAndPaymentInstitution",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ExaminationAndPaymentInstitution.html",
 	"name": "ExaminationAndPaymentInstitution",
 	"title": "審査支払機関コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-ExaminationAndPaymentInstitution"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ExaminationAndPaymentInstitution.html"
 			}
 		]
 	}

@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Device",
 	"meta": {
-		"versionId": "29",
-		"lastUpdated": "2021-05-06T04:51:25.217+00:00",
-		"source": "#ztpqgLju5MeNKvGX"
+		"versionId": "30",
+		"lastUpdated": "2021-05-07T00:56:46.841+00:00",
+		"source": "#JruHX0caROdO1kVT"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Device.html",
 	"name": "Device",
@@ -341,13 +341,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionDeviceUnitPrice"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceUnitPrice.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Device.extension:quantity",
@@ -367,13 +387,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionDeviceQuantity"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceQuantity.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Device.extension:numberOfTimes",
@@ -393,13 +433,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionDeviceNumberOfTimes"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceNumberOfTimes.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Device.modifierExtension",
@@ -2900,7 +2960,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionDeviceUnitPrice"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceUnitPrice.html"
 						]
 					}
 				],
@@ -2917,7 +2977,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionDeviceQuantity"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceQuantity.html"
 						]
 					}
 				],
@@ -2934,7 +2994,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionDeviceNumberOfTimes"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceNumberOfTimes.html"
 						]
 					}
 				],

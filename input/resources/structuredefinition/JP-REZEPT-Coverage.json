@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Coverage",
 	"meta": {
-		"versionId": "64",
-		"lastUpdated": "2021-05-06T04:33:14.820+00:00",
-		"source": "#cIQvh1KjqIItusou"
+		"versionId": "65",
+		"lastUpdated": "2021-05-07T03:43:29.660+00:00",
+		"source": "#f7rhXeZs4IqR8kPq"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Coverage.html",
 	"name": "Coverage",
@@ -4933,7 +4933,7 @@
 				"isSummary": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-BearerType"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BearerType.html"
 				},
 				"mapping": [
 					{
@@ -6321,7 +6321,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-BearerType"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BearerType.html"
 				},
 				"mapping": [
 					{

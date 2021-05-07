@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-RezeptType",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-06T13:06:26.882+00:00",
-		"source": "#Z4MEgn2kkFcIEazA"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T03:15:52.034+00:00",
+		"source": "#tcNRz5J31QAtxQse"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-RezeptType",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html",
 	"name": "RezeptType",
 	"title": "点数表コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-RezeptType"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-RezeptType.html"
 			}
 		]
 	}

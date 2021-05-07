@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-DosageForm",
 	"meta": {
-		"versionId": "2",
-		"lastUpdated": "2021-04-05T09:39:20.564+00:00",
-		"source": "#K049V01e10tM7MKQ"
+		"versionId": "4",
+		"lastUpdated": "2021-05-07T03:21:27.033+00:00",
+		"source": "#91eXwBGmHd9Z589O"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-DosageForm",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-DosageForm.html",
 	"name": "DosageForm",
 	"title": "剤形コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されている剤形コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表11 剤形コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-DosageForm",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html",
 	"content": "complete",
 	"concept": [
 		{

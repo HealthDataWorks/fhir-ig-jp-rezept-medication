@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Medication",
 	"meta": {
-		"versionId": "37",
-		"lastUpdated": "2021-05-06T04:42:37.507+00:00",
-		"source": "#dXK3lMvqcFyxRI6p"
+		"versionId": "38",
+		"lastUpdated": "2021-05-07T03:49:24.455+00:00",
+		"source": "#W0UWcEiIi2AuE6gp"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Medication.html",
 	"name": "Medication",
@@ -1965,7 +1965,7 @@
 				"isSummary": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-DosageForm"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
 				},
 				"mapping": [
 					{
@@ -2925,7 +2925,7 @@
 				"isSummary": false,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-DosageForm"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
 				},
 				"mapping": [
 					{
@@ -4558,7 +4558,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-DosageForm"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
 				},
 				"mapping": [
 					{
@@ -4672,7 +4672,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-DosageForm"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
 				},
 				"mapping": [
 					{

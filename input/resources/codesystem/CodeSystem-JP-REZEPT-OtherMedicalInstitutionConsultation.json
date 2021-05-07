@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-OtherMedicalInstitutionConsultation",
 	"meta": {
-		"versionId": "2",
-		"lastUpdated": "2021-04-05T11:10:18.115+00:00",
-		"source": "#WumEEV0wBlBQN27L"
+		"versionId": "4",
+		"lastUpdated": "2021-05-07T03:24:49.053+00:00",
+		"source": "#a3GmQ5TxshFUzG8l"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-OtherMedicalInstitutionConsultation",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-OtherMedicalInstitutionConsultation.html",
 	"name": "OtherMedicalInstitutionConsultation",
 	"title": "他医療機関受診コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されている他医療機関受診コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表19 他医療機関受診コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-OtherMedicalInstitutionConsultation",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-OtherMedicalInstitutionConsultation.html",
 	"content": "complete",
 	"concept": [
 		{

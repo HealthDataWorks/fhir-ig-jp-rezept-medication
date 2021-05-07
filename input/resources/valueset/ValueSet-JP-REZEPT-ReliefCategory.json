@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-ReliefCategory",
 	"meta": {
-		"versionId": "5",
-		"lastUpdated": "2021-04-06T13:06:26.663+00:00",
-		"source": "#7MxRIpkmybzEsY3z"
+		"versionId": "7",
+		"lastUpdated": "2021-05-07T03:01:21.270+00:00",
+		"source": "#qeZZSpc9qiVodIFh"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-ReliefCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ReliefCategory.html",
 	"name": "ReliefCategory",
 	"title": "減免区分コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-ReliefCategory"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ReliefCategory.html"
 			}
 		]
 	}

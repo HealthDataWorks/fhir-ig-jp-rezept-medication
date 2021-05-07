@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-HOT9",
 	"meta": {
-		"versionId": "5",
-		"lastUpdated": "2021-04-06T13:06:26.419+00:00",
-		"source": "#YPZg2K1rXNlK4nVJ"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T02:27:25.601+00:00",
+		"source": "#HsfuKmL28ZcQNTd7"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-HOT9.html",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-HOT9.html",
 	"identifier": [
 		{
 			"use": "official",

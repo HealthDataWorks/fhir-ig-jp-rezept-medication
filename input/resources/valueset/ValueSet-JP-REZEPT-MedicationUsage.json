@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-MedicationUsage",
 	"meta": {
-		"versionId": "3",
-		"lastUpdated": "2021-04-15T10:54:58.220+00:00",
-		"source": "#sgdcSHGlkfa1tokt"
+		"versionId": "5",
+		"lastUpdated": "2021-05-07T02:59:20.018+00:00",
+		"source": "#jyIr88syQihSwZlA"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-MedicationUsage",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationUsage.html",
 	"name": "MedicationUsage",
 	"title": "用法コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-MedicationUsage"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-MedicationUsage.html"
 			}
 		]
 	}

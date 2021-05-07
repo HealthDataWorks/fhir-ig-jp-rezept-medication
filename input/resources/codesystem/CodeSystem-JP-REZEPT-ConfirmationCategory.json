@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-ConfirmationCategory",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-16T12:44:11.233+00:00",
-		"source": "#uLCJREDeBbi0h9k6"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T03:20:42.527+00:00",
+		"source": "#B3KitpR1UdwDau2R"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-ConfirmationCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ConfirmationCategory.html",
 	"name": "ConfirmationCategory",
 	"title": "確認区分コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されている確認区分コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表29 確認区分コード」に記載されています。\n\nDPCレセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(DPC用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_2_kiroku_dpc.pdf) の「別表38 確認区分コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表28 確認区分コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表21 確認区分コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-ConfirmationCategory",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ConfirmationCategory.html",
 	"content": "complete",
 	"concept": [
 		{

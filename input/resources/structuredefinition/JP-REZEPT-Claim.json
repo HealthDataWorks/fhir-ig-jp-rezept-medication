@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Claim",
 	"meta": {
-		"versionId": "45",
-		"lastUpdated": "2021-05-06T08:29:07.266+00:00",
-		"source": "#cDlKpGOoVz7ZWhN3"
+		"versionId": "47",
+		"lastUpdated": "2021-05-07T03:40:49.014+00:00",
+		"source": "#mD1L3grIovuCxma8"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Claim.html",
 	"name": "Claim",
@@ -345,13 +345,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimPatientInformation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimPatientInformation.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Claim.extension:insurerInformation",
@@ -370,13 +390,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimInsurerInformation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimInsurerInformation.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Claim.extension:commonInformation",
@@ -395,13 +435,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimCommonInformation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Claim.extension:comprehensiveEvaluation",
@@ -420,13 +480,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimComprehensiveEvaluation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "Claim.modifierExtension",
@@ -1655,7 +1735,7 @@
 				"isSummary": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptType"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html"
 				},
 				"mapping": [
 					{
@@ -11605,7 +11685,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimPatientInformation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimPatientInformation.html"
 						]
 					}
 				],
@@ -11621,7 +11701,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimInsurerInformation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimInsurerInformation.html"
 						]
 					}
 				],
@@ -11637,7 +11717,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimCommonInformation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html"
 						]
 					}
 				],
@@ -11653,7 +11733,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionClaimComprehensiveEvaluation"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html"
 						]
 					}
 				],
@@ -11868,7 +11948,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptType"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html"
 				},
 				"mapping": [
 					{

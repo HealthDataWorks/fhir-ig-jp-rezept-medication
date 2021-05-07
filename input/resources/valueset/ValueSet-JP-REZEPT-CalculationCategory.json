@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-CalculationCategory",
 	"meta": {
-		"versionId": "3",
-		"lastUpdated": "2021-04-15T10:53:16.149+00:00",
-		"source": "#6eAgBarqpgetPrlM"
+		"versionId": "5",
+		"lastUpdated": "2021-05-07T02:53:51.175+00:00",
+		"source": "#UBLOxsbQqjfHmVbe"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-CalculationCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-CalculationCategory.html",
 	"name": "CalculationCategory",
 	"title": "算定区分コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-CalculationCategory"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-CalculationCategory.html"
 			}
 		]
 	}

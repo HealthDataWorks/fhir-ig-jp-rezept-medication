@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-ReceptionCategory",
 	"meta": {
-		"versionId": "2",
-		"lastUpdated": "2021-04-05T11:09:34.262+00:00",
-		"source": "#9PFPluGPgHu2pDXP"
+		"versionId": "4",
+		"lastUpdated": "2021-05-07T03:25:31.870+00:00",
+		"source": "#NhRVwvMkEVqdahZR"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-ReceptionCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ReceptionCategory.html",
 	"name": "ReceptionCategory",
 	"title": "受付等区分コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されている受付等区分コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表22 受付等区分コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-ReceptionCategory",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ReceptionCategory.html",
 	"content": "complete",
 	"concept": [
 		{

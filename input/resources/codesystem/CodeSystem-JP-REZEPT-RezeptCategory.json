@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-RezeptCategory",
 	"meta": {
-		"versionId": "5",
-		"lastUpdated": "2021-04-16T12:52:11.876+00:00",
-		"source": "#bILjcOjWFbjfuhZR"
+		"versionId": "7",
+		"lastUpdated": "2021-05-07T03:26:21.065+00:00",
+		"source": "#IAQ97iYomc8mmUnR"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-RezeptCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-RezeptCategory.html",
 	"name": "RezeptCategory",
 	"title": "レセプト種別コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されているレセプト種別コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表5 レセプト種別コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表6 レセプト種別コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表5 レセプト種別コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptCategory",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptCategory.html",
 	"content": "complete",
 	"concept": [
 		{

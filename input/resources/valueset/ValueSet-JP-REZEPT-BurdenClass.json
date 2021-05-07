@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-BurdenClass",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-06T13:06:27.018+00:00",
-		"source": "#WgTSFVOy4h6nsvMo"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T02:53:28.088+00:00",
+		"source": "#7feI3oY7vayfTsqJ"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-BurdenClass",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BurdenClass.html",
 	"name": "BurdenClass",
 	"title": "負担区分コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-BurdenClass"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-BurdenClass.html"
 			}
 		]
 	}

@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-SpecificEquipmentUnit",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-06T13:06:26.884+00:00",
-		"source": "#2FQPxo6KPI5Q7kDe"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T03:16:38.884+00:00",
+		"source": "#gB5rU4bGhG9pP1KO"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-SpecificEquipmentUnit",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-SpecificEquipmentUnit.html",
 	"name": "SpecificEquipmentUnit",
 	"title": "特定器材単位コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-SpecificEquipmentUnit"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-SpecificEquipmentUnit.html"
 			}
 		]
 	}

@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-JapanState",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-06T13:06:26.453+00:00",
-		"source": "#l10aQeDerUy8wQqT"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T02:58:05.358+00:00",
+		"source": "#NOUELUiuZzG0XFgP"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-JapanState",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-JapanState.html",
 	"name": "JapanState",
 	"title": "都道府県コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-JapanState"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-JapanState.html"
 			}
 		]
 	}

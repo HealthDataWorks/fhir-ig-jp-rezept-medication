@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Organization",
 	"meta": {
-		"versionId": "24",
-		"lastUpdated": "2021-05-06T04:40:51.938+00:00",
-		"source": "#vJE9z3pUII2RQTR1"
+		"versionId": "26",
+		"lastUpdated": "2021-05-07T03:47:18.508+00:00",
+		"source": "#OKAVdpvrjXEN9gbz"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Organization.html",
 	"name": "Organization",
@@ -1104,7 +1104,7 @@
 				"isSummary": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-JapanState"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-JapanState.html"
 				},
 				"mapping": [
 					{
@@ -1493,7 +1493,7 @@
 				"isSummary": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptType"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html"
 				},
 				"mapping": [
 					{
@@ -3348,7 +3348,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-JapanState"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-JapanState.html"
 				},
 				"mapping": [
 					{
@@ -3393,7 +3393,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptType"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html"
 				},
 				"mapping": [
 					{

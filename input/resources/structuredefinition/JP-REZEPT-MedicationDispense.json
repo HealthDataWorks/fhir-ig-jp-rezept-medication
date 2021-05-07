@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-MedicationDispense",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-05-06T04:41:47.585+00:00",
-		"source": "#vJHPdD9RYBbNVac8"
+		"versionId": "7",
+		"lastUpdated": "2021-05-07T03:52:10.384+00:00",
+		"source": "#UZDN7yHMCGouQTkK"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-MedicationDispense.html",
 	"name": "MedicationDispense",
@@ -333,13 +333,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionMedicationDispenseRequestDate"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseRequestDate.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "MedicationDispense.extension:addition",
@@ -358,13 +378,33 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionMedicationDispenseAddition"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseAddition.html"
 						]
 					}
 				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
 				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": false
+				"isModifier": false
 			},
 			{
 				"id": "MedicationDispense.modifierExtension",
@@ -2193,7 +2233,7 @@
 				"isSummary": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-DosageForm"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
 				},
 				"mapping": [
 					{
@@ -4355,7 +4395,7 @@
 				"isSummary": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-MedicationUsage"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationUsage.html"
 				},
 				"mapping": [
 					{
@@ -5252,7 +5292,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionMedicationDispenseRequestDate"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseRequestDate.html"
 						]
 					}
 				],
@@ -5268,7 +5308,7 @@
 					{
 						"code": "Extension",
 						"profile": [
-							"https://xxx/StructureDefinition/JP-REZEPT-ExtensionMedicationDispenseAddition"
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseAddition.html"
 						]
 					}
 				],
@@ -5434,7 +5474,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-DosageForm"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
 				},
 				"mapping": [
 					{
@@ -5576,7 +5616,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-MedicationUsage"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationUsage.html"
 				},
 				"mapping": [
 					{

@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-ClassificationOfCoPayment",
 	"meta": {
-		"versionId": "5",
-		"lastUpdated": "2021-04-06T13:06:27.056+00:00",
-		"source": "#qN3nA4bvkNeeknT1"
+		"versionId": "7",
+		"lastUpdated": "2021-05-07T02:54:16.985+00:00",
+		"source": "#0wd36kraI7CRVoKd"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-ClassificationOfCoPayment",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ClassificationOfCoPayment.html",
 	"name": "ClassificationOfCoPayment",
 	"title": "一部負担金・食事療養費・生活療養費標準負担額区分コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-ClassificationOfCoPayment"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ClassificationOfCoPayment.html"
 			}
 		]
 	}

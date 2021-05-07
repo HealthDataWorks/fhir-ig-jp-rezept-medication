@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-ExtensionClaimComprehensiveEvaluation",
 	"meta": {
-		"versionId": "12",
-		"lastUpdated": "2021-05-06T04:34:18.210+00:00",
-		"source": "#0Ma4dIcpzPoh7t0u"
+		"versionId": "13",
+		"lastUpdated": "2021-05-07T03:56:01.661+00:00",
+		"source": "#UXy138VhT6CxYdga"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimComprehensiveEvaluation.html",
 	"name": "ExtensionClaimComprehensiveEvaluation",
@@ -307,7 +307,7 @@
 				"isSummary": false,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-CalculationCategory"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-CalculationCategory.html"
 				},
 				"mapping": [
 					{
@@ -1860,7 +1860,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-CalculationCategory"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-CalculationCategory.html"
 				},
 				"mapping": [
 					{

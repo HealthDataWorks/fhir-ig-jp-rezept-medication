@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-CalculationCategory",
 	"meta": {
-		"versionId": "2",
-		"lastUpdated": "2021-04-05T09:37:09.506+00:00",
-		"source": "#rj3svYpFBVZuDbzE"
+		"versionId": "4",
+		"lastUpdated": "2021-05-07T03:19:24.408+00:00",
+		"source": "#d4DrHBMPi3dQHwxW"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-CalculationCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-CalculationCategory.html",
 	"name": "CalculationCategory",
 	"title": "算定区分コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されている算定区分コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表14 算定区分コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-CalculationCategory",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-CalculationCategory.html",
 	"content": "complete",
 	"concept": [
 		{

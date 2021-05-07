@@ -2,16 +2,16 @@
 	"resourceType": "CodeSystem",
 	"id": "CodeSystem-JP-REZEPT-MedicationMixedSection",
 	"meta": {
-		"versionId": "2",
-		"lastUpdated": "2021-04-05T11:11:09.211+00:00",
-		"source": "#j7pL8l5nSz3CO8Zz"
+		"versionId": "4",
+		"lastUpdated": "2021-05-07T03:23:50.051+00:00",
+		"source": "#MPn1PqPwxyb1dRqj"
 	},
-	"url": "https://xxx/CodeSystem-JP-REZEPT-MedicationMixedSection",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-MedicationMixedSection.html",
 	"name": "MedicationMixedSection",
 	"title": "混合区分コード",
 	"status": "draft",
 	"description": "レセプト電算処理システムで使用されている混合区分コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表16 混合区分コード」に記載されています。",
-	"valueSet": "https://xxx/ValueSet-JP-REZEPT-MedicationMixedSection",
+	"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationMixedSection.html",
 	"content": "complete",
 	"concept": [
 		{

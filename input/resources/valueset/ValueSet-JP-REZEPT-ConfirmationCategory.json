@@ -2,11 +2,11 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-ConfirmationCategory",
 	"meta": {
-		"versionId": "4",
-		"lastUpdated": "2021-04-06T13:06:27.011+00:00",
-		"source": "#3m8vWx8au1N7P1aH"
+		"versionId": "6",
+		"lastUpdated": "2021-05-07T02:54:59.128+00:00",
+		"source": "#BTKJr8kEOVphuAoB"
 	},
-	"url": "https://xxx/ValueSet-JP-REZEPT-ConfirmationCategory",
+	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ConfirmationCategory.html",
 	"name": "ConfirmationCategory",
 	"title": "確認区分コード",
 	"status": "draft",
@@ -14,7 +14,7 @@
 	"compose": {
 		"include": [
 			{
-				"system": "https://xxx/CodeSystem-JP-REZEPT-ConfirmationCategory"
+				"system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ConfirmationCategory.html"
 			}
 		]
 	}

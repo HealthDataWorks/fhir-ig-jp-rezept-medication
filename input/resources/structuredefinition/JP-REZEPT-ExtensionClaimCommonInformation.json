@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-ExtensionClaimCommonInformation",
 	"meta": {
-		"versionId": "15",
-		"lastUpdated": "2021-05-06T04:32:33.325+00:00",
-		"source": "#INpvYWDeI09jWKkz"
+		"versionId": "18",
+		"lastUpdated": "2021-05-07T03:54:53.825+00:00",
+		"source": "#fVCSBNfjiUWfoOKR"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html",
 	"name": "ExtensionClaimCommonInformation",
@@ -503,7 +503,7 @@
 				"isSummary": false,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-ClassificationOfCoPayment"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ClassificationOfCoPayment.html"
 				},
 				"mapping": [
 					{
@@ -691,7 +691,7 @@
 				"isSummary": false,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptSpecialInstruction"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptSpecialInstruction.html"
 				},
 				"mapping": [
 					{
@@ -2351,7 +2351,7 @@
 				"isSummary": false,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-Gender"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-Gender.html"
 				},
 				"mapping": [
 					{
@@ -3216,7 +3216,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-ClassificationOfCoPayment"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ClassificationOfCoPayment.html"
 				},
 				"mapping": [
 					{
@@ -3258,7 +3258,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-RezeptSpecialInstruction"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptSpecialInstruction.html"
 				},
 				"mapping": [
 					{
@@ -3604,7 +3604,7 @@
 				"mustSupport": true,
 				"binding": {
 					"strength": "required",
-					"valueSet": "https://xxx/ValueSet-JP-REZEPT-Gender"
+					"valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-Gender.html"
 				},
 				"mapping": [
 					{
