@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Coverage",
 	"meta": {
-		"versionId": "65",
-		"lastUpdated": "2021-05-07T03:43:29.660+00:00",
-		"source": "#f7rhXeZs4IqR8kPq"
+		"versionId": "110",
+		"lastUpdated": "2021-05-20T11:24:20.579+00:00",
+		"source": "#7Jq07ZYXXk535yLb"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Coverage.html",
 	"name": "Coverage",
@@ -306,13 +306,17 @@
 			{
 				"id": "Coverage.extension",
 				"path": "Coverage.extension",
-				"short": "Additional content defined by implementations",
-				"definition": "May be used to represent additional information that is not part of the basic definition of the resource. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-				"alias": [
-					"extensions",
-					"user content"
-				],
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"rules": "open"
+				},
+				"short": "Extension",
+				"definition": "An Extension",
 				"min": 0,
 				"max": "*",
 				"base": {
@@ -325,14 +329,101 @@
 						"code": "Extension"
 					}
 				],
+				"mustSupport": true,
 				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
+				"isSummary": false
+			},
+			{
+				"id": "Coverage.extension:InsuredPersonSymbol",
+				"path": "Coverage.extension",
+				"sliceName": "InsuredPersonSymbol",
+				"label": "被保険者証記号を表す拡張",
+				"short": "被保険者証記号を表す拡張",
+				"definition": "被保険者証記号を表す拡張「InsuredPersonSymbol」です。保険種別が「1:医保」、「2:国保」の場合に記録します。被保険者証記号がない場合は、本拡張要素は出現しません。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "DomainResource.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
 					{
-						"identity": "rim",
-						"map": "N/A"
+						"code": "Extension",
+						"profile": [
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionCoverageInsuredPersonSymbol.html"
+						]
 					}
-				]
+				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false
+			},
+			{
+				"id": "Coverage.extension:InsuredPersonNumber",
+				"path": "Coverage.extension",
+				"sliceName": "InsuredPersonNumber",
+				"label": "被保険者証番号を表す拡張",
+				"short": "被保険者証番号を表す拡張",
+				"definition": "被保険者証番号を表す拡張「InsuredPersonNumber」です。保険種別が「1:医保」、「2:国保」、「7:後期⾼齢者」の場合に記録します。それ以外の場合は、本拡張要素は出現しません。",
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "DomainResource.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension",
+						"profile": [
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionCoverageInsuredPersonNo.html"
+						]
+					}
+				],
+				"condition": [
+					"ele-1"
+				],
+				"constraint": [
+					{
+						"key": "ele-1",
+						"severity": "error",
+						"human": "All FHIR elements must have a @value or children",
+						"expression": "hasValue() or (children().count() > id.count())",
+						"xpath": "@value|f:*|h:div",
+						"source": "Element"
+					},
+					{
+						"key": "ext-1",
+						"severity": "error",
+						"human": "Must have either extensions or value[x], not both",
+						"expression": "extension.exists() != value.exists()",
+						"xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])",
+						"source": "Extension"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false
 			},
 			{
 				"id": "Coverage.modifierExtension",
@@ -370,17 +461,8 @@
 			{
 				"id": "Coverage.identifier",
 				"path": "Coverage.identifier",
-				"slicing": {
-					"discriminator": [
-						{
-							"type": "value",
-							"path": "system"
-						}
-					],
-					"rules": "open"
-				},
-				"short": "保険情報の識別子",
-				"definition": "保険情報の識別子です。",
+				"short": "Business Identifier for the coverage",
+				"definition": "A unique identifier assigned to this coverage.",
 				"comment": "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependant.",
 				"requirements": "Allows coverages to be distinguished and referenced.",
 				"min": 0,
@@ -395,7 +477,6 @@
 						"code": "Identifier"
 					}
 				],
-				"mustSupport": true,
 				"isModifier": false,
 				"isSummary": true,
 				"mapping": [
@@ -422,1948 +503,6 @@
 					{
 						"identity": "cpha3pharm",
 						"map": "C.32, C.33, C.39"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1",
-				"path": "Coverage.identifier",
-				"sliceName": "id1",
-				"short": "保険者番号",
-				"definition": "保険者番号です。",
-				"comment": "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependant.",
-				"requirements": "Allows coverages to be distinguished and referenced.",
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Coverage.identifier",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Identifier"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "workflow",
-						"map": "Event.identifier"
-					},
-					{
-						"identity": "w5",
-						"map": "FiveWs.identifier"
-					},
-					{
-						"identity": "cdanetv4",
-						"map": "C02"
-					},
-					{
-						"identity": "v2",
-						"map": "IN1-2"
-					},
-					{
-						"identity": "rim",
-						"map": ".id"
-					},
-					{
-						"identity": "cpha3pharm",
-						"map": "C.32, C.33, C.39"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.id",
-				"path": "Coverage.identifier.id",
-				"representation": [
-					"xmlAttr"
-				],
-				"short": "Unique id for inter-element referencing",
-				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Element.id",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.extension",
-				"path": "Coverage.identifier.extension",
-				"slicing": {
-					"discriminator": [
-						{
-							"type": "value",
-							"path": "url"
-						}
-					],
-					"description": "Extensions are always sliced by (at least) url",
-					"rules": "open"
-				},
-				"short": "Additional content defined by implementations",
-				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-				"alias": [
-					"extensions",
-					"user content"
-				],
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Element.extension",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Extension"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.use",
-				"path": "Coverage.identifier.use",
-				"short": "保険者番号の用途",
-				"definition": "保険者番号の用途です。",
-				"comment": "保険者番号では「official」固定とします。",
-				"requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.use",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "code"
-					}
-				],
-				"fixedCode": "official",
-				"mustSupport": true,
-				"isModifier": true,
-				"isModifierReason": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one.",
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierUse"
-						}
-					],
-					"strength": "required",
-					"description": "Identifies the purpose for this identifier, if known .",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.0"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "N/A"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.type",
-				"path": "Coverage.identifier.type",
-				"short": "Description of identifier",
-				"definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
-				"comment": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
-				"requirements": "Allows users to make use of identifiers when the identifier system is not known.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.type",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "CodeableConcept"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierType"
-						},
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-							"valueBoolean": true
-						}
-					],
-					"strength": "extensible",
-					"description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.5"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.system",
-				"path": "Coverage.identifier.system",
-				"short": "保険者番号のOID",
-				"definition": "保険者番号のOIDです。",
-				"comment": "Identifier.system is always case sensitive.",
-				"requirements": "There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.system",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "uri"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueUri": "http://www.acme.com/identifiers/patient"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / EI-2-4"
-					},
-					{
-						"identity": "rim",
-						"map": "II.root or Role.id.root"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierType"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.value",
-				"path": "Coverage.identifier.value",
-				"short": "保険者番号",
-				"definition": "保険者番号です。",
-				"comment": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.value",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueString": "123456"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.1 / EI.1"
-					},
-					{
-						"identity": "rim",
-						"map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
-					},
-					{
-						"identity": "servd",
-						"map": "./Value"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.保険者番号"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.period",
-				"path": "Coverage.identifier.period",
-				"short": "Time period when id is/was valid for use",
-				"definition": "Time period during which identifier is/was valid for use.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.period",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Period"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.7 + CX.8"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.effectiveTime or implied by context"
-					},
-					{
-						"identity": "servd",
-						"map": "./StartDate and ./EndDate"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id1.assigner",
-				"path": "Coverage.identifier.assigner",
-				"short": "Organization that issued id (may be just text)",
-				"definition": "Organization that issued/manages the identifier.",
-				"comment": "The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.assigner",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Reference",
-						"targetProfile": [
-							"http://hl7.org/fhir/StructureDefinition/Organization"
-						]
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / (CX.4,CX.9,CX.10)"
-					},
-					{
-						"identity": "rim",
-						"map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierIssuingAuthority"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2",
-				"path": "Coverage.identifier",
-				"sliceName": "id2",
-				"short": "被保険者証記号",
-				"definition": "被保険者証記号です。",
-				"comment": "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependant.",
-				"requirements": "Allows coverages to be distinguished and referenced.",
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Coverage.identifier",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Identifier"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "workflow",
-						"map": "Event.identifier"
-					},
-					{
-						"identity": "w5",
-						"map": "FiveWs.identifier"
-					},
-					{
-						"identity": "cdanetv4",
-						"map": "C02"
-					},
-					{
-						"identity": "v2",
-						"map": "IN1-2"
-					},
-					{
-						"identity": "rim",
-						"map": ".id"
-					},
-					{
-						"identity": "cpha3pharm",
-						"map": "C.32, C.33, C.39"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.id",
-				"path": "Coverage.identifier.id",
-				"representation": [
-					"xmlAttr"
-				],
-				"short": "Unique id for inter-element referencing",
-				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Element.id",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.extension",
-				"path": "Coverage.identifier.extension",
-				"slicing": {
-					"discriminator": [
-						{
-							"type": "value",
-							"path": "url"
-						}
-					],
-					"description": "Extensions are always sliced by (at least) url",
-					"rules": "open"
-				},
-				"short": "Additional content defined by implementations",
-				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-				"alias": [
-					"extensions",
-					"user content"
-				],
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Element.extension",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Extension"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.use",
-				"path": "Coverage.identifier.use",
-				"short": "被保険者証記号の用途",
-				"definition": "被保険者証記号の用途です。",
-				"comment": "被保険者証記号では「official」固定とします。",
-				"requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.use",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "code"
-					}
-				],
-				"fixedCode": "official",
-				"mustSupport": true,
-				"isModifier": true,
-				"isModifierReason": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one.",
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierUse"
-						}
-					],
-					"strength": "required",
-					"description": "Identifies the purpose for this identifier, if known .",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.0"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "N/A"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.type",
-				"path": "Coverage.identifier.type",
-				"short": "Description of identifier",
-				"definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
-				"comment": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
-				"requirements": "Allows users to make use of identifiers when the identifier system is not known.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.type",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "CodeableConcept"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierType"
-						},
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-							"valueBoolean": true
-						}
-					],
-					"strength": "extensible",
-					"description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.5"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.system",
-				"path": "Coverage.identifier.system",
-				"short": "被保険者証記号のOID",
-				"definition": "被保険者証記号のOIDです。",
-				"comment": "Identifier.system is always case sensitive.",
-				"requirements": "There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.system",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "uri"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueUri": "http://www.acme.com/identifiers/patient"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / EI-2-4"
-					},
-					{
-						"identity": "rim",
-						"map": "II.root or Role.id.root"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierType"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.value",
-				"path": "Coverage.identifier.value",
-				"short": "被保険者証記号",
-				"definition": "被保険者証記号です。",
-				"comment": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.value",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueString": "123456"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.1 / EI.1"
-					},
-					{
-						"identity": "rim",
-						"map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
-					},
-					{
-						"identity": "servd",
-						"map": "./Value"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.被保険者証(手帳)等の記号"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.period",
-				"path": "Coverage.identifier.period",
-				"short": "Time period when id is/was valid for use",
-				"definition": "Time period during which identifier is/was valid for use.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.period",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Period"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.7 + CX.8"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.effectiveTime or implied by context"
-					},
-					{
-						"identity": "servd",
-						"map": "./StartDate and ./EndDate"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2.assigner",
-				"path": "Coverage.identifier.assigner",
-				"short": "Organization that issued id (may be just text)",
-				"definition": "Organization that issued/manages the identifier.",
-				"comment": "The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.assigner",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Reference",
-						"targetProfile": [
-							"http://hl7.org/fhir/StructureDefinition/Organization"
-						]
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / (CX.4,CX.9,CX.10)"
-					},
-					{
-						"identity": "rim",
-						"map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierIssuingAuthority"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3",
-				"path": "Coverage.identifier",
-				"sliceName": "id3",
-				"short": "被保険者証番号",
-				"definition": "被保険者証番号です。",
-				"comment": "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependant.",
-				"requirements": "Allows coverages to be distinguished and referenced.",
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Coverage.identifier",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Identifier"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "workflow",
-						"map": "Event.identifier"
-					},
-					{
-						"identity": "w5",
-						"map": "FiveWs.identifier"
-					},
-					{
-						"identity": "cdanetv4",
-						"map": "C02"
-					},
-					{
-						"identity": "v2",
-						"map": "IN1-2"
-					},
-					{
-						"identity": "rim",
-						"map": ".id"
-					},
-					{
-						"identity": "cpha3pharm",
-						"map": "C.32, C.33, C.39"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.id",
-				"path": "Coverage.identifier.id",
-				"representation": [
-					"xmlAttr"
-				],
-				"short": "Unique id for inter-element referencing",
-				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Element.id",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.extension",
-				"path": "Coverage.identifier.extension",
-				"slicing": {
-					"discriminator": [
-						{
-							"type": "value",
-							"path": "url"
-						}
-					],
-					"description": "Extensions are always sliced by (at least) url",
-					"rules": "open"
-				},
-				"short": "Additional content defined by implementations",
-				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-				"alias": [
-					"extensions",
-					"user content"
-				],
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Element.extension",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Extension"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.use",
-				"path": "Coverage.identifier.use",
-				"short": "被保険者証番号の用途",
-				"definition": "被保険者証番号の用途です。",
-				"comment": "被保険者証番号では「official」固定とします。",
-				"requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.use",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "code"
-					}
-				],
-				"fixedCode": "official",
-				"mustSupport": true,
-				"isModifier": true,
-				"isModifierReason": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one.",
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierUse"
-						}
-					],
-					"strength": "required",
-					"description": "Identifies the purpose for this identifier, if known .",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.0"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "N/A"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.type",
-				"path": "Coverage.identifier.type",
-				"short": "Description of identifier",
-				"definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
-				"comment": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
-				"requirements": "Allows users to make use of identifiers when the identifier system is not known.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.type",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "CodeableConcept"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierType"
-						},
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-							"valueBoolean": true
-						}
-					],
-					"strength": "extensible",
-					"description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.5"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.system",
-				"path": "Coverage.identifier.system",
-				"short": "被保険者証番号のOID",
-				"definition": "被保険者証番号のOIDです。",
-				"comment": "Identifier.system is always case sensitive.",
-				"requirements": "There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.system",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "uri"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueUri": "http://www.acme.com/identifiers/patient"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / EI-2-4"
-					},
-					{
-						"identity": "rim",
-						"map": "II.root or Role.id.root"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierType"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.value",
-				"path": "Coverage.identifier.value",
-				"short": "被保険者証番号",
-				"definition": "被保険者証番号です。",
-				"comment": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.value",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueString": "123456"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.1 / EI.1"
-					},
-					{
-						"identity": "rim",
-						"map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
-					},
-					{
-						"identity": "servd",
-						"map": "./Value"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.被保険者証(手帳)等の番号"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.period",
-				"path": "Coverage.identifier.period",
-				"short": "Time period when id is/was valid for use",
-				"definition": "Time period during which identifier is/was valid for use.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.period",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Period"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.7 + CX.8"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.effectiveTime or implied by context"
-					},
-					{
-						"identity": "servd",
-						"map": "./StartDate and ./EndDate"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3.assigner",
-				"path": "Coverage.identifier.assigner",
-				"short": "Organization that issued id (may be just text)",
-				"definition": "Organization that issued/manages the identifier.",
-				"comment": "The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.assigner",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Reference",
-						"targetProfile": [
-							"http://hl7.org/fhir/StructureDefinition/Organization"
-						]
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / (CX.4,CX.9,CX.10)"
-					},
-					{
-						"identity": "rim",
-						"map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierIssuingAuthority"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4",
-				"path": "Coverage.identifier",
-				"sliceName": "id4",
-				"short": "負担者番号",
-				"definition": "負担者番号です。",
-				"comment": "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependant.",
-				"requirements": "Allows coverages to be distinguished and referenced.",
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Coverage.identifier",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Identifier"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "workflow",
-						"map": "Event.identifier"
-					},
-					{
-						"identity": "w5",
-						"map": "FiveWs.identifier"
-					},
-					{
-						"identity": "cdanetv4",
-						"map": "C02"
-					},
-					{
-						"identity": "v2",
-						"map": "IN1-2"
-					},
-					{
-						"identity": "rim",
-						"map": ".id"
-					},
-					{
-						"identity": "cpha3pharm",
-						"map": "C.32, C.33, C.39"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.id",
-				"path": "Coverage.identifier.id",
-				"representation": [
-					"xmlAttr"
-				],
-				"short": "Unique id for inter-element referencing",
-				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Element.id",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.extension",
-				"path": "Coverage.identifier.extension",
-				"slicing": {
-					"discriminator": [
-						{
-							"type": "value",
-							"path": "url"
-						}
-					],
-					"description": "Extensions are always sliced by (at least) url",
-					"rules": "open"
-				},
-				"short": "Additional content defined by implementations",
-				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-				"alias": [
-					"extensions",
-					"user content"
-				],
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Element.extension",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Extension"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.use",
-				"path": "Coverage.identifier.use",
-				"short": "負担者番号の用途",
-				"definition": "負担者番号の用途です。",
-				"comment": "負担者番号では「official」固定とします。",
-				"requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.use",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "code"
-					}
-				],
-				"fixedCode": "official",
-				"mustSupport": true,
-				"isModifier": true,
-				"isModifierReason": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one.",
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierUse"
-						}
-					],
-					"strength": "required",
-					"description": "Identifies the purpose for this identifier, if known .",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.0"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "N/A"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.type",
-				"path": "Coverage.identifier.type",
-				"short": "Description of identifier",
-				"definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
-				"comment": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
-				"requirements": "Allows users to make use of identifiers when the identifier system is not known.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.type",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "CodeableConcept"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierType"
-						},
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-							"valueBoolean": true
-						}
-					],
-					"strength": "extensible",
-					"description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.5"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.system",
-				"path": "Coverage.identifier.system",
-				"short": "負担者番号のOID",
-				"definition": "負担者番号のOIDです。",
-				"comment": "Identifier.system is always case sensitive.",
-				"requirements": "There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.system",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "uri"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueUri": "http://www.acme.com/identifiers/patient"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / EI-2-4"
-					},
-					{
-						"identity": "rim",
-						"map": "II.root or Role.id.root"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierType"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.value",
-				"path": "Coverage.identifier.value",
-				"short": "負担者番号",
-				"definition": "負担者番号です。",
-				"comment": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.value",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueString": "123456"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.1 / EI.1"
-					},
-					{
-						"identity": "rim",
-						"map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
-					},
-					{
-						"identity": "servd",
-						"map": "./Value"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.period",
-				"path": "Coverage.identifier.period",
-				"short": "Time period when id is/was valid for use",
-				"definition": "Time period during which identifier is/was valid for use.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.period",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Period"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.7 + CX.8"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.effectiveTime or implied by context"
-					},
-					{
-						"identity": "servd",
-						"map": "./StartDate and ./EndDate"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4.assigner",
-				"path": "Coverage.identifier.assigner",
-				"short": "Organization that issued id (may be just text)",
-				"definition": "Organization that issued/manages the identifier.",
-				"comment": "The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.assigner",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Reference",
-						"targetProfile": [
-							"http://hl7.org/fhir/StructureDefinition/Organization"
-						]
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / (CX.4,CX.9,CX.10)"
-					},
-					{
-						"identity": "rim",
-						"map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierIssuingAuthority"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5",
-				"path": "Coverage.identifier",
-				"sliceName": "id5",
-				"short": "受給者番号",
-				"definition": "受給者番号です。",
-				"comment": "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatenation of the Coverage.SubscriberID and the Coverage.dependant.",
-				"requirements": "Allows coverages to be distinguished and referenced.",
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Coverage.identifier",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Identifier"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "workflow",
-						"map": "Event.identifier"
-					},
-					{
-						"identity": "w5",
-						"map": "FiveWs.identifier"
-					},
-					{
-						"identity": "cdanetv4",
-						"map": "C02"
-					},
-					{
-						"identity": "v2",
-						"map": "IN1-2"
-					},
-					{
-						"identity": "rim",
-						"map": ".id"
-					},
-					{
-						"identity": "cpha3pharm",
-						"map": "C.32, C.33, C.39"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.id",
-				"path": "Coverage.identifier.id",
-				"representation": [
-					"xmlAttr"
-				],
-				"short": "Unique id for inter-element referencing",
-				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Element.id",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.extension",
-				"path": "Coverage.identifier.extension",
-				"slicing": {
-					"discriminator": [
-						{
-							"type": "value",
-							"path": "url"
-						}
-					],
-					"description": "Extensions are always sliced by (at least) url",
-					"rules": "open"
-				},
-				"short": "Additional content defined by implementations",
-				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
-				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
-				"alias": [
-					"extensions",
-					"user content"
-				],
-				"min": 0,
-				"max": "*",
-				"base": {
-					"path": "Element.extension",
-					"min": 0,
-					"max": "*"
-				},
-				"type": [
-					{
-						"code": "Extension"
-					}
-				],
-				"isModifier": false,
-				"isSummary": false,
-				"mapping": [
-					{
-						"identity": "rim",
-						"map": "n/a"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.use",
-				"path": "Coverage.identifier.use",
-				"short": "受給者番号の用途",
-				"definition": "受給者番号の用途です。",
-				"comment": "受給者番号では「official」固定とします。",
-				"requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.use",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "code"
-					}
-				],
-				"fixedCode": "official",
-				"mustSupport": true,
-				"isModifier": true,
-				"isModifierReason": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one.",
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierUse"
-						}
-					],
-					"strength": "required",
-					"description": "Identifies the purpose for this identifier, if known .",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-use|4.0.0"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "N/A"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.type",
-				"path": "Coverage.identifier.type",
-				"short": "Description of identifier",
-				"definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
-				"comment": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
-				"requirements": "Allows users to make use of identifiers when the identifier system is not known.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.type",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "CodeableConcept"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"binding": {
-					"extension": [
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
-							"valueString": "IdentifierType"
-						},
-						{
-							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding",
-							"valueBoolean": true
-						}
-					],
-					"strength": "extensible",
-					"description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
-					"valueSet": "http://hl7.org/fhir/ValueSet/identifier-type"
-				},
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.5"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.code or implied by context"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.system",
-				"path": "Coverage.identifier.system",
-				"short": "受給者番号のOID",
-				"definition": "受給者番号のOIDです。",
-				"comment": "Identifier.system is always case sensitive.",
-				"requirements": "There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.system",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "uri"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueUri": "http://www.acme.com/identifiers/patient"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / EI-2-4"
-					},
-					{
-						"identity": "rim",
-						"map": "II.root or Role.id.root"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierType"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.value",
-				"path": "Coverage.identifier.value",
-				"short": "受給者番号",
-				"definition": "受給者番号です。",
-				"comment": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.value",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "string"
-					}
-				],
-				"example": [
-					{
-						"label": "General",
-						"valueString": "123456"
-					}
-				],
-				"mustSupport": true,
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.1 / EI.1"
-					},
-					{
-						"identity": "rim",
-						"map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
-					},
-					{
-						"identity": "servd",
-						"map": "./Value"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.period",
-				"path": "Coverage.identifier.period",
-				"short": "Time period when id is/was valid for use",
-				"definition": "Time period during which identifier is/was valid for use.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.period",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Period"
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.7 + CX.8"
-					},
-					{
-						"identity": "rim",
-						"map": "Role.effectiveTime or implied by context"
-					},
-					{
-						"identity": "servd",
-						"map": "./StartDate and ./EndDate"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5.assigner",
-				"path": "Coverage.identifier.assigner",
-				"short": "Organization that issued id (may be just text)",
-				"definition": "Organization that issued/manages the identifier.",
-				"comment": "The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization.",
-				"min": 0,
-				"max": "1",
-				"base": {
-					"path": "Identifier.assigner",
-					"min": 0,
-					"max": "1"
-				},
-				"type": [
-					{
-						"code": "Reference",
-						"targetProfile": [
-							"http://hl7.org/fhir/StructureDefinition/Organization"
-						]
-					}
-				],
-				"isModifier": false,
-				"isSummary": true,
-				"mapping": [
-					{
-						"identity": "v2",
-						"map": "CX.4 / (CX.4,CX.9,CX.10)"
-					},
-					{
-						"identity": "rim",
-						"map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
-					},
-					{
-						"identity": "servd",
-						"map": "./IdentifierIssuingAuthority"
 					}
 				]
 			},
@@ -5256,6 +3395,7 @@
 						"source": "Element"
 					}
 				],
+				"mustSupport": true,
 				"isModifier": false,
 				"isSummary": false
 			},
@@ -5402,15 +3542,19 @@
 				},
 				"type": [
 					{
-						"code": "Quantity",
-						"profile": [
-							"http://hl7.org/fhir/StructureDefinition/SimpleQuantity"
-						]
-					},
-					{
-						"code": "Money"
+						"code": "Quantity"
 					}
 				],
+				"example": [
+					{
+						"label": "Example for Quantity",
+						"valueQuantity": {
+							"value": 30,
+							"unit": "%"
+						}
+					}
+				],
+				"mustSupport": true,
 				"isModifier": false,
 				"isSummary": true,
 				"mapping": [
@@ -5704,277 +3848,52 @@
 				"mustSupport": true
 			},
 			{
-				"id": "Coverage.identifier",
-				"path": "Coverage.identifier",
+				"id": "Coverage.extension",
+				"path": "Coverage.extension",
 				"slicing": {
 					"discriminator": [
 						{
 							"type": "value",
-							"path": "system"
+							"path": "url"
 						}
 					],
 					"rules": "open"
 				},
-				"short": "保険情報の識別子",
-				"definition": "保険情報の識別子です。",
 				"mustSupport": true
 			},
 			{
-				"id": "Coverage.identifier:id1",
-				"path": "Coverage.identifier",
-				"sliceName": "id1",
-				"short": "保険者番号",
-				"definition": "保険者番号です。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id1.use",
-				"path": "Coverage.identifier.use",
-				"short": "保険者番号の用途",
-				"definition": "保険者番号の用途です。",
-				"comment": "保険者番号では「official」固定とします。",
-				"fixedCode": "official",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id1.system",
-				"path": "Coverage.identifier.system",
-				"short": "保険者番号のOID",
-				"definition": "保険者番号のOIDです。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id1.value",
-				"path": "Coverage.identifier.value",
-				"short": "保険者番号",
-				"definition": "保険者番号です。",
-				"mustSupport": true,
-				"mapping": [
+				"id": "Coverage.extension:InsuredPersonSymbol",
+				"path": "Coverage.extension",
+				"sliceName": "InsuredPersonSymbol",
+				"label": "被保険者証記号を表す拡張",
+				"short": "被保険者証記号を表す拡張",
+				"definition": "被保険者証記号を表す拡張「InsuredPersonSymbol」です。保険種別が「1:医保」、「2:国保」の場合に記録します。被保険者証記号がない場合は、本拡張要素は出現しません。",
+				"type": [
 					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).保険者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.保険者番号"
+						"code": "Extension",
+						"profile": [
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionCoverageInsuredPersonSymbol.html"
+						]
 					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id2",
-				"path": "Coverage.identifier",
-				"sliceName": "id2",
-				"short": "被保険者証記号",
-				"definition": "被保険者証記号です。",
+				],
 				"mustSupport": true
 			},
 			{
-				"id": "Coverage.identifier:id2.use",
-				"path": "Coverage.identifier.use",
-				"short": "被保険者証記号の用途",
-				"definition": "被保険者証記号の用途です。",
-				"comment": "被保険者証記号では「official」固定とします。",
-				"fixedCode": "official",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id2.system",
-				"path": "Coverage.identifier.system",
-				"short": "被保険者証記号のOID",
-				"definition": "被保険者証記号のOIDです。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id2.value",
-				"path": "Coverage.identifier.value",
-				"short": "被保険者証記号",
-				"definition": "被保険者証記号です。",
-				"mustSupport": true,
-				"mapping": [
+				"id": "Coverage.extension:InsuredPersonNumber",
+				"path": "Coverage.extension",
+				"sliceName": "InsuredPersonNumber",
+				"label": "被保険者証番号を表す拡張",
+				"short": "被保険者証番号を表す拡張",
+				"definition": "被保険者証番号を表す拡張「InsuredPersonNumber」です。保険種別が「1:医保」、「2:国保」、「7:後期⾼齢者」の場合に記録します。それ以外の場合は、本拡張要素は出現しません。",
+				"type": [
 					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の記号"
-					},
-					{
-						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.被保険者証(手帳)等の記号"
+						"code": "Extension",
+						"profile": [
+							"https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionCoverageInsuredPersonNo.html"
+						]
 					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id3",
-				"path": "Coverage.identifier",
-				"sliceName": "id3",
-				"short": "被保険者証番号",
-				"definition": "被保険者証番号です。",
+				],
 				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id3.use",
-				"path": "Coverage.identifier.use",
-				"short": "被保険者証番号の用途",
-				"definition": "被保険者証番号の用途です。",
-				"comment": "被保険者証番号では「official」固定とします。",
-				"fixedCode": "official",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id3.system",
-				"path": "Coverage.identifier.system",
-				"short": "被保険者証番号のOID",
-				"definition": "被保険者証番号のOIDです。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id3.value",
-				"path": "Coverage.identifier.value",
-				"short": "被保険者証番号",
-				"definition": "被保険者証番号です。",
-				"mustSupport": true,
-				"mapping": [
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)等の番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.被保険者証(手帳)等の番号"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id4",
-				"path": "Coverage.identifier",
-				"sliceName": "id4",
-				"short": "負担者番号",
-				"definition": "負担者番号です。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id4.use",
-				"path": "Coverage.identifier.use",
-				"short": "負担者番号の用途",
-				"definition": "負担者番号の用途です。",
-				"comment": "負担者番号では「official」固定とします。",
-				"fixedCode": "official",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id4.system",
-				"path": "Coverage.identifier.system",
-				"short": "負担者番号のOID",
-				"definition": "負担者番号のOIDです。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id4.value",
-				"path": "Coverage.identifier.value",
-				"short": "負担者番号",
-				"definition": "負担者番号です。",
-				"mustSupport": true,
-				"mapping": [
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "公費レコード(KO).負担者番号"
-					}
-				]
-			},
-			{
-				"id": "Coverage.identifier:id5",
-				"path": "Coverage.identifier",
-				"sliceName": "id5",
-				"short": "受給者番号",
-				"definition": "受給者番号です。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id5.use",
-				"path": "Coverage.identifier.use",
-				"short": "受給者番号の用途",
-				"definition": "受給者番号の用途です。",
-				"comment": "受給者番号では「official」固定とします。",
-				"fixedCode": "official",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id5.system",
-				"path": "Coverage.identifier.system",
-				"short": "受給者番号のOID",
-				"definition": "受給者番号のOIDです。",
-				"mustSupport": true
-			},
-			{
-				"id": "Coverage.identifier:id5.value",
-				"path": "Coverage.identifier.value",
-				"short": "受給者番号",
-				"definition": "受給者番号です。",
-				"mustSupport": true,
-				"mapping": [
-					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					},
-					{
-						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "公費レコード(KO).受給者番号"
-					}
-				]
 			},
 			{
 				"id": "Coverage.status",
@@ -6370,6 +4289,30 @@
 				"short": "保険適用順序",
 				"definition": "保険適用順序です。",
 				"comment": "保険(公費)区分コードをそのまま優先度にする。\n1:医療保険、国民健康保険、退職者医療又は後期高齢者医療　\n2:第１公費負担医療 \n3:第２公費負担医療 \n4:第３公費負担医療 \n5:第４公費負担医療",
+				"mustSupport": true
+			},
+			{
+				"id": "Coverage.costToBeneficiary",
+				"path": "Coverage.costToBeneficiary",
+				"mustSupport": true
+			},
+			{
+				"id": "Coverage.costToBeneficiary.value[x]",
+				"path": "Coverage.costToBeneficiary.value[x]",
+				"type": [
+					{
+						"code": "Quantity"
+					}
+				],
+				"example": [
+					{
+						"label": "Example for Quantity",
+						"valueQuantity": {
+							"value": 30,
+							"unit": "%"
+						}
+					}
+				],
 				"mustSupport": true
 			}
 		]

@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Claim",
 	"meta": {
-		"versionId": "47",
-		"lastUpdated": "2021-05-07T03:40:49.014+00:00",
-		"source": "#mD1L3grIovuCxma8"
+		"versionId": "50",
+		"lastUpdated": "2021-05-19T04:27:46.774+00:00",
+		"source": "#mtfkJu0hke1dxATj"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Claim.html",
 	"name": "Claim",
