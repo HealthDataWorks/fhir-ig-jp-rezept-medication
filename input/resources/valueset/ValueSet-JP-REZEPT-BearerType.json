@@ -2,9 +2,9 @@
 	"resourceType": "ValueSet",
 	"id": "ValueSet-JP-REZEPT-BearerType",
 	"meta": {
-		"versionId": "6",
-		"lastUpdated": "2021-05-07T02:16:53.772+00:00",
-		"source": "#PF08iIUm62q2Lknl"
+		"versionId": "7",
+		"lastUpdated": "2021-06-02T05:28:24.051+00:00",
+		"source": "#H5vxPDoVOKfmcGXU"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BearerType.html",
 	"name": "BearerType",

@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-Coverage",
 	"meta": {
-		"versionId": "110",
-		"lastUpdated": "2021-05-20T11:24:20.579+00:00",
-		"source": "#7Jq07ZYXXk535yLb"
+		"versionId": "113",
+		"lastUpdated": "2021-06-01T10:48:08.564+00:00",
+		"source": "#M3jz2Hm6EBsZ7IgC"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Coverage.html",
 	"name": "Coverage",
@@ -268,6 +268,161 @@
 					{
 						"identity": "rim",
 						"map": "Act.text?"
+					}
+				]
+			},
+			{
+				"id": "Coverage.text.id",
+				"path": "Coverage.text.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Coverage.text.extension",
+				"path": "Coverage.text.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "Coverage.text.status",
+				"path": "Coverage.text.status",
+				"short": "generated | extensions | additional | empty",
+				"definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Narrative.status",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "code"
+					}
+				],
+				"fixedCode": "generated",
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"binding": {
+					"extension": [
+						{
+							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+							"valueString": "NarrativeStatus"
+						}
+					],
+					"strength": "required",
+					"description": "The status of a resource narrative.",
+					"valueSet": "http://hl7.org/fhir/ValueSet/narrative-status|4.0.0"
+				},
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "Coverage.text.div",
+				"path": "Coverage.text.div",
+				"short": "このリソースの概要",
+				"definition": "このリソースの概要です。",
+				"comment": "The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained stylesheets. The XHTML content SHALL NOT contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Narrative.div",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "xhtml"
+					}
+				],
+				"constraint": [
+					{
+						"key": "txt-1",
+						"severity": "error",
+						"human": "The narrative SHALL contain only the basic html formatting elements and attributes described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained style attributes",
+						"expression": "htmlChecks()",
+						"xpath": "not(descendant-or-self::*[not(local-name(.)=('a', 'abbr', 'acronym', 'b', 'big', 'blockquote', 'br', 'caption', 'cite', 'code', 'col', 'colgroup', 'dd', 'dfn', 'div', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'samp', 'small', 'span', 'strong', 'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'tt', 'ul', 'var'))]) and not(descendant-or-self::*/@*[not(name(.)=('abbr', 'accesskey', 'align', 'alt', 'axis', 'bgcolor', 'border', 'cellhalign', 'cellpadding', 'cellspacing', 'cellvalign', 'char', 'charoff', 'charset', 'cite', 'class', 'colspan', 'compact', 'coords', 'dir', 'frame', 'headers', 'height', 'href', 'hreflang', 'hspace', 'id', 'lang', 'longdesc', 'name', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'scope', 'shape', 'span', 'src', 'start', 'style', 'summary', 'tabindex', 'title', 'type', 'valign', 'value', 'vspace', 'width'))])",
+						"source": "Narrative.div"
+					},
+					{
+						"key": "txt-2",
+						"severity": "error",
+						"human": "The narrative SHALL have some non-whitespace content",
+						"expression": "htmlChecks()",
+						"xpath": "descendant::text()[normalize-space(.)!=''] or descendant::h:img[@src]",
+						"source": "Narrative.div"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
 					}
 				]
 			},
@@ -1349,8 +1504,8 @@
 			{
 				"id": "Coverage.subscriberId",
 				"path": "Coverage.subscriberId",
-				"short": "被保険者証記号・番号",
-				"definition": "被保険者証記号・番号です。",
+				"short": "受診券整理番号",
+				"definition": "受診券整理番号です。",
 				"requirements": "The insurer requires this identifier on correspondance and claims (digital and otherwise).",
 				"min": 0,
 				"max": "1",
@@ -1389,32 +1544,20 @@
 						"map": "FiveWs.subject"
 					},
 					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
-					},
-					{
 						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
+						"map": "XML No: 9.6.1 XPath: /ClinicalDocument/participant/associatedEntity/id/@extension"
 					},
 					{
 						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.被保険者証(手帳)の記号・番号"
+						"map": "XML No: 9.6.1 XPath: /ClinicalDocument/participant/associatedEntity/id/@extension"
 					}
 				]
 			},
 			{
 				"id": "Coverage.beneficiary",
 				"path": "Coverage.beneficiary",
-				"short": "受取人(患者)の参照",
-				"definition": "受取人(患者)の参照です。",
+				"short": "患者の参照",
+				"definition": "患者の参照です。",
 				"requirements": "This is the party who receives treatment for which the costs are reimbursed under the coverage.",
 				"min": 1,
 				"max": "1",
@@ -1534,8 +1677,8 @@
 			{
 				"id": "Coverage.beneficiary.reference",
 				"path": "Coverage.beneficiary.reference",
-				"short": "受取人(患者)の参照",
-				"definition": "受取人(患者)の参照です。",
+				"short": "この保険で給付される患者の参照",
+				"definition": "この保険で給付される患者の参照です。",
 				"comment": "Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the URL conforms to the structure \"/[type]/[id]\" then it should be assumed that the reference is to a FHIR RESTful server.",
 				"min": 0,
 				"max": "1",
@@ -1965,6 +2108,7 @@
 						"code": "uri"
 					}
 				],
+				"fixedUri": "urn:oid:1.2.392.100495.20.2.62",
 				"mustSupport": true,
 				"isModifier": false,
 				"isSummary": true,
@@ -3848,6 +3992,20 @@
 				"mustSupport": true
 			},
 			{
+				"id": "Coverage.text.status",
+				"path": "Coverage.text.status",
+				"definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+				"fixedCode": "generated",
+				"mustSupport": true
+			},
+			{
+				"id": "Coverage.text.div",
+				"path": "Coverage.text.div",
+				"short": "このリソースの概要",
+				"definition": "このリソースの概要です。",
+				"mustSupport": true
+			},
+			{
 				"id": "Coverage.extension",
 				"path": "Coverage.extension",
 				"slicing": {
@@ -4005,44 +4163,32 @@
 			{
 				"id": "Coverage.subscriberId",
 				"path": "Coverage.subscriberId",
-				"short": "被保険者証記号・番号",
-				"definition": "被保険者証記号・番号です。",
+				"short": "受診券整理番号",
+				"definition": "受診券整理番号です。",
 				"mustSupport": true,
 				"mapping": [
 					{
-						"identity": "JP-REZEPT-MEDICAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
-					},
-					{
-						"identity": "JP-REZEPT-DPC-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
-					},
-					{
-						"identity": "JP-REZEPT-DENTAL-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
-					},
-					{
 						"identity": "JP-REZEPT-MEDICATION-Mapping",
-						"map": "保険者レコード(HO).被保険者証(手帳)の記号・番号"
+						"map": "XML No: 9.6.1 XPath: /ClinicalDocument/participant/associatedEntity/id/@extension"
 					},
 					{
 						"identity": "JP-REZEPT-MEMBERS-Mapping",
-						"map": "加入者情報.被保険者証(手帳)の記号・番号"
+						"map": "XML No: 9.6.1 XPath: /ClinicalDocument/participant/associatedEntity/id/@extension"
 					}
 				]
 			},
 			{
 				"id": "Coverage.beneficiary",
 				"path": "Coverage.beneficiary",
-				"short": "受取人(患者)の参照",
-				"definition": "受取人(患者)の参照です。",
+				"short": "患者の参照",
+				"definition": "患者の参照です。",
 				"mustSupport": true
 			},
 			{
 				"id": "Coverage.beneficiary.reference",
 				"path": "Coverage.beneficiary.reference",
-				"short": "受取人(患者)の参照",
-				"definition": "受取人(患者)の参照です。",
+				"short": "この保険で給付される患者の参照",
+				"definition": "この保険で給付される患者の参照です。",
 				"mustSupport": true,
 				"mapping": [
 					{
@@ -4111,6 +4257,7 @@
 				"path": "Coverage.relationship.coding.system",
 				"short": "患者との関係区分のOID",
 				"definition": "患者との関係区分のOIDです。",
+				"fixedUri": "urn:oid:1.2.392.100495.20.2.62",
 				"mustSupport": true
 			},
 			{

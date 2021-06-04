@@ -1,9 +1,9 @@
 {
 	"id": "jp-rezept-medication",
 	"meta": {
-		"versionId": "24",
-		"lastUpdated": "2021-05-07T01:11:20.261+00:00",
-		"source": "#Hdu7RaYC6fGlvAAA"
+		"versionId": "44",
+		"lastUpdated": "2021-06-02T07:44:42.754+00:00",
+		"source": "#TcFdnTmvoiis2TTx"
 	},
 	"resourceType": "ImplementationGuide",
 	"status": "draft",
@@ -645,6 +645,86 @@
 				},
 				"name": "調剤情報",
 				"description": "調剤情報です。  \n医薬品が指定された患者に調剤される予定であるか、調剤されたことを示します。  \nこれには、提供される医薬品の説明と、医薬品を投与するための指示が含まれます。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionCoverageInsuredPersonSymbol",
+					"display": "保険情報の被保険者拡張情報"
+				},
+				"name": "被保険者証記号",
+				"description": "被保険者証記号を表す拡張 InsuredPersonSymbol です。保険種別が「1:医保」、「2:国保」の場合に記録します。\n被保険者証記号がない場合は、本拡張要素は出現しません。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionCoverageInsuredPersonNo",
+					"display": "CoverageInsuredPersonNo"
+				},
+				"name": "被保険者証番号",
+				"description": "被保険者証番号を表す拡張 InsuredPersonNumber です。保険種別が「1:医保」、「2:国保」、「7:後期⾼齢者」の場合に記録します。\nそれ以外の場合は、本拡張要素は出現しません。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionOrganizationPrefectureNo",
+					"display": "ExtensionOrganizationPrefectureNo"
+				},
+				"name": "都道府県番号",
+				"description": "都道府県番号です。２桁で指定します。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionOrganizationOrganizationCategory",
+					"display": "ExtensionOrganizationOrganizationCategory"
+				},
+				"name": "点数表コード"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionOeganizationOrganizationNo",
+					"display": "ExtensionOeganizationOrganizationNo"
+				},
+				"name": "保険医療機関コード",
+				"description": "保険医療機関番号です。７桁で指定します。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionPatientNameKanji",
+					"display": "ExtensionPatientNameKanji"
+				},
+				"name": "漢字表記",
+				"description": "漢字表記であることを⽰す。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionPatientNameKana",
+					"display": "ExtensionPatientNameKana"
+				},
+				"name": "カナ表記",
+				"description": "カナ表記であることを⽰します。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionPatientContactPosition",
+					"display": "役割、役職情報"
+				},
+				"name": "役割、役職情報",
+				"description": "ローマ字表記であることを⽰す。"
+			},
+			{
+				"exampleBoolean": false,
+				"reference": {
+					"reference": "StructureDefinition/JP-REZEPT-ExtensionPatientNameRoma",
+					"display": "ローマ字表記"
+				},
+				"name": "ローマ字表記",
+				"description": "ローマ字表記であることを⽰す。"
 			}
 		],
 		"page": {

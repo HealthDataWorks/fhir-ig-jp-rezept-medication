@@ -2,9 +2,9 @@
 	"resourceType": "StructureDefinition",
 	"id": "JP-REZEPT-MedicationDispense",
 	"meta": {
-		"versionId": "7",
-		"lastUpdated": "2021-05-07T03:52:10.384+00:00",
-		"source": "#UZDN7yHMCGouQTkK"
+		"versionId": "8",
+		"lastUpdated": "2021-06-01T11:07:57.905+00:00",
+		"source": "#hrGCieeWAvsV7Vif"
 	},
 	"url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-MedicationDispense.html",
 	"name": "MedicationDispense",
@@ -251,6 +251,161 @@
 					{
 						"identity": "rim",
 						"map": "Act.text?"
+					}
+				]
+			},
+			{
+				"id": "MedicationDispense.text.id",
+				"path": "MedicationDispense.text.id",
+				"representation": [
+					"xmlAttr"
+				],
+				"short": "Unique id for inter-element referencing",
+				"definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+				"min": 0,
+				"max": "1",
+				"base": {
+					"path": "Element.id",
+					"min": 0,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "string"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "MedicationDispense.text.extension",
+				"path": "MedicationDispense.text.extension",
+				"slicing": {
+					"discriminator": [
+						{
+							"type": "value",
+							"path": "url"
+						}
+					],
+					"description": "Extensions are always sliced by (at least) url",
+					"rules": "open"
+				},
+				"short": "Additional content defined by implementations",
+				"definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+				"comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+				"alias": [
+					"extensions",
+					"user content"
+				],
+				"min": 0,
+				"max": "*",
+				"base": {
+					"path": "Element.extension",
+					"min": 0,
+					"max": "*"
+				},
+				"type": [
+					{
+						"code": "Extension"
+					}
+				],
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "n/a"
+					}
+				]
+			},
+			{
+				"id": "MedicationDispense.text.status",
+				"path": "MedicationDispense.text.status",
+				"short": "generated | extensions | additional | empty",
+				"definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Narrative.status",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "code"
+					}
+				],
+				"fixedCode": "generated",
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"binding": {
+					"extension": [
+						{
+							"url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName",
+							"valueString": "NarrativeStatus"
+						}
+					],
+					"strength": "required",
+					"description": "The status of a resource narrative.",
+					"valueSet": "http://hl7.org/fhir/ValueSet/narrative-status|4.0.0"
+				},
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
+					}
+				]
+			},
+			{
+				"id": "MedicationDispense.text.div",
+				"path": "MedicationDispense.text.div",
+				"short": "このリソースの概要",
+				"definition": "このリソースの概要です。",
+				"comment": "The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained stylesheets. The XHTML content SHALL NOT contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes and objects.",
+				"min": 1,
+				"max": "1",
+				"base": {
+					"path": "Narrative.div",
+					"min": 1,
+					"max": "1"
+				},
+				"type": [
+					{
+						"code": "xhtml"
+					}
+				],
+				"constraint": [
+					{
+						"key": "txt-1",
+						"severity": "error",
+						"human": "The narrative SHALL contain only the basic html formatting elements and attributes described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, <a> elements (either name or href), images and internally contained style attributes",
+						"expression": "htmlChecks()",
+						"xpath": "not(descendant-or-self::*[not(local-name(.)=('a', 'abbr', 'acronym', 'b', 'big', 'blockquote', 'br', 'caption', 'cite', 'code', 'col', 'colgroup', 'dd', 'dfn', 'div', 'dl', 'dt', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'li', 'ol', 'p', 'pre', 'q', 'samp', 'small', 'span', 'strong', 'sub', 'sup', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'tt', 'ul', 'var'))]) and not(descendant-or-self::*/@*[not(name(.)=('abbr', 'accesskey', 'align', 'alt', 'axis', 'bgcolor', 'border', 'cellhalign', 'cellpadding', 'cellspacing', 'cellvalign', 'char', 'charoff', 'charset', 'cite', 'class', 'colspan', 'compact', 'coords', 'dir', 'frame', 'headers', 'height', 'href', 'hreflang', 'hspace', 'id', 'lang', 'longdesc', 'name', 'nowrap', 'rel', 'rev', 'rowspan', 'rules', 'scope', 'shape', 'span', 'src', 'start', 'style', 'summary', 'tabindex', 'title', 'type', 'valign', 'value', 'vspace', 'width'))])",
+						"source": "Narrative.div"
+					},
+					{
+						"key": "txt-2",
+						"severity": "error",
+						"human": "The narrative SHALL have some non-whitespace content",
+						"expression": "htmlChecks()",
+						"xpath": "descendant::text()[normalize-space(.)!=''] or descendant::h:img[@src]",
+						"source": "Narrative.div"
+					}
+				],
+				"mustSupport": true,
+				"isModifier": false,
+				"isSummary": false,
+				"mapping": [
+					{
+						"identity": "rim",
+						"map": "N/A"
 					}
 				]
 			},
@@ -5264,6 +5419,20 @@
 				"short": "このリソースの概要",
 				"definition": "このリソースの概要です。",
 				"comment": "例: ・処方月日:2021/01/10 ・調剤月日:2021/01/11 ・用法:【内服】 1日1回朝食後 ・医薬品:ロンゲス錠10mg 1錠 ・調剤数量:14日分",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationDispense.text.status",
+				"path": "MedicationDispense.text.status",
+				"definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+				"fixedCode": "generated",
+				"mustSupport": true
+			},
+			{
+				"id": "MedicationDispense.text.div",
+				"path": "MedicationDispense.text.div",
+				"short": "このリソースの概要",
+				"definition": "このリソースの概要です。",
 				"mustSupport": true
 			},
 			{
