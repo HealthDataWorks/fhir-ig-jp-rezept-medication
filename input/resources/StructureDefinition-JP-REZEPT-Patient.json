@@ -1,0 +1,656 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-Patient",
+  "meta": {
+    "versionId": "152",
+    "lastUpdated": "2021-06-01T10:55:04.128+00:00",
+    "source": "#WbIoBnZLIahXMakV"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Base.Individuals"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Patient.html",
+  "version": "0.8.0",
+  "name": "Patient",
+  "title": "患者情報",
+  "status": "draft",
+  "description": "患者の情報です。  \n医療行為や関連サービスを受けている個人も含まれます。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "cda",
+      "uri": "http://hl7.org/v3/cda",
+      "name": "CDA (R2)"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "loinc",
+      "uri": "http://loinc.org",
+      "name": "LOINC code for the element"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEMBERS-Mapping",
+      "name": "加入者情報",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの加入者情報をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+      "name": "特定健診",
+      "uri": "https://www.mhlw.go.jp/content/12400000/000672493.pdf",
+      "comment": "特定健診の電子的なデータ標準様式の特定健診情報ファイル仕様説明書の項目をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-SPECIFIC-HEALTH-GUIDANCE-Mapping",
+      "name": "特定保健指導",
+      "uri": "https://www.mhlw.go.jp/content/12400000/000617344.pdf",
+      "comment": "特定保健指導の電子的なデータ標準様式の特定保健指導情報ファイル仕様説明書をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Patient",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Patient",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Patient",
+        "path": "Patient",
+        "short": "患者情報",
+        "definition": "患者の情報です。  \n医療行為や関連サービスを受けている個人も含まれます。"
+      },
+      {
+        "id": "Patient.id",
+        "path": "Patient.id",
+        "short": "このリソースのID",
+        "definition": "このリソースのIDです。",
+        "comment": "リソースIDは自動採番されます。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.text",
+        "path": "Patient.text",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "comment": "例: 患者 太郎",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.text.status",
+        "path": "Patient.text.status",
+        "definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+        "fixedCode": "generated",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.text.div",
+        "path": "Patient.text.div",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier",
+        "path": "Patient.identifier",
+        "label": "医療機関における患者番号",
+        "short": "医療機関における患者番号",
+        "definition": "医療機関における患者番号を指定します。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.system",
+        "path": "Patient.identifier.system",
+        "label": "患者番号のOID",
+        "short": "患者番号のOID",
+        "definition": "患者番号のOIDを指定します。",
+        "example": [
+          {
+            "label": "Example for uri",
+            "valueUri": "urn:oid:1.2.392.100495.20.3.51.11311234567"
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.identifier.value",
+        "path": "Patient.identifier.value",
+        "label": "患者番号の⽂字列",
+        "short": "患者番号の⽂字列",
+        "definition": "患者番号の⽂字列を指定します。",
+        "example": [
+          {
+            "label": "Example for string",
+            "valueString": "00000010"
+          }
+        ]
+      },
+      {
+        "id": "Patient.name",
+        "path": "Patient.name",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "extention.value[x]"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "患者の氏名",
+        "definition": "患者の氏名です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kanji",
+        "path": "Patient.name",
+        "sliceName": "kanji",
+        "short": "患者の氏名(漢字)",
+        "definition": "患者の氏名(漢字)です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kanji.extension",
+        "path": "Patient.name.extension",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientNameKanji.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kanji.use",
+        "path": "Patient.name.use",
+        "short": "患者の氏名(漢字)の用途",
+        "definition": "患者の氏名(漢字)の用途です。",
+        "comment": "患者の氏名(漢字)では「official」固定とします。",
+        "fixedCode": "official",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kanji.text",
+        "path": "Patient.name.text",
+        "short": "患者のフルネーム(漢字)",
+        "definition": "患者のフルネーム(漢字)です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).氏名"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).氏名"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).氏名"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).氏名"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.氏名(漢字)"
+          }
+        ]
+      },
+      {
+        "id": "Patient.name:kanji.family",
+        "path": "Patient.name.family",
+        "label": "⽒名の姓",
+        "short": "⽒名の姓",
+        "definition": "⽒名の姓を指定する。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kanji.given",
+        "path": "Patient.name.given",
+        "label": "⽒名の名",
+        "short": "⽒名の名",
+        "definition": "⽒名の名を指定する。",
+        "comment": "ミドルネームがある場合には、ミドルネーム、名の順で原則として全⾓空⽩をいれて連結する⽂字列とする。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kana",
+        "path": "Patient.name",
+        "sliceName": "kana",
+        "short": "患者の氏名(カナ)",
+        "definition": "患者の氏名(カナ)です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kana.extension",
+        "path": "Patient.name.extension",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientNameKana.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kana.use",
+        "path": "Patient.name.use",
+        "short": "患者の氏名(カナ)の用途",
+        "definition": "患者の氏名(カナ)の用途です。",
+        "comment": "患者の氏名(カナ)では「official」固定とします。",
+        "fixedCode": "official",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:kana.text",
+        "path": "Patient.name.text",
+        "short": "患者のフルネーム(カナ)",
+        "definition": "患者のフルネーム(カナ)です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).カタカナ(氏名)"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).カタカナ(氏名)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).カタカナ(氏名)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).カタカナ(氏名)"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.氏名(カナ)"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+            "map": "XML No: 6.15.1 XPath: /ClinicalDocument/recordTarget/patientRole/patient/name/text()"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-GUIDANCE-Mapping",
+            "map": "XML No: 6.15.1 XPath: /ClinicalDocument/recordTarget/patientRole/patient/name/text()"
+          }
+        ]
+      },
+      {
+        "id": "Patient.name:kana.family",
+        "path": "Patient.name.family",
+        "short": "患者の姓(カナ)",
+        "definition": "患者の姓(カナ)です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.姓(カナ)"
+          }
+        ]
+      },
+      {
+        "id": "Patient.name:kana.given",
+        "path": "Patient.name.given",
+        "short": "患者の名(カナ)",
+        "definition": "患者の名(カナ)です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.名(カナ)"
+          }
+        ]
+      },
+      {
+        "id": "Patient.name:roma",
+        "path": "Patient.name",
+        "sliceName": "roma",
+        "short": "患者の氏名(ローマ字)",
+        "definition": "患者の氏名(ローマ字)です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:roma.extension",
+        "path": "Patient.name.extension",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientNameRoma"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:roma.use",
+        "path": "Patient.name.use",
+        "short": "患者の氏名(ローマ字)の用途",
+        "definition": "患者の氏名(ローマ字)の用途です。",
+        "comment": "患者の氏名(ローマ字)では「official」固定とします。",
+        "fixedCode": "official",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:roma.text",
+        "path": "Patient.name.text",
+        "short": "患者のフルネーム(ローマ字)",
+        "definition": "患者のフルネーム(ローマ字)です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:roma.family",
+        "path": "Patient.name.family",
+        "short": "患者の姓(ローマ字)",
+        "definition": "患者の姓(ローマ字)です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.name:roma.given",
+        "path": "Patient.name.given",
+        "short": "患者の名(ローマ字)",
+        "definition": "患者の名(ローマ字)です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.gender",
+        "path": "Patient.gender",
+        "short": "患者の性別",
+        "definition": "患者の性別です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).男女区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).男女区分"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).男女区分"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).男女区分"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.性別"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+            "map": "XML No: 6.16.1 XPath: /ClinicalDocument/recordTarget/patientRole/patient/administrativeGenderCode/@code"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-GUIDANCE-Mapping",
+            "map": "XML No: 6.16.1 XPath: /ClinicalDocument/recordTarget/patientRole/patient/administrativeGenderCode/@code"
+          }
+        ]
+      },
+      {
+        "id": "Patient.birthDate",
+        "path": "Patient.birthDate",
+        "short": "患者の誕生日(生年月日)",
+        "definition": "患者の誕生日(生年月日)です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).生年月日"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).生年月日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).生年月日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).生年月日"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.生年月日"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+            "map": "XML No: 6.17.1 XPath: /ClinicalDocument/recordTarget/patientRole/patient/birthTime/@value"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-GUIDANCE-Mapping",
+            "map": "XML No: 6.17.1 XPath: /ClinicalDocument/recordTarget/patientRole/patient/birthTime/@value"
+          }
+        ]
+      },
+      {
+        "id": "Patient.address",
+        "path": "Patient.address",
+        "short": "患者の住所",
+        "definition": "患者の住所です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.address.text",
+        "path": "Patient.address.text",
+        "short": "患者の住所",
+        "definition": "患者の住所です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+            "map": "XML No: 6.12.1 XPath: /ClinicalDocument/recordTarget/patientRole/addr/text()"
+          }
+        ]
+      },
+      {
+        "id": "Patient.address.postalCode",
+        "path": "Patient.address.postalCode",
+        "short": "患者の住所の郵便番号",
+        "definition": "患者の住所の郵便番号です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+            "map": "XML No: 6.13.1 XPath: /ClinicalDocument/recordTarget/patientRole/addr/postalCode/text()"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-GUIDANCE-Mapping",
+            "map": "XML No: 6.13.1 XPath: /ClinicalDocument/recordTarget/patientRole/addr/postalCode/text()"
+          }
+        ]
+      },
+      {
+        "id": "Patient.address.country",
+        "path": "Patient.address.country",
+        "short": "患者の国コード",
+        "definition": "患者の国コードです。",
+        "fixedString": "JP",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact",
+        "path": "Patient.contact",
+        "short": "患者の勤務先情報",
+        "definition": "患者の勤務先情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.extension",
+        "path": "Patient.contact.extension",
+        "short": "受診者の勤務先での役割、役職情報",
+        "definition": "受診者の勤務先での役割、役職情報です。",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientContactPosition.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship",
+        "path": "Patient.contact.relationship",
+        "short": "患者との関係を示すコード",
+        "definition": "患者との関係を示すコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship.coding",
+        "path": "Patient.contact.relationship.coding",
+        "short": "患者との関係を示すコード",
+        "definition": "患者との関係を示すコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship.coding.system",
+        "path": "Patient.contact.relationship.coding.system",
+        "short": "コード体系を識別するOID",
+        "definition": "コード体系を識別するOIDです。",
+        "fixedUri": "urn:oid:2.16.840.1.113883.2.2.1.6.5006",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship.coding.code",
+        "path": "Patient.contact.relationship.coding.code",
+        "short": "「勤務先」または「事業場」を表すコード",
+        "definition": "「勤務先」または「事業場」を表すコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.relationship.coding.display",
+        "path": "Patient.contact.relationship.coding.display",
+        "short": "コードの表示名",
+        "definition": "コードの表示名です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.organization",
+        "path": "Patient.contact.organization",
+        "short": "勤務先または事業場を表すリソースへの参照",
+        "definition": "勤務先または事業場を表すリソースへの参照です。"
+      },
+      {
+        "id": "Patient.contact.organization.reference",
+        "path": "Patient.contact.organization.reference",
+        "short": "勤務先または事業場を表すリソースへの参照",
+        "definition": "勤務先または事業場を表すリソースへの参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.period",
+        "path": "Patient.contact.period",
+        "short": "雇⼊年⽉⽇",
+        "definition": "雇⼊年⽉⽇です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.contact.period.start",
+        "path": "Patient.contact.period.start",
+        "short": "雇⼊年⽉⽇",
+        "definition": "雇⼊年⽉⽇です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.generalPractitioner",
+        "path": "Patient.generalPractitioner",
+        "short": "かかりつけ医の参照",
+        "definition": "かかりつけ医の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.generalPractitioner.reference",
+        "path": "Patient.generalPractitioner.reference",
+        "short": "かかりつけ医の参照",
+        "definition": "かかりつけ医の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.managingOrganization",
+        "path": "Patient.managingOrganization",
+        "short": "かかりつけ医療機関の参照",
+        "definition": "かかりつけ医療機関の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.managingOrganization.reference",
+        "path": "Patient.managingOrganization.reference",
+        "short": "かかりつけ医療機関の参照",
+        "definition": "かかりつけ医療機関の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Patient.link",
+        "path": "Patient.link",
+        "short": "同一患者リソースのリンク情報",
+        "definition": "同一患者リソースのリンク情報です。",
+        "mustSupport": true
+      }
+    ]
+  }
+}

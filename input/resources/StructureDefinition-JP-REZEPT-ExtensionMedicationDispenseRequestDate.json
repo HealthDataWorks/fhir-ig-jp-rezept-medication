@@ -1,0 +1,78 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionMedicationDispenseRequestDate",
+  "meta": {
+    "versionId": "7",
+    "lastUpdated": "2021-05-06T04:37:04.263+00:00",
+    "source": "#QpVNoJr3Rs1rXcJG"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseRequestDate.html",
+  "version": "0.8.0",
+  "name": "ExtensionMedicationDispenseRequestDate",
+  "title": "処方箋発行日",
+  "status": "draft",
+  "description": "処方箋発行日です。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "MedicationDispense"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "処方箋発行日",
+        "definition": "処方箋発行日です。"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseRequestDate.html"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "処方箋発行日",
+        "definition": "処方箋発行日です。",
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "調剤情報レコード(CZ).処方月日"
+          }
+        ]
+      }
+    ]
+  }
+}

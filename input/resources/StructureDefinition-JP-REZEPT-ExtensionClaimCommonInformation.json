@@ -1,0 +1,840 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionClaimCommonInformation",
+  "meta": {
+    "versionId": "18",
+    "lastUpdated": "2021-05-07T03:54:53.825+00:00",
+    "source": "#fVCSBNfjiUWfoOKR"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html",
+  "version": "0.8.0",
+  "name": "ExtensionClaimCommonInformation",
+  "title": "レセプト情報の共通の拡張情報",
+  "status": "draft",
+  "description": "レセプト情報の共通の拡張情報です。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Claim"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "レセプト情報の共通の拡張情報",
+        "definition": "レセプト情報の共通の拡張情報です。"
+      },
+      {
+        "id": "Extension.extension:benefitRate",
+        "path": "Extension.extension",
+        "sliceName": "benefitRate",
+        "short": "給付割合",
+        "definition": "給付割合です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:benefitRate.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:benefitRate.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "benefitRate"
+      },
+      {
+        "id": "Extension.extension:benefitRate.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "給付割合",
+        "definition": "給付割合です。",
+        "type": [
+          {
+            "code": "Ratio"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).給付割合"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).給付割合"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).給付割合"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).給付割合"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:burdenClassification",
+        "path": "Extension.extension",
+        "sliceName": "burdenClassification",
+        "short": "一部負担金・食事療養費・生活療養費標準負担額区分",
+        "definition": "一部負担金・食事療養費・生活療養費標準負担額区分です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:burdenClassification.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:burdenClassification.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "burdenClassification"
+      },
+      {
+        "id": "Extension.extension:burdenClassification.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "一部負担金・食事療養費・生活療養費標準負担額区分",
+        "definition": "一部負担金・食事療養費・生活療養費標準負担額区分です。",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ClassificationOfCoPayment.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:notice",
+        "path": "Extension.extension",
+        "sliceName": "notice",
+        "short": "レセプト特記事項",
+        "definition": "レセプト特記事項です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:notice.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:notice.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "notice"
+      },
+      {
+        "id": "Extension.extension:notice.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "レセプト特記事項",
+        "definition": "レセプト特記事項です。",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptSpecialInstruction.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト特記事項"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト特記事項"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト特記事項"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト特記事項"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:bed",
+        "path": "Extension.extension",
+        "sliceName": "bed",
+        "short": "病床数",
+        "definition": "病床数です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:bed.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:bed.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "bed"
+      },
+      {
+        "id": "Extension.extension:bed.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "病床数",
+        "definition": "病床数です。",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).病床数"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).病床数"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).病床数"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).病床数"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:cardNo",
+        "path": "Extension.extension",
+        "sliceName": "cardNo",
+        "short": "カルテ番号等",
+        "definition": "カルテ番号等です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:cardNo.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:cardNo.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "cardNo"
+      },
+      {
+        "id": "Extension.extension:cardNo.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "カルテ番号等",
+        "definition": "カルテ番号等です。",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).カルテ番号等"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).カルテ番号等"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).カルテ番号等"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).カルテ番号等"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:discountPointUnitprice",
+        "path": "Extension.extension",
+        "sliceName": "discountPointUnitprice",
+        "short": "割引点数単価",
+        "definition": "割引点数単価です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:discountPointUnitprice.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:discountPointUnitprice.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "discountPointUnitprice"
+      },
+      {
+        "id": "Extension.extension:discountPointUnitprice.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "割引点数単価",
+        "definition": "割引点数単価です。",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).割引点数単価"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).割引点数単価"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).割引点数単価"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).割引点数単価"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:SearchNo",
+        "path": "Extension.extension",
+        "sliceName": "SearchNo",
+        "short": "検索番号",
+        "definition": "検索番号です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:SearchNo.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:SearchNo.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "SearchNo"
+      },
+      {
+        "id": "Extension.extension:SearchNo.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "検索番号",
+        "definition": "検索番号です。",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).検索番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).検索番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).検索番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).検索番号"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:version",
+        "path": "Extension.extension",
+        "sliceName": "version",
+        "short": "記録条件仕様年月情報",
+        "definition": "記録条件仕様年月情報です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:version.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:version.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "version"
+      },
+      {
+        "id": "Extension.extension:version.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "記録条件仕様年月情報",
+        "definition": "記録条件仕様年月情報です。",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).記録条件仕様年月情報"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:billingInformation",
+        "path": "Extension.extension",
+        "sliceName": "billingInformation",
+        "short": "請求情報",
+        "definition": "請求情報です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:billingInformation.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:billingInformation.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "billingInformation"
+      },
+      {
+        "id": "Extension.extension:billingInformation.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "請求情報",
+        "definition": "請求情報です。",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).請求情報"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).請求情報"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).請求情報"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).請求情報"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:departmentName",
+        "path": "Extension.extension",
+        "sliceName": "departmentName",
+        "short": "診療科名",
+        "definition": "診療科名です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:departmentName.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:departmentName.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "departmentName"
+      },
+      {
+        "id": "Extension.extension:departmentName.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "診療科名",
+        "definition": "診療科名です。",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療科名"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).診療科名"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療科名"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).診療科名"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:departmentHumanBodyPart",
+        "path": "Extension.extension",
+        "sliceName": "departmentHumanBodyPart",
+        "short": "人体の部位等",
+        "definition": "人体の部位等です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:departmentHumanBodyPart.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:departmentHumanBodyPart.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "departmentHumanBodyPart"
+      },
+      {
+        "id": "Extension.extension:departmentHumanBodyPart.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "人体の部位等",
+        "definition": "人体の部位等です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).人体の部位等"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).人体の部位等"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).人体の部位等"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).人体の部位等"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:departmentGender",
+        "path": "Extension.extension",
+        "sliceName": "departmentGender",
+        "short": "性別等",
+        "definition": "性別等です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:departmentGender.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:departmentGender.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "departmentGender"
+      },
+      {
+        "id": "Extension.extension:departmentGender.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "性別等",
+        "definition": "性別等です。",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-Gender.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).性別等"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).性別等"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).性別等"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).性別等"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:departmentMedicalProcedure",
+        "path": "Extension.extension",
+        "sliceName": "departmentMedicalProcedure",
+        "short": "医学的処置",
+        "definition": "医学的処置です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:departmentMedicalProcedure.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:departmentMedicalProcedure.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "departmentMedicalProcedure"
+      },
+      {
+        "id": "Extension.extension:departmentMedicalProcedure.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "医学的処置",
+        "definition": "医学的処置です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).医学的処置"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).医学的処置"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).医学的処置"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).医学的処置"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:departmentSpecificDisease",
+        "path": "Extension.extension",
+        "sliceName": "departmentSpecificDisease",
+        "short": "特定疾病",
+        "definition": "特定疾病です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:departmentSpecificDisease.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:departmentSpecificDisease.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "departmentSpecificDisease"
+      },
+      {
+        "id": "Extension.extension:departmentSpecificDisease.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "特定疾病",
+        "definition": "特定疾病です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).特定疾病"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).特定疾病"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).特定疾病"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).特定疾病"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:patientStatus",
+        "path": "Extension.extension",
+        "sliceName": "patientStatus",
+        "short": "患者の状態",
+        "definition": "患者の状態です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:patientStatus.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:patientStatus.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "patientStatus"
+      },
+      {
+        "id": "Extension.extension:patientStatus.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "患者の状態",
+        "definition": "患者の状態です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).患者の状態"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).患者の状態"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).患者の状態"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).患者の状態"
+          }
+        ]
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "max": "0"
+      }
+    ]
+  }
+}

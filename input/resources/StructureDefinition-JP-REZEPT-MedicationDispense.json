@@ -1,0 +1,459 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-MedicationDispense",
+  "meta": {
+    "versionId": "8",
+    "lastUpdated": "2021-06-01T11:07:57.905+00:00",
+    "source": "#hrGCieeWAvsV7Vif"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Clinical.Medications"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-MedicationDispense.html",
+  "version": "0.8.0",
+  "name": "MedicationDispense",
+  "title": "調剤情報",
+  "status": "active",
+  "description": "調剤情報です。  \n医薬品が指定された患者に調剤される予定であるか、調剤されたことを示します。  \nこれには、提供される医薬品の説明と、医薬品を投与するための指示が含まれます。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "rx-dispense-rmim",
+      "uri": "http://www.hl7.org/v3/PORX_RM020070UV",
+      "name": "V3 Pharmacy Dispense RMIM"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "MedicationDispense",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/MedicationDispense",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "MedicationDispense.id",
+        "path": "MedicationDispense.id",
+        "short": "このリソースのID",
+        "definition": "このリソースのIDです。",
+        "comment": "リソースIDは自動採番されます。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.text",
+        "path": "MedicationDispense.text",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "comment": "例: ・処方月日:2021/01/10 ・調剤月日:2021/01/11 ・用法:【内服】 1日1回朝食後 ・医薬品:ロンゲス錠10mg 1錠 ・調剤数量:14日分",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.text.status",
+        "path": "MedicationDispense.text.status",
+        "definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+        "fixedCode": "generated",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.text.div",
+        "path": "MedicationDispense.text.div",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.extension",
+        "path": "MedicationDispense.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "調剤の拡張情報",
+        "definition": "調剤の拡張情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.extension:requestDate",
+        "path": "MedicationDispense.extension",
+        "sliceName": "requestDate",
+        "short": "処方箋発行日",
+        "definition": "処方箋発行日です。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseRequestDate.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.extension:addition",
+        "path": "MedicationDispense.extension",
+        "sliceName": "addition",
+        "short": "調剤の加算コード",
+        "definition": "調剤の加算コードです。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionMedicationDispenseAddition.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.status",
+        "path": "MedicationDispense.status",
+        "short": "投薬の状態",
+        "definition": "投薬の状態です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: completed"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.medication[x]",
+        "path": "MedicationDispense.medication[x]",
+        "short": "提供された医薬品の参照",
+        "definition": "提供された医薬品の参照です。",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Medication"
+            ]
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "医薬品レコード(IY).医薬品コード"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.subject",
+        "path": "MedicationDispense.subject",
+        "short": "患者情報の参照",
+        "definition": "患者情報の参照を示す。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.subject.reference",
+        "path": "MedicationDispense.subject.reference",
+        "short": "患者情報の参照",
+        "definition": "患者情報の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.performer",
+        "path": "MedicationDispense.performer",
+        "short": "調剤を行なった薬局",
+        "definition": "調剤を行なった薬局です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.performer.function",
+        "path": "MedicationDispense.performer.function",
+        "short": "調剤行為",
+        "definition": "調剤行為です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.performer.function.coding",
+        "path": "MedicationDispense.performer.function.coding",
+        "short": "調剤行為",
+        "definition": "調剤行為です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.performer.function.coding.system",
+        "path": "MedicationDispense.performer.function.coding.system",
+        "short": "行為のURI",
+        "definition": "行為のURIを示す。",
+        "fixedUri": "http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.performer.function.coding.code",
+        "path": "MedicationDispense.performer.function.coding.code",
+        "short": "行為コード",
+        "definition": "行為コードを示す。",
+        "fixedCode": "packager",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: packager"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.performer.function.coding.display",
+        "path": "MedicationDispense.performer.function.coding.display",
+        "short": "行為コードの名称",
+        "definition": "行為コードの名称を示す。",
+        "fixedString": "packager",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: Packager"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.performer.actor",
+        "path": "MedicationDispense.performer.actor",
+        "short": "薬局情報の参照",
+        "definition": "薬局情報の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.performer.actor.reference",
+        "path": "MedicationDispense.performer.actor.reference",
+        "short": "薬局情報の参照",
+        "definition": "薬局情報の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "薬局情報レコードフォーマット(YK).薬局コード"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.type",
+        "path": "MedicationDispense.type",
+        "short": "薬品の剤形",
+        "definition": "薬品の剤形です。"
+      },
+      {
+        "id": "MedicationDispense.type.coding",
+        "path": "MedicationDispense.type.coding",
+        "short": "薬品の剤形",
+        "definition": "薬品の剤形です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.type.coding.code",
+        "path": "MedicationDispense.type.coding.code",
+        "short": "剤形コード",
+        "definition": "剤形コードです。",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "処方基本レコード(SH).剤形コード"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.type.coding.display",
+        "path": "MedicationDispense.type.coding.display",
+        "short": "剤形コード名称",
+        "definition": "剤形コード名称を示す。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "処方基本レコード(SH).剤形コード",
+            "comment": "剤形コードの名称"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.quantity",
+        "path": "MedicationDispense.quantity",
+        "short": "薬品の量",
+        "definition": "薬品の量です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.quantity.value",
+        "path": "MedicationDispense.quantity.value",
+        "short": "薬品の量",
+        "definition": "薬品の量です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "調剤情報レコード(CZ).調剤数量"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.quantity.unit",
+        "path": "MedicationDispense.quantity.unit",
+        "short": "薬品の量の単位",
+        "definition": "薬品の量の単位です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.daysSupply",
+        "path": "MedicationDispense.daysSupply",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.daysSupply.value",
+        "path": "MedicationDispense.daysSupply.value",
+        "short": "1日当たりの量",
+        "definition": "1日当たりの量です。",
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "医薬品レコード(IY).使用量"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.daysSupply.unit",
+        "path": "MedicationDispense.daysSupply.unit",
+        "short": "1日当たりの量の単位",
+        "definition": "1日当たりの量の単位です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.whenPrepared",
+        "path": "MedicationDispense.whenPrepared",
+        "short": "調剤の実施日",
+        "definition": "調剤の実施日です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "調剤情報レコード(CZ).調剤月日"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.note",
+        "path": "MedicationDispense.note",
+        "short": "コメント情報",
+        "definition": "コメント情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.note.text",
+        "path": "MedicationDispense.note.text",
+        "short": "コメントの内容",
+        "definition": "コメントの内容です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "コメントレコード(CO).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.dosageInstruction",
+        "path": "MedicationDispense.dosageInstruction",
+        "short": "薬品の用法",
+        "definition": "薬品の用法です。",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.dosageInstruction.text",
+        "path": "MedicationDispense.dosageInstruction.text",
+        "short": "薬品の投薬指示",
+        "definition": "薬品の投薬指示です。",
+        "comment": "特別指示がある場合に記載する。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "処方基本レコード(SH).特別指示"
+          }
+        ]
+      },
+      {
+        "id": "MedicationDispense.dosageInstruction.timing",
+        "path": "MedicationDispense.dosageInstruction.timing",
+        "mustSupport": true
+      },
+      {
+        "id": "MedicationDispense.dosageInstruction.timing.code",
+        "path": "MedicationDispense.dosageInstruction.timing.code",
+        "short": "薬品の用法",
+        "definition": "薬品の用法です。",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationUsage.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "処方基本レコード(SH).用法コード"
+          }
+        ]
+      }
+    ]
+  }
+}

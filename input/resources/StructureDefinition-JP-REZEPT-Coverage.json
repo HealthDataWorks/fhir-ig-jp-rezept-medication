@@ -1,0 +1,590 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-Coverage",
+  "meta": {
+    "versionId": "113",
+    "lastUpdated": "2021-06-01T10:48:08.564+00:00",
+    "source": "#M3jz2Hm6EBsZ7IgC"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Financial.Support"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Coverage.html",
+  "version": "0.8.0",
+  "name": "Coverage",
+  "title": "保険・被保険者情報",
+  "status": "draft",
+  "description": "保険情報、公費情報です。  \n医療サービスや調剤等の請求額と自己負担金の両方が含まれます。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "cdanetv4",
+      "uri": "http://www.cda-adc.ca/en/services/cdanet/",
+      "name": "Canadian Dental Association eclaims standard"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "cpha3pharm",
+      "uri": "http://www.pharmacists.ca/",
+      "name": "Canadian Pharmacy Associaiton eclaims standard"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEMBERS-Mapping",
+      "name": "加入者情報",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの加入者情報をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Coverage",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Coverage",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Coverage",
+        "path": "Coverage",
+        "short": "保険情報、公費情報",
+        "definition": "保険情報、公費情報です。\n医療サービスや調剤等の請求額と自己負担金の両方が含まれます。",
+        "comment": "保険対象者(患者)と保険者の間のリンクを提供します。 "
+      },
+      {
+        "id": "Coverage.id",
+        "path": "Coverage.id",
+        "short": "このリソースのID",
+        "definition": "このリソースのIDです。",
+        "comment": "リソースIDは自動採番されます。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.text",
+        "path": "Coverage.text",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要を示す。",
+        "comment": "保険者向け例:\n・保険者番号\n・被保険者証記号\n・被保険者証番号\n公費向け例:\n・負担者番号\n・受給者番号",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.text.status",
+        "path": "Coverage.text.status",
+        "definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+        "fixedCode": "generated",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.text.div",
+        "path": "Coverage.text.div",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.extension",
+        "path": "Coverage.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.extension:InsuredPersonSymbol",
+        "path": "Coverage.extension",
+        "sliceName": "InsuredPersonSymbol",
+        "label": "被保険者証記号を表す拡張",
+        "short": "被保険者証記号を表す拡張",
+        "definition": "被保険者証記号を表す拡張「InsuredPersonSymbol」です。保険種別が「1:医保」、「2:国保」の場合に記録します。被保険者証記号がない場合は、本拡張要素は出現しません。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionCoverageInsuredPersonSymbol.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.extension:InsuredPersonNumber",
+        "path": "Coverage.extension",
+        "sliceName": "InsuredPersonNumber",
+        "label": "被保険者証番号を表す拡張",
+        "short": "被保険者証番号を表す拡張",
+        "definition": "被保険者証番号を表す拡張「InsuredPersonNumber」です。保険種別が「1:医保」、「2:国保」、「7:後期⾼齢者」の場合に記録します。それ以外の場合は、本拡張要素は出現しません。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionCoverageInsuredPersonNo.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.status",
+        "path": "Coverage.status",
+        "short": "保険情報、公費情報の状態",
+        "definition": "保険情報、公費情報の状態です。",
+        "comment": "保険情報、公費情報では「active」固定とします。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.type",
+        "path": "Coverage.type",
+        "short": "保険種別",
+        "definition": "保険種別です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.type.coding",
+        "path": "Coverage.type.coding",
+        "short": "保険種別",
+        "definition": "保険種別です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.type.coding.system",
+        "path": "Coverage.type.coding.system",
+        "short": "保険種別のOID",
+        "definition": "保険種別のOIDです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.type.coding.code",
+        "path": "Coverage.type.coding.code",
+        "short": "保険種別コード",
+        "definition": "保険種別コードです。",
+        "comment": "医療保険として作成する場合は「1～7」、公費として作成する場合は「8」になる。\n1:医保\n2:国保\n3:労災\n4:自賠\n5:公害\n6:自費\n7:後期高齢者\n8:公費",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号",
+            "comment": "保険者番号から該当するコード(1:医保、2:国保、、3:労災、4:自賠、5:公害、6:自費、7:後期高齢者、8:公費)を決める。"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号",
+            "comment": "保険者番号から該当するコード(1:医保、2:国保、、3:労災、4:自賠、5:公害、6:自費、7:後期高齢者、8:公費)を決める。"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号",
+            "comment": "保険者番号から該当するコード(1:医保、2:国保、、3:労災、4:自賠、5:公害、6:自費、7:後期高齢者、8:公費)を決める。"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO).保険者番号",
+            "comment": "保険者番号から該当するコード(1:医保、2:国保、、3:労災、4:自賠、5:公害、6:自費、7:後期高齢者、8:公費)を決める。"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.保険者番号",
+            "comment": "保険者番号から該当するコード(1:医保、2:国保、、3:労災、4:自賠、5:公害、6:自費、7:後期高齢者、8:公費)を決める。"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.type.coding.display",
+        "path": "Coverage.type.coding.display",
+        "short": "保険種別の名称",
+        "definition": "保険種別の名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.subscriber",
+        "path": "Coverage.subscriber",
+        "short": "被保険者(患者)情報の参照",
+        "definition": "被保険者(患者)情報の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.subscriber.reference",
+        "path": "Coverage.subscriber.reference",
+        "short": "被保険者(患者)情報の参照",
+        "definition": "被保険者(患者)情報の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.保険者番号、加入者情報.被保険者証(手帳)の記号・番号"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.subscriberId",
+        "path": "Coverage.subscriberId",
+        "short": "受診券整理番号",
+        "definition": "受診券整理番号です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "XML No: 9.6.1 XPath: /ClinicalDocument/participant/associatedEntity/id/@extension"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "XML No: 9.6.1 XPath: /ClinicalDocument/participant/associatedEntity/id/@extension"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.beneficiary",
+        "path": "Coverage.beneficiary",
+        "short": "患者の参照",
+        "definition": "患者の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.beneficiary.reference",
+        "path": "Coverage.beneficiary.reference",
+        "short": "この保険で給付される患者の参照",
+        "definition": "この保険で給付される患者の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)の記号・番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.保険者番号、加入者情報.被保険者証(手帳)の記号・番号"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.dependent",
+        "path": "Coverage.dependent",
+        "short": "被保険者の枝番号",
+        "definition": "被保険者の枝番号です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "資格確認レコード(SN).枝番"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "資格確認レコード(SN).枝番"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "資格確認レコード(SN).枝番"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "資格確認レコード(SN).枝番"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.relationship",
+        "path": "Coverage.relationship",
+        "short": "患者との関係区分",
+        "definition": "患者との関係区分です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.relationship.coding",
+        "path": "Coverage.relationship.coding",
+        "short": "患者との関係区分",
+        "definition": "患者との関係区分です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.relationship.coding.system",
+        "path": "Coverage.relationship.coding.system",
+        "short": "患者との関係区分のOID",
+        "definition": "患者との関係区分のOIDです。",
+        "fixedUri": "urn:oid:1.2.392.100495.20.2.62",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.relationship.coding.code",
+        "path": "Coverage.relationship.coding.code",
+        "short": "患者との関係区分コード",
+        "definition": "患者との関係区分コードです。",
+        "comment": "加入者情報の「続柄」が無ければ「1」、あれば「2」。\n1:被保険者\n2:被扶養者",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.続柄"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.relationship.coding.display",
+        "path": "Coverage.relationship.coding.display",
+        "short": "患者との関係区分コードの名称",
+        "definition": "患者との関係区分コードの名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.period",
+        "path": "Coverage.period",
+        "short": "保険証の有効期間",
+        "definition": "保険証の有効期間です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.period.start",
+        "path": "Coverage.period.start",
+        "short": "保険証の有効開始日",
+        "definition": "保険証の有効開始日です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.資格取得年月日"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.period.end",
+        "path": "Coverage.period.end",
+        "short": "保険証の有効期限日",
+        "definition": "保険証の有効期限日です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.資格喪失年月日"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.payor",
+        "path": "Coverage.payor",
+        "short": "保険者の参照",
+        "definition": "保険者の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.payor.reference",
+        "path": "Coverage.payor.reference",
+        "short": "保険者の参照",
+        "definition": "保険者の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEMBERS-Mapping",
+            "map": "加入者情報.保険者番号"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.class",
+        "path": "Coverage.class",
+        "short": "保険(公費)区分",
+        "definition": "保険(公費)区分です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.class.type",
+        "path": "Coverage.class.type",
+        "short": "保険(公費)区分",
+        "definition": "保険(公費)区分です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.class.type.coding",
+        "path": "Coverage.class.type.coding",
+        "short": "保険(公費)区分",
+        "definition": "保険(公費)区分です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.class.type.coding.system",
+        "path": "Coverage.class.type.coding.system",
+        "short": "保険(公費)区分のOID",
+        "definition": "保険(公費)区分のOIDです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.class.type.coding.code",
+        "path": "Coverage.class.type.coding.code",
+        "short": "保険(公費)区分コード",
+        "definition": "保険(公費)区分コードです。",
+        "comment": "1:医療保険、国民健康保険、退職者医療又は後期高齢者医療\n2:第１公費負担医療\n3:第２公費負担医療\n4:第３公費負担医療\n5:第４公費負担医療",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BearerType.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "資格確認レコード(SN).負担者種別コード"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "資格確認レコード(SN).負担者種別コード"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "資格確認レコード(SN).負担者種別コード"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "資格確認レコード(SN).負担者種別コード"
+          }
+        ]
+      },
+      {
+        "id": "Coverage.class.type.coding.display",
+        "path": "Coverage.class.type.coding.display",
+        "short": "保険(公費)区分コードの名称",
+        "definition": "保険(公費)区分コードの名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.class.value",
+        "path": "Coverage.class.value",
+        "short": "保険(公費)番号",
+        "definition": "保険(公費)番号です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.class.name",
+        "path": "Coverage.class.name",
+        "short": "保険(公費)名称",
+        "definition": "保険(公費)名称です。",
+        "fixedString": "公費負担者番号",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.order",
+        "path": "Coverage.order",
+        "short": "保険適用順序",
+        "definition": "保険適用順序です。",
+        "comment": "保険(公費)区分コードをそのまま優先度にする。\n1:医療保険、国民健康保険、退職者医療又は後期高齢者医療　\n2:第１公費負担医療 \n3:第２公費負担医療 \n4:第３公費負担医療 \n5:第４公費負担医療",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.costToBeneficiary",
+        "path": "Coverage.costToBeneficiary",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.costToBeneficiary.value[x]",
+        "path": "Coverage.costToBeneficiary.value[x]",
+        "example": [
+          {
+            "label": "Example for Quantity",
+            "valueQuantity": {
+              "value": 30,
+              "unit": "%"
+            }
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

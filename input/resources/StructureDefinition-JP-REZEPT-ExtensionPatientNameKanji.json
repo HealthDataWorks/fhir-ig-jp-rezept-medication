@@ -1,0 +1,71 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionPatientNameKanji",
+  "meta": {
+    "versionId": "13",
+    "lastUpdated": "2021-05-20T14:33:41.641+00:00",
+    "source": "#GREUeHEAcBl7h1ed"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientNameKanji.html",
+  "version": "0.8.0",
+  "name": "ExtensionPatientNameKanji",
+  "title": "漢字表記",
+  "status": "active",
+  "description": "漢字表記であることを⽰す。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Patinet.name:kanji"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "漢字表記であることを⽰す拡張情報",
+        "definition": "漢字表記であることを⽰す拡張情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "short": "漢字表記を指定するURL",
+        "definition": "漢字表記を指定するURLです。",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientNameKanji.html",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "漢字表記であることを⽰す固定値",
+        "definition": "漢字表記であることを⽰す固定値です。",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "IDE",
+        "mustSupport": true
+      }
+    ]
+  }
+}

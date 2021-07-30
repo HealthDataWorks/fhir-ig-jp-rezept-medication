@@ -1,0 +1,35 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "MedicationMixedSection",
+  "id": "CodeSystem-JP-REZEPT-MedicationMixedSection",
+  "title": "混合区分コード",
+  "description": "レセプト電算処理システムで使用されている混合区分コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表16 混合区分コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-MedicationMixedSection.html",
+  "meta": {
+    "versionId": "4",
+    "lastUpdated": "2021-05-07T03:23:50.051+00:00",
+    "source": "#MPn1PqPwxyb1dRqj"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationMixedSection.html",
+  "concept": [
+    {
+      "code": "1",
+      "display": "計量混合",
+      "definition": "計量混合"
+    },
+    {
+      "code": "2",
+      "display": "自家製剤",
+      "definition": "自家製剤"
+    },
+    {
+      "code": "3",
+      "display": "無菌製剤",
+      "definition": "無菌製剤"
+    }
+  ],
+  "count": 3
+}

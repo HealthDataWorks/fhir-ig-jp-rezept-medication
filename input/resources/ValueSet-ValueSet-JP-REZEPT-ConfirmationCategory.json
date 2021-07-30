@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "ConfirmationCategory",
+  "id": "ValueSet-JP-REZEPT-ConfirmationCategory",
+  "title": "確認区分コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている確認区分コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ConfirmationCategory.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T02:54:59.128+00:00",
+    "source": "#BTKJr8kEOVphuAoB"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ConfirmationCategory.html"
+      }
+    ]
+  }
+}

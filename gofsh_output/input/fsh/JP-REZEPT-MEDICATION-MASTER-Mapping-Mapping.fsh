@@ -1,0 +1,23 @@
+Mapping: JP-REZEPT-MEDICATION-MASTER-Mapping
+Id: JP-REZEPT-MEDICATION-MASTER-Mapping
+Title: "医薬品マスター"
+Description: "レセプト電算処理システムの医薬品マスターをFHIRにマッピングします。"
+Source: Medication
+Target: "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo"
+* identifier[code1].value -> "医薬品マスター.医薬品コード"
+* identifier[code2].value -> "医薬品マスター.薬価基準収載医薬品コード"
+* code.coding.code -> "医薬品マスター.医薬品コード"
+* code.coding.display -> "医薬品マスター.医薬品名・規格名.漢字名称"
+* status -> "固定値: active" "医薬品マスター.変更区分が、0(変更なし),3(新規),5(変更)"
+* status -> "固定値: inactive" "医薬品マスター.変更区分が、1(抹消),9(廃止)"
+* form.coding.code -> "医薬品マスター.剤形"
+* form.coding.display -> "医薬品マスター.剤形" "医薬品マスター.剤形の値から名称を引き当てる(1:内用薬,3:その他,4:注射薬,6:外用薬,8:歯科用薬剤)"
+* form.text -> "固定値: 剤形"
+* amount.numerator.unit -> "医薬品マスター.単位・漢字名称"
+* amount.numerator.code -> "医薬品マスター.単位・コード"
+* ingredient[1].item[x] -> "医薬品マスター.剤形"
+* ingredient[+].item[x] -> "医薬品マスター.神経破壊剤"
+* ingredient[+].item[x] -> "医薬品マスター.生物学的製剤"
+* ingredient[+].item[x] -> "医薬品マスター.後発品"
+* ingredient[+].item[x] -> "医薬品マスター.歯科特定薬剤"
+* ingredient[+].item[x] -> "医薬品マスター.造影(補助)剤"

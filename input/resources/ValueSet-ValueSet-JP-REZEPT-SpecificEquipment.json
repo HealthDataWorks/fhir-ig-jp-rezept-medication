@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "SpecificEquipment",
+  "id": "ValueSet-JP-REZEPT-SpecificEquipment",
+  "title": "特定器材",
+  "description": "この ValueSet には、レセプト電算処理システムで定義されている特定器材の種類が含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-SpecificEquipment.html",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-07T02:31:21.100+00:00",
+    "source": "#NpYNbxuQW5cH3sku"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://www.ssk.or.jp/seikyushiharai/tensuhyo/kihonmasta/kihonmasta_05.html"
+      }
+    ]
+  }
+}

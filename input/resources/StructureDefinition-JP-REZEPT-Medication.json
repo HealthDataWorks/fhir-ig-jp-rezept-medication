@@ -1,0 +1,504 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-Medication",
+  "meta": {
+    "versionId": "39",
+    "lastUpdated": "2021-06-01T11:06:27.788+00:00",
+    "source": "#ni3bs2mjtxRHRc92"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Clinical.Medications"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "business"
+    }
+  ],
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Medication.html",
+  "version": "0.8.0",
+  "name": "Medication",
+  "title": "医薬品情報",
+  "status": "draft",
+  "description": "このリソースは、主に医薬品の処方、調剤、および投与を目的とした医薬品の識別、定義、および医薬品の使用に関する記述を行うために使用されます。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "script10.6",
+      "uri": "http://ncpdp.org/SCRIPT10_6",
+      "name": "Mapping to NCPDP SCRIPT 10.6"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+      "name": "医薬品マスター",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの医薬品マスターをFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Medication",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Medication",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Medication",
+        "path": "Medication",
+        "short": "医薬品情報",
+        "definition": "このリソースは、主に医薬品の処方、調剤、および投与を目的とした医薬品の識別、定義、および医薬品の使用に関する記述を行うために使用されます。"
+      },
+      {
+        "id": "Medication.id",
+        "path": "Medication.id",
+        "short": "このリソースのID",
+        "definition": "このリソースのIDです。",
+        "comment": "リソースIDは自動採番されます。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.text",
+        "path": "Medication.text",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "comment": "例: ガスター散2%",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.text.status",
+        "path": "Medication.text.status",
+        "definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+        "fixedCode": "generated",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.text.div",
+        "path": "Medication.text.div",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.identifier",
+        "path": "Medication.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "医薬品の識別子",
+        "definition": "医薬品の識別子です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.identifier:code1",
+        "path": "Medication.identifier",
+        "sliceName": "code1",
+        "short": "医薬品コード",
+        "definition": "医薬品コードです。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.identifier:code1.value",
+        "path": "Medication.identifier.value",
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.医薬品コード"
+          }
+        ]
+      },
+      {
+        "id": "Medication.identifier:code2",
+        "path": "Medication.identifier",
+        "sliceName": "code2",
+        "short": "薬価基準収載医薬品コード",
+        "definition": "薬価基準収載医薬品コードです。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.identifier:code2.system",
+        "path": "Medication.identifier.system",
+        "short": "薬価基準収載医薬品コードのURI",
+        "definition": "薬価基準収載医薬品コードのURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.identifier:code2.value",
+        "path": "Medication.identifier.value",
+        "short": "薬価基準収載医薬品コード",
+        "definition": "薬価基準収載医薬品コードです。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.薬価基準収載医薬品コード"
+          }
+        ]
+      },
+      {
+        "id": "Medication.code",
+        "path": "Medication.code",
+        "short": "薬を識別するコード",
+        "definition": "薬を識別するコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.code.coding",
+        "path": "Medication.code.coding",
+        "short": "薬を識別するコード",
+        "definition": "薬を識別するコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.code.coding.code",
+        "path": "Medication.code.coding.code",
+        "short": "薬を識別するコード",
+        "definition": "薬を識別するコードです。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.医薬品コード"
+          }
+        ]
+      },
+      {
+        "id": "Medication.code.coding.display",
+        "path": "Medication.code.coding.display",
+        "short": "薬を識別するコードの名称",
+        "definition": "薬を識別するコードの名称です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.医薬品名・規格名.漢字名称"
+          }
+        ]
+      },
+      {
+        "id": "Medication.status",
+        "path": "Medication.status",
+        "short": "医薬品マスタの状態",
+        "definition": "医薬品マスタの状態です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "固定値: active",
+            "comment": "医薬品マスター.変更区分が、0(変更なし),3(新規),5(変更)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "固定値: inactive",
+            "comment": "医薬品マスター.変更区分が、1(抹消),9(廃止)"
+          }
+        ]
+      },
+      {
+        "id": "Medication.form",
+        "path": "Medication.form",
+        "short": "医薬品の形状",
+        "definition": "医薬品の形状です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.form.coding",
+        "path": "Medication.form.coding",
+        "short": "医薬品の形状",
+        "definition": "医薬品の形状です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.form.coding.code",
+        "path": "Medication.form.coding.code",
+        "short": "医薬品の形状コード",
+        "definition": "医薬品の形状コードです。",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.剤形"
+          }
+        ]
+      },
+      {
+        "id": "Medication.form.coding.display",
+        "path": "Medication.form.coding.display",
+        "short": "医薬品の形状名称",
+        "definition": "医薬品の形状名称です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.剤形",
+            "comment": "医薬品マスター.剤形の値から名称を引き当てる(1:内用薬,3:その他,4:注射薬,6:外用薬,8:歯科用薬剤)"
+          }
+        ]
+      },
+      {
+        "id": "Medication.form.text",
+        "path": "Medication.form.text",
+        "short": "形状の項目名",
+        "definition": "形状の項目名です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "固定値: 剤形"
+          }
+        ]
+      },
+      {
+        "id": "Medication.amount",
+        "path": "Medication.amount",
+        "short": "医薬品の量",
+        "definition": "医薬品の量です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.amount.numerator",
+        "path": "Medication.amount.numerator",
+        "short": "医薬品の量",
+        "definition": "医薬品の量です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.amount.numerator.unit",
+        "path": "Medication.amount.numerator.unit",
+        "short": "単位",
+        "definition": "単位を示す。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.単位・漢字名称"
+          }
+        ]
+      },
+      {
+        "id": "Medication.amount.numerator.code",
+        "path": "Medication.amount.numerator.code",
+        "short": "単位コード",
+        "definition": "単位コードを示す。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.単位・コード"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient",
+        "path": "Medication.ingredient",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "item[x]"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "医薬品の有効成分または不活性成分",
+        "definition": "医薬品の有効成分または不活性成分です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient:1",
+        "path": "Medication.ingredient",
+        "sliceName": "1",
+        "comment": "麻薬・毒薬・覚醒剤原料・向精神薬が0以外の場合に設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient:1.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "short": "医薬品の成分・内容",
+        "definition": "医薬品の成分・内容です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-DosageForm.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.剤形"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient:2",
+        "path": "Medication.ingredient",
+        "sliceName": "2",
+        "comment": "神経破壊剤が0以外の場合に設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient:2.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "short": "医薬品の成分・内容",
+        "definition": "医薬品の成分・内容です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.神経破壊剤"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient:3",
+        "path": "Medication.ingredient",
+        "sliceName": "3",
+        "comment": "生物学的製剤が0以外の場合に設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient:3.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "short": "医薬品の成分・内容",
+        "definition": "医薬品の成分・内容です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.生物学的製剤"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient:4",
+        "path": "Medication.ingredient",
+        "sliceName": "4",
+        "comment": "後発品が0以外の場合に設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient:4.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "short": "医薬品の成分・内容",
+        "definition": "医薬品の成分・内容です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.後発品"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient:5",
+        "path": "Medication.ingredient",
+        "sliceName": "5",
+        "comment": "歯科特定薬剤が0以外の場合に設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient:5.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "short": "医薬品の成分・内容",
+        "definition": "医薬品の成分・内容です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.歯科特定薬剤"
+          }
+        ]
+      },
+      {
+        "id": "Medication.ingredient:6",
+        "path": "Medication.ingredient",
+        "sliceName": "6",
+        "comment": "造影（補助）剤が0以外の場合に設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient:6.item[x]",
+        "path": "Medication.ingredient.item[x]",
+        "short": "医薬品の成分・内容",
+        "definition": "医薬品の成分・内容です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICATION-MASTER-Mapping",
+            "map": "医薬品マスター.造影(補助)剤"
+          }
+        ]
+      }
+    ]
+  }
+}

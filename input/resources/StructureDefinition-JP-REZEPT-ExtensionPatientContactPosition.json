@@ -1,0 +1,70 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionPatientContactPosition",
+  "meta": {
+    "versionId": "4",
+    "lastUpdated": "2021-06-01T04:07:00.034+00:00",
+    "source": "#D7EEiimQs9e18gqd"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientContactPosition.html",
+  "version": "0.8.0",
+  "name": "ExtensionPatientContactPosition",
+  "title": "役割、役職情報",
+  "status": "active",
+  "description": "ローマ字表記であることを⽰す。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Patinet.name:kanji"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "役割、役職情報を⽰す拡張情報",
+        "definition": "役割、役職情報を⽰す拡張情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "short": "役割、役職情報を指定するURI",
+        "definition": "役割、役職情報を指定するURIです。",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientContactPosition.html",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "役割、役職情報",
+        "definition": "役割、役職情報です。",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "mustSupport": true
+      }
+    ]
+  }
+}

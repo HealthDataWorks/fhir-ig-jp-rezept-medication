@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "ReliefCategory",
+  "id": "ValueSet-JP-REZEPT-ReliefCategory",
+  "title": "減免区分コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている減免区分コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ReliefCategory.html",
+  "meta": {
+    "versionId": "7",
+    "lastUpdated": "2021-05-07T03:01:21.270+00:00",
+    "source": "#qeZZSpc9qiVodIFh"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ReliefCategory.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "MedicationMixedSection",
+  "id": "ValueSet-JP-REZEPT-MedicationMixedSection",
+  "title": "混合区分コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている混合区分が含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-MedicationMixedSection.html",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-07T02:58:58.793+00:00",
+    "source": "#JuxREfQav1AoXRed"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-MedicationMixedSection.html"
+      }
+    ]
+  }
+}

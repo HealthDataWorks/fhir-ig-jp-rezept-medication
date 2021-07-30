@@ -1,0 +1,35 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "ReliefCategory",
+  "id": "CodeSystem-JP-REZEPT-ReliefCategory",
+  "title": "減免区分コード",
+  "description": "レセプト電算処理システムで使用されている減免区分コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表16 減免区分コード」に記載されています。\n\nDPCレセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(DPC用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_2_kiroku_dpc.pdf) の「別表17 減免区分コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表14 減免区分コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表10 減免区分コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ReliefCategory.html",
+  "meta": {
+    "versionId": "10",
+    "lastUpdated": "2021-05-07T03:25:49.768+00:00",
+    "source": "#nUQdbilhNU4o7rt7"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ReliefCategory.html",
+  "concept": [
+    {
+      "code": "1",
+      "display": "減額",
+      "definition": "減額"
+    },
+    {
+      "code": "2",
+      "display": "免除",
+      "definition": "免除"
+    },
+    {
+      "code": "3",
+      "display": "支払猶予",
+      "definition": "支払猶予"
+    }
+  ],
+  "count": 3
+}

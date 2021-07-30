@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "RezeptCategory",
+  "id": "ValueSet-JP-REZEPT-RezeptCategory",
+  "title": "レセプト種別コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されているレセプト種別コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptCategory.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T03:01:59.334+00:00",
+    "source": "#eWTISbdtRZ25FuH2"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-RezeptCategory.html"
+      }
+    ]
+  }
+}

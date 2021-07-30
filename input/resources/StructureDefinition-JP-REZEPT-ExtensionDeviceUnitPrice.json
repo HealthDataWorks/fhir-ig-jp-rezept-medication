@@ -1,0 +1,131 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionDeviceUnitPrice",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-06T04:45:23.900+00:00",
+    "source": "#HAXPJ1vL3qlNoI2v"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceUnitPrice.html",
+  "version": "0.8.0",
+  "name": "ExtentionDeviceUnitPrice",
+  "title": "特定器材の単価",
+  "status": "draft",
+  "description": "特定器材の単価です。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Device"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "特定器材の単価",
+        "definition": "特定器材の単価です。"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceUnitPrice.html"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "特定器材の単価",
+        "definition": "特定器材の単価です。",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "特定器材マスタ.単価",
+            "comment": "特定器材マスタの金額種別が「1:金額」の場合、特定器材マスタの単価を入れる"
+          },
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "特定器材レコード(TO).単価",
+            "comment": "特定器材マスタの金額種別が「2:購入価格」の場合、特定器材レコードの単価の値を入れる"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "特定器材マスタ.単価",
+            "comment": "特定器材マスタの金額種別が「1:金額」の場合、特定器材マスタの単価を入れる"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "特定器材レコード(TO).単価",
+            "comment": "特定器材マスタの金額種別が「2:購入価格」の場合、特定器材レコードの単価の値を入れる"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "特定器材マスタ.単価",
+            "comment": "特定器材マスタの金額種別が「1:金額」の場合、特定器材マスタの単価を入れる"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "特定器材レコード(TO).単価",
+            "comment": "特定器材マスタの金額種別が「2:購入価格」の場合、特定器材レコードの単価の値を入れる"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "特定器材マスタ.単価",
+            "comment": "特定器材マスタの金額種別が「1:金額」の場合、特定器材マスタの単価を入れる"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "特定器材レコード(TO).単価",
+            "comment": "特定器材マスタの金額種別が「2:購入価格」の場合、特定器材レコードの単価の値を入れる"
+          }
+        ]
+      }
+    ]
+  }
+}

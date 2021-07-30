@@ -1,0 +1,35 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "ReceptionCategory",
+  "id": "CodeSystem-JP-REZEPT-ReceptionCategory",
+  "title": "受付等区分コード",
+  "description": "レセプト電算処理システムで使用されている受付等区分コードです。\n\nこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表22 受付等区分コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ReceptionCategory.html",
+  "meta": {
+    "versionId": "4",
+    "lastUpdated": "2021-05-07T03:25:31.870+00:00",
+    "source": "#NhRVwvMkEVqdahZR"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ReceptionCategory.html",
+  "concept": [
+    {
+      "code": "1",
+      "display": "受付回数に計上する調剤及び薬学管理等",
+      "definition": "受付回数に計上する調剤及び薬学管理等"
+    },
+    {
+      "code": "2",
+      "display": "受付回数に計上しない調剤及び薬学管理等",
+      "definition": "受付回数に計上しない調剤及び薬学管理等"
+    },
+    {
+      "code": "9",
+      "display": "請求データの各レコードに記録された算定日情報と不一致",
+      "definition": "請求データの各レコードに記録された算定日情報と不一致"
+    }
+  ],
+  "count": 3
+}

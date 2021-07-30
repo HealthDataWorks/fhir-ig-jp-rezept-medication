@@ -1,0 +1,71 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionPatientNameKana",
+  "meta": {
+    "versionId": "13",
+    "lastUpdated": "2021-05-20T14:33:16.708+00:00",
+    "source": "#koYeSi7tVOOn12tb"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientNameKana.html",
+  "version": "0.8.0",
+  "name": "ExtensionPatientNameKana",
+  "title": "カナ表記",
+  "status": "active",
+  "description": "カナ表記であることを⽰します。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Patient.name:kana"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "カナ表記を指定する拡張情報",
+        "definition": "カナ表記を指定する拡張情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "short": "カナ表記を指定するURL",
+        "definition": "カナ表記を指定するURLです。",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionPatientNameKana.html",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "カナ表記を示す固定値",
+        "definition": "カナ表記を示す固定値です。",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "fixedCode": "SYL",
+        "mustSupport": true
+      }
+    ]
+  }
+}

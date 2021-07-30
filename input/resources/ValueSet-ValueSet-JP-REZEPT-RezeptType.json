@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "RezeptType",
+  "id": "ValueSet-JP-REZEPT-RezeptType",
+  "title": "点数表コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている点数表コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T03:15:52.034+00:00",
+    "source": "#tcNRz5J31QAtxQse"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-RezeptType.html"
+      }
+    ]
+  }
+}

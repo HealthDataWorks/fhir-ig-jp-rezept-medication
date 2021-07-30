@@ -1,0 +1,85 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "ConfirmationCategory",
+  "id": "CodeSystem-JP-REZEPT-ConfirmationCategory",
+  "title": "確認区分コード",
+  "description": "レセプト電算処理システムで使用されている確認区分コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表29 確認区分コード」に記載されています。\n\nDPCレセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(DPC用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_2_kiroku_dpc.pdf) の「別表38 確認区分コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表28 確認区分コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表21 確認区分コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ConfirmationCategory.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T03:20:42.527+00:00",
+    "source": "#B3KitpR1UdwDau2R"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ConfirmationCategory.html",
+  "concept": [
+    {
+      "code": "01",
+      "display": "保険医療機関・薬局窓口等",
+      "definition": "保険医療機関・薬局窓口等"
+    },
+    {
+      "code": "02",
+      "display": "審査支払機関に請求後、変更なし",
+      "definition": "審査支払機関に請求後、変更なし"
+    },
+    {
+      "code": "03",
+      "display": "審査支払機関に請求後、確認不能",
+      "definition": "審査支払機関に請求後、確認不能"
+    },
+    {
+      "code": "04",
+      "display": "審査支払機関に請求後、振替",
+      "definition": "審査支払機関に請求後、振替"
+    },
+    {
+      "code": "05",
+      "display": "審査支払機関に請求後、分割",
+      "definition": "審査支払機関に請求後、分割"
+    },
+    {
+      "code": "06",
+      "display": "審査支払機関に請求後、資格喪失(レセプト記載の保険者への請求)",
+      "definition": "審査支払機関に請求後、資格喪失(レセプト記載の保険者への請求)"
+    },
+    {
+      "code": "07",
+      "display": "審査支払機関に請求後、資格喪失(証回収後)",
+      "definition": "審査支払機関に請求後、資格喪失(証回収後)"
+    },
+    {
+      "code": "08",
+      "display": "審査支払機関に請求後、資格喪失(死亡)",
+      "definition": "審査支払機関に請求後、資格喪失(死亡)"
+    },
+    {
+      "code": "09",
+      "display": "審査支払機関に請求後、枝番特定",
+      "definition": "審査支払機関に請求後、枝番特定"
+    },
+    {
+      "code": "11",
+      "display": "保険者等に請求後、振替",
+      "definition": "保険者等に請求後、振替"
+    },
+    {
+      "code": "12",
+      "display": "保険者等に請求後、分割",
+      "definition": "保険者等に請求後、分割"
+    },
+    {
+      "code": "13",
+      "display": "保険者等に請求後、変更不能",
+      "definition": "保険者等に請求後、変更不能"
+    },
+    {
+      "code": "14",
+      "display": "保険者等に請求後、枝番特定",
+      "definition": "保険者等に請求後、枝番特定"
+    }
+  ],
+  "count": 13
+}

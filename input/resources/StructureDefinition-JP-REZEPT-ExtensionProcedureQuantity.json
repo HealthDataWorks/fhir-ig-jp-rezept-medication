@@ -1,0 +1,112 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionProcedureQuantity",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-06T04:38:02.346+00:00",
+    "source": "#SexujG7lAkBmLUiO"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureQuantity.html",
+  "version": "0.8.0",
+  "name": "ExtensionProcedureQuantity",
+  "title": "診療行為の使用量",
+  "status": "draft",
+  "description": "診療行為の使用量です。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Procedure"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "診療行為の使用量",
+        "definition": "診療行為の使用量です。"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureQuantity.html"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "使用量",
+        "definition": "使用量です。",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "歯科診療行為レコード(SS).診療行為数量データ １"
+          },
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "歯科診療行為レコード(SS).診療行為数量データ ２"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "コーディングデータレコード(CD).数量データ"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "診療行為レコード(SI).数量データ"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "診療行為レコード(SI).数量データ"
+          }
+        ]
+      }
+    ]
+  }
+}

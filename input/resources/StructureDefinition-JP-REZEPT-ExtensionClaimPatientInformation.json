@@ -1,0 +1,485 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionClaimPatientInformation",
+  "meta": {
+    "versionId": "10",
+    "lastUpdated": "2021-05-06T04:35:43.134+00:00",
+    "source": "#TigzgYDTwlt0FlAf"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimPatientInformation.html",
+  "version": "0.8.0",
+  "name": "ExtensionClaimPatientInformation",
+  "title": "患者の拡張情報",
+  "status": "draft",
+  "description": "患者の拡張情報です。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "element",
+      "expression": "Claim"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "患者の拡張情報",
+        "definition": "患者の拡張情報です。"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "short": "患者の拡張情報",
+        "definition": "患者の拡張情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:totalFeePoint",
+        "path": "Extension.extension",
+        "sliceName": "totalFeePoint",
+        "short": "合計点数",
+        "definition": "合計点数です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:totalFeePoint.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:totalFeePoint.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "totalFeePoint"
+      },
+      {
+        "id": "Extension.extension:totalFeePoint.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "合計点数",
+        "definition": "合計点数です。",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentQuantity",
+        "path": "Extension.extension",
+        "sliceName": "dietaryLifeTreatmentQuantity",
+        "short": "食事療養・生活療養の回数",
+        "definition": "食事療養・生活療養の回数です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentQuantity.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentQuantity.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "dietaryLifeTreatmentQuantity"
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentQuantity.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "食事療養・生活療養の回数",
+        "definition": "食事療養・生活療養の回数です。",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentTotalFee",
+        "path": "Extension.extension",
+        "sliceName": "dietaryLifeTreatmentTotalFee",
+        "short": "食事療養・生活療養の合計金額",
+        "definition": "食事療養・生活療養の合計金額です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentTotalFee.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentTotalFee.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "dietaryLifeTreatmentTotalFee"
+      },
+      {
+        "id": "Extension.extension:dietaryLifeTreatmentTotalFee.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "食事療養・生活療養の合計金額",
+        "definition": "食事療養・生活療養の合計金額です。",
+        "type": [
+          {
+            "code": "Money"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:occupationalReason",
+        "path": "Extension.extension",
+        "sliceName": "occupationalReason",
+        "short": "職務上の事由",
+        "definition": "職務上の事由です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:occupationalReason.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:occupationalReason.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "occupationalReason"
+      },
+      {
+        "id": "Extension.extension:occupationalReason.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "職務上の事由",
+        "definition": "職務上の事由です。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:certificateNumber",
+        "path": "Extension.extension",
+        "sliceName": "certificateNumber",
+        "short": "証明書番号",
+        "definition": "証明書番号です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:certificateNumber.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:certificateNumber.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "certificateNumber"
+      },
+      {
+        "id": "Extension.extension:certificateNumber.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "証明書番号",
+        "definition": "証明書番号です。",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountRate",
+        "path": "Extension.extension",
+        "sliceName": "burdenFeeDiscountRate",
+        "short": "負担金額の減額割合",
+        "definition": "負担金額の減額割合です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountRate.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountRate.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "burdenFeeDiscountRate"
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountRate.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "負担金額の減額割合",
+        "definition": "負担金額の減額割合です。",
+        "type": [
+          {
+            "code": "Ratio"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountFee",
+        "path": "Extension.extension",
+        "sliceName": "burdenFeeDiscountFee",
+        "short": "負担金額の減額金額",
+        "definition": "負担金額の減額金額です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountFee.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountFee.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "burdenFeeDiscountFee"
+      },
+      {
+        "id": "Extension.extension:burdenFeeDiscountFee.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "負担金額の減額金額",
+        "definition": "負担金額の減額金額です。",
+        "type": [
+          {
+            "code": "Money"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:diagnosisTime",
+        "path": "Extension.extension",
+        "sliceName": "diagnosisTime",
+        "short": "診療実日数",
+        "definition": "診療実日数です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:diagnosisTime.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:diagnosisTime.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "diagnosisTime"
+      },
+      {
+        "id": "Extension.extension:diagnosisTime.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "診療実日数",
+        "definition": "診療実日数です。",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "検討中"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "検討中"
+          }
+        ]
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimPatientInformation.html"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "max": "0"
+      }
+    ]
+  }
+}

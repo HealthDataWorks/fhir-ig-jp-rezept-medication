@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "CounterBurdenCategory",
+  "id": "ValueSet-JP-REZEPT-CounterBurdenCategory",
+  "title": "窓口負担額区分コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている窓口負担額区分が含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-CounterBurdenCategory.html",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-07T02:55:23.974+00:00",
+    "source": "#79kiDGGpyiS4zvrI"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-CounterBurdenCategory.html"
+      }
+    ]
+  }
+}

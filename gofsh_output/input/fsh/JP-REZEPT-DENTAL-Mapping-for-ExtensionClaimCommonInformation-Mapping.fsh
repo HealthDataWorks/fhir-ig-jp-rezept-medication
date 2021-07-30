@@ -1,0 +1,21 @@
+Mapping: JP-REZEPT-DENTAL-Mapping-for-ExtensionClaimCommonInformation
+Id: JP-REZEPT-DENTAL-Mapping
+Title: "歯科"
+Description: "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+Source: ExtensionClaimCommonInformation
+Target: "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo"
+* extension[benefitRate].value[x] -> "レセプト共通レコード(RE).給付割合"
+* extension[burdenClassification].value[x] -> "レセプト共通レコード(RE).一部負担金・食事療養費・生活療養費標準負担額区分"
+* extension[notice].value[x] -> "レセプト共通レコード(RE).レセプト特記事項"
+* extension[bed].value[x] -> "レセプト共通レコード(RE).病床数"
+* extension[cardNo].value[x] -> "レセプト共通レコード(RE).カルテ番号等"
+* extension[discountPointUnitprice].value[x] -> "レセプト共通レコード(RE).割引点数単価"
+* extension[SearchNo].value[x] -> "レセプト共通レコード(RE).検索番号"
+* extension[version].value[x] -> "レセプト共通レコード(RE).記録条件仕様年月情報"
+* extension[billingInformation].value[x] -> "レセプト共通レコード(RE).請求情報"
+* extension[departmentName].value[x] -> "レセプト共通レコード(RE).診療科名"
+* extension[departmentHumanBodyPart].value[x] -> "レセプト共通レコード(RE).人体の部位等"
+* extension[departmentGender].value[x] -> "レセプト共通レコード(RE).性別等"
+* extension[departmentMedicalProcedure].value[x] -> "レセプト共通レコード(RE).医学的処置"
+* extension[departmentSpecificDisease].value[x] -> "レセプト共通レコード(RE).特定疾病"
+* extension[patientStatus].value[x] -> "レセプト共通レコード(RE).患者の状態"

@@ -1,0 +1,45 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "BearerType",
+  "id": "CodeSystem-JP-REZEPT-BearerType",
+  "title": "負担者種別コード",
+  "description": "レセプト電算処理システムで使用されている負担者種別コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表28 負担者種別コード」に記載されています。\n\nDPCレセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(DPC用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_2_kiroku_dpc.pdf) の「別表37 負担者種別コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表27 負担者種別コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表20 負担者種別コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-BearerType.html",
+  "meta": {
+    "versionId": "8",
+    "lastUpdated": "2021-06-02T05:28:24.051+00:00",
+    "source": "#AVRUmRwa04af3mM6"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BearerType.html",
+  "concept": [
+    {
+      "code": "1",
+      "display": "医療保険、国民健康保険、退職者医療又は後期高齢者医療",
+      "definition": "医療保険、国民健康保険、退職者医療又は後期高齢者医療"
+    },
+    {
+      "code": "2",
+      "display": "第１公費負担医療",
+      "definition": "第１公費負担医療"
+    },
+    {
+      "code": "3",
+      "display": "第２公費負担医療",
+      "definition": "第２公費負担医療"
+    },
+    {
+      "code": "4",
+      "display": "第３公費負担医療",
+      "definition": "第３公費負担医療"
+    },
+    {
+      "code": "5",
+      "display": "第４公費負担医療",
+      "definition": "第４公費負担医療"
+    }
+  ],
+  "count": 5
+}

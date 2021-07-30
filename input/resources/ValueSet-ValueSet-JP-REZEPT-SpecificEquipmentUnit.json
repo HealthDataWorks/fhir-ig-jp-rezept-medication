@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "SpecificEquipmentUnit",
+  "id": "ValueSet-JP-REZEPT-SpecificEquipmentUnit",
+  "title": "特定器材単位コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている特定器材単位コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-SpecificEquipmentUnit.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T03:16:38.884+00:00",
+    "source": "#gB5rU4bGhG9pP1KO"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-SpecificEquipmentUnit.html"
+      }
+    ]
+  }
+}

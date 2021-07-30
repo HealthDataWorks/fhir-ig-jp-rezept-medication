@@ -1,0 +1,460 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionClaimComprehensiveEvaluation",
+  "meta": {
+    "versionId": "13",
+    "lastUpdated": "2021-05-07T03:56:01.661+00:00",
+    "source": "#UXy138VhT6CxYdga"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimComprehensiveEvaluation.html",
+  "version": "0.8.0",
+  "name": "ExtensionClaimComprehensiveEvaluation",
+  "title": "包括評価の拡張情報",
+  "status": "draft",
+  "description": "包括評価の拡張情報の情報です。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Claim"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "包括評価情報",
+        "definition": "包括評価の情報です。"
+      },
+      {
+        "id": "Extension.extension:exclusionReason",
+        "path": "Extension.extension",
+        "sliceName": "exclusionReason",
+        "short": "医科点数表算定理由",
+        "definition": "医科点数表算定理由です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:exclusionReason.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:exclusionReason.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "exclusionReason"
+      },
+      {
+        "id": "Extension.extension:exclusionReason.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "医科点数表算定理由",
+        "definition": "医科点数表算定理由です。",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-CalculationCategory.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "包括評価対象外理由レコード(GR).医科点数表算定理由"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:dpc",
+        "path": "Extension.extension",
+        "sliceName": "dpc",
+        "short": "ＤＰＣコード",
+        "definition": "ＤＰＣコードです。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:dpc.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:dpc.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "dpc"
+      },
+      {
+        "id": "Extension.extension:dpc.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "ＤＰＣコード",
+        "definition": "ＤＰＣコードです。",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "包括評価対象外理由レコード(GR).ＤＰＣコード"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:stayOvernightEffectiveMonth",
+        "path": "Extension.extension",
+        "sliceName": "stayOvernightEffectiveMonth",
+        "short": "診療年月",
+        "definition": "診療年月です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:stayOvernightEffectiveMonth.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:stayOvernightEffectiveMonth.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "stayOvernightEffectiveMonth"
+      },
+      {
+        "id": "Extension.extension:stayOvernightEffectiveMonth.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "診療年月",
+        "definition": "診療年月です。",
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "外泊レコード'(GA).請求調整区分"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:stayOvernightAdjuntmentCategory",
+        "path": "Extension.extension",
+        "sliceName": "stayOvernightAdjuntmentCategory",
+        "short": "外泊の区分",
+        "definition": "外泊の区分です。",
+        "comment": "* 請求調整区分\n* 自他保険区分\n* 負担区分\n* 入院期間区分\n* 入院期間区分別点数\n* 入院期間区分別入院日数\n* 包括小計点数",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:stayOvernightAdjuntmentCategory.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:stayOvernightAdjuntmentCategory.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "stayOvernightAdjuntmentCategory"
+      },
+      {
+        "id": "Extension.extension:stayOvernightAdjuntmentCategory.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "包括評価の区分",
+        "definition": "包括評価の区分です。",
+        "comment": "* 請求調整区分\n* 自他保険区分\n* 負担区分\n* 入院期間区分\n* 入院期間区分別点数\n* 入院期間区分別入院日数\n* 包括小計点数",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "外泊レコード(GA).請求調整区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "外泊レコード(GA).外泊等"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "外泊レコード(GA).診断群分類番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "外泊レコード(GA).医療機関別係数"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "外泊レコード(GA)\t翌月再入院.(転棟)予定の有無"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationEffectiveMonth",
+        "path": "Extension.extension",
+        "sliceName": "comprehensiveEvaluationEffectiveMonth",
+        "short": "診療年月",
+        "definition": "診療年月です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationEffectiveMonth.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationEffectiveMonth.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "comprehensiveEvaluationEffectiveMonth"
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationEffectiveMonth.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "診療年月",
+        "definition": "診療年月です。",
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).診療年月"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationAdjuntmentCategory",
+        "path": "Extension.extension",
+        "sliceName": "comprehensiveEvaluationAdjuntmentCategory",
+        "short": "包括評価の区分",
+        "definition": "包括評価の区分です。",
+        "comment": "* 請求調整区分\n* 自他保険区分\n* 負担区分\n* 入院期間区分\n* 入院期間区分別点数\n* 入院期間区分別入院日数\n* 包括小計点数",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationAdjuntmentCategory.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationAdjuntmentCategory.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "comprehensiveEvaluationAdjuntmentCategory"
+      },
+      {
+        "id": "Extension.extension:comprehensiveEvaluationAdjuntmentCategory.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "包括評価の区分",
+        "definition": "包括評価の区分です。",
+        "comment": "* 請求調整区分\n* 自他保険区分\n* 負担区分\n* 入院期間区分\n* 入院期間区分別点数\n* 入院期間区分別入院日数\n* 包括小計点数",
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).請求調整区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).自他保険区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).負担区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).入院期間区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).入院期間区分別点数"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).入院期間区分別入院日数"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "包括評価レコード(HH).包括小計点数"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentEffectiveMonth",
+        "path": "Extension.extension",
+        "sliceName": "totalAdjustmentEffectiveMonth",
+        "short": "診療年月",
+        "definition": "診療年月です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentEffectiveMonth.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentEffectiveMonth.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "totalAdjustmentEffectiveMonth"
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentEffectiveMonth.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "診療年月",
+        "definition": "診療年月です。",
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).診療年月"
+          }
+        ]
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentAdjuntmentCategory",
+        "path": "Extension.extension",
+        "sliceName": "totalAdjustmentAdjuntmentCategory",
+        "short": "合計調整の区分",
+        "definition": "合計調整の区分です。",
+        "comment": "* 請求調整区分\n* 自他保険区分\n* 負担区分\n* 包括小計点数合算\n* 包括評価点数\n* 調整点数\n* 今月包括合計点数\n* 診療識別\n* 保険変更\n* 変更年月日\n* 文字データ",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentAdjuntmentCategory.extension",
+        "path": "Extension.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentAdjuntmentCategory.url",
+        "path": "Extension.extension.url",
+        "fixedUri": "totalAdjustmentAdjuntmentCategory"
+      },
+      {
+        "id": "Extension.extension:totalAdjustmentAdjuntmentCategory.value[x]",
+        "path": "Extension.extension.value[x]",
+        "short": "合計調整の区分",
+        "definition": "合計調整の区分です。",
+        "comment": "* 請求調整区分\n* 自他保険区分\n* 負担区分\n* 包括小計点数合算\n* 包括評価点数\n* 調整点数\n* 今月包括合計点数\n* 診療識別\n* 保険変更\n* 変更年月日\n* 文字データ",
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).請求調整区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).自他保険区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).負担区分"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).包括小計点数合算"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).包括評価点数"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).調整点数"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).今月包括合計点数"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).診療識別"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).保険変更"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).変更年月日"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "合計調整レコード(GT).文字データ"
+          }
+        ]
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimComprehensiveEvaluation.html"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "max": "0"
+      }
+    ]
+  }
+}

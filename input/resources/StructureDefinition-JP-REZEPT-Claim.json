@@ -1,0 +1,1424 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-Claim",
+  "meta": {
+    "versionId": "51",
+    "lastUpdated": "2021-06-01T11:01:04.691+00:00",
+    "source": "#2gChQM8SyNYCSTsN"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Financial.Billing"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Claim.html",
+  "version": "0.8.0",
+  "name": "Claim",
+  "title": "レセプト情報",
+  "status": "draft",
+  "description": "レセプト(医科レセプト、DPCレセプト、歯科レセプト、調剤レセプト)情報です。  \n医療提供者は、患者の診療・治療に掛かった医療サービス内容や調剤情報を医療費の請求のために保険者に通知する情報を発行します。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Claim",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Claim",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Claim",
+        "path": "Claim",
+        "short": "レセプト情報",
+        "definition": "レセプト(医科レセプト、DPCレセプト、歯科レセプト、調剤レセプト)情報です。\n医療提供者は、患者の診療・治療に掛かった医療サービス内容や調剤情報を医療費の請求のために保険者に通知する情報を発行します。"
+      },
+      {
+        "id": "Claim.id",
+        "path": "Claim.id",
+        "short": "このリソースのID",
+        "definition": "このリソースのIDです。",
+        "comment": "リソースIDは自動採番されます。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.text",
+        "path": "Claim.text",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "comment": "例:\n・サンプル病院\n・202101 ",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.text.status",
+        "path": "Claim.text.status",
+        "definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+        "fixedCode": "generated",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.text.div",
+        "path": "Claim.text.div",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.extension",
+        "path": "Claim.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "レセプトの拡張情報",
+        "definition": "レセプトの拡張情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.extension:patientInformation",
+        "path": "Claim.extension",
+        "sliceName": "patientInformation",
+        "short": "患者の拡張情報",
+        "definition": "患者の拡張情報です。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimPatientInformation.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.extension:insurerInformation",
+        "path": "Claim.extension",
+        "sliceName": "insurerInformation",
+        "short": "保険会社の拡張情報",
+        "definition": "保険会社の拡張情報です。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimInsurerInformation.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.extension:commonInformation",
+        "path": "Claim.extension",
+        "sliceName": "commonInformation",
+        "short": "共通の拡張情報",
+        "definition": "共通の拡張情報です。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.extension:comprehensiveEvaluation",
+        "path": "Claim.extension",
+        "sliceName": "comprehensiveEvaluation",
+        "short": "包括評価",
+        "definition": "包括評価です。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionClaimCommonInformation.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.identifier",
+        "path": "Claim.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "レセプトの識別子",
+        "definition": "レセプトの識別子です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.identifier:number1",
+        "path": "Claim.identifier",
+        "sliceName": "number1",
+        "short": "レセプト管理番号",
+        "definition": "レセプト管理番号です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.identifier:number1.use",
+        "path": "Claim.identifier.use",
+        "short": "レセプト管理番号の用途",
+        "definition": "レセプト管理番号の用途です。",
+        "comment": "レセプト管理番号では「official」固定とします。",
+        "fixedCode": "official",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: official"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: official"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: official"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: official"
+          }
+        ]
+      },
+      {
+        "id": "Claim.identifier:number1.system",
+        "path": "Claim.identifier.system",
+        "short": "レセプト管理番号のURI",
+        "definition": "レセプト管理番号のURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.identifier:number1.value",
+        "path": "Claim.identifier.value",
+        "short": "レセプト管理番号",
+        "definition": "レセプト管理番号です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理番号"
+          }
+        ]
+      },
+      {
+        "id": "Claim.identifier:number2",
+        "path": "Claim.identifier",
+        "sliceName": "number2",
+        "short": "レセプト番号",
+        "definition": "レセプト番号です。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.identifier:number2.use",
+        "path": "Claim.identifier.use",
+        "short": "レセプト番号の用途",
+        "definition": "レセプト番号の用途です。",
+        "comment": "レセプト番号では「usual」固定とします。",
+        "fixedCode": "usual",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: official"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: official"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: official"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: official"
+          }
+        ]
+      },
+      {
+        "id": "Claim.identifier:number2.system",
+        "path": "Claim.identifier.system",
+        "short": "レセプト番号のURI",
+        "definition": "レセプト番号のURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.identifier:number2.value",
+        "path": "Claim.identifier.value",
+        "short": "レセプト番号",
+        "definition": "レセプト番号です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).レセプト番号"
+          }
+        ]
+      },
+      {
+        "id": "Claim.status",
+        "path": "Claim.status",
+        "short": "レセプト状態",
+        "definition": "レセプト状態です。",
+        "comment": "レセプト状態では「active」固定とします。",
+        "fixedCode": "active",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: active"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: active"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: active"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: active"
+          }
+        ]
+      },
+      {
+        "id": "Claim.type",
+        "path": "Claim.type",
+        "short": "点数表番号",
+        "definition": "点数表番号です。",
+        "comment": "レセプトの以下の種別を設定します。\n1:医科\n2:DPC\n3:歯科\n4:調剤 ",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.type.coding",
+        "path": "Claim.type.coding",
+        "short": "点数表番号",
+        "definition": "点数表番号です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.type.coding.system",
+        "path": "Claim.type.coding.system",
+        "short": "点数表番号のURI",
+        "definition": "点数表番号のURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.type.coding.code",
+        "path": "Claim.type.coding.code",
+        "short": "点数表番号コード",
+        "definition": "点数表番号コードです。",
+        "mustSupport": true,
+        "binding": {
+          "strength": "required",
+          "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html"
+        },
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: 3 歯科"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: 2 DPC"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: 1 医科"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: 4 調剤"
+          }
+        ]
+      },
+      {
+        "id": "Claim.type.coding.display",
+        "path": "Claim.type.coding.display",
+        "short": "点数表番号の名称",
+        "definition": "点数表番号の名称です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: 歯科"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: DPC"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: 医科"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: 調剤"
+          }
+        ]
+      },
+      {
+        "id": "Claim.subType",
+        "path": "Claim.subType",
+        "short": "詳細タイプ",
+        "definition": "詳細タイプです。",
+        "comment": "レセプトの以下のサブ種別を設定します。\n1:医科歯科調剤の明細\n2:臓器提供者\n3:DPC\n4:総括\n5:総括対象DPC\n6:総括対象医科入院",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.subType.coding",
+        "path": "Claim.subType.coding",
+        "short": "詳細タイプ",
+        "definition": "詳細タイプです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.subType.coding.system",
+        "path": "Claim.subType.coding.system",
+        "short": "詳細タイプのURI",
+        "definition": "詳細タイプのURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.subType.coding.code",
+        "path": "Claim.subType.coding.code",
+        "short": "詳細タイプコード",
+        "definition": "詳細タイプコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.subType.coding.display",
+        "path": "Claim.subType.coding.display",
+        "short": "詳細タイプの名称",
+        "definition": "詳細タイプの名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.use",
+        "path": "Claim.use",
+        "short": "レセプトの用途",
+        "definition": "レセプトの用途です。",
+        "comment": "1:請求\n2:補正\n3:再審査等補正",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.patient",
+        "path": "Claim.patient",
+        "short": "患者情報の参照",
+        "definition": "患者情報の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.patient.reference",
+        "path": "Claim.patient.reference",
+        "short": "患者情報の参照",
+        "definition": "患者情報の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者記号、保険者レコード(HO).被保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者記号、保険者レコード(HO).被保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者記号、保険者レコード(HO).被保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者記号、保険者レコード(HO).被保険者番号"
+          }
+        ]
+      },
+      {
+        "id": "Claim.billablePeriod",
+        "path": "Claim.billablePeriod",
+        "short": "請求対象期間",
+        "definition": "請求対象期間です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.billablePeriod.start",
+        "path": "Claim.billablePeriod.start",
+        "short": "請求期間開始日",
+        "definition": "請求期間開始日です。",
+        "comment": "診療年月 初日",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 初日"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 初日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 初日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 初日"
+          }
+        ]
+      },
+      {
+        "id": "Claim.billablePeriod.end",
+        "path": "Claim.billablePeriod.end",
+        "short": "請求期間終了日",
+        "definition": "請求期間終了日です。",
+        "comment": "診療年月 末日",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 末日"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 末日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 末日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月 末日"
+          }
+        ]
+      },
+      {
+        "id": "Claim.created",
+        "path": "Claim.created",
+        "short": "レセプトの作成日",
+        "definition": "レセプトの作成日です。",
+        "comment": "請求年月 初日 (請求年月は診療年月の翌月)",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "医療機関情報レコード(IR).請求年月 初日"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "医療機関情報レコード(IR).請求年月 初日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "医療機関情報レコード(IR).請求年月 初日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "薬局情報レコード(YK).請求年月 初日"
+          }
+        ]
+      },
+      {
+        "id": "Claim.enterer",
+        "path": "Claim.enterer",
+        "short": "レセプトの作成者の参照",
+        "definition": "レセプトの作成者の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.enterer.reference",
+        "path": "Claim.enterer.reference",
+        "short": "レセプトの作成者の参照",
+        "definition": "レセプトの作成者の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "医療機関情報レコード(IR).都道府県番号、医療機関情報レコード(IR).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "医療機関情報レコード(IR).都道府県番号、医療機関情報レコード(IR).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "医療機関情報レコード(IR).都道府県番号、医療機関情報レコード(IR).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "薬局情報レコード(YK).都道府県番号、薬局情報レコード(YK).薬局コード"
+          }
+        ]
+      },
+      {
+        "id": "Claim.insurer",
+        "path": "Claim.insurer",
+        "short": "保険会社の参照",
+        "definition": "保険会社の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.insurer.reference",
+        "path": "Claim.insurer.reference",
+        "short": "保険会社の参照",
+        "definition": "保険会社の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO).保険者番号"
+          }
+        ]
+      },
+      {
+        "id": "Claim.provider",
+        "path": "Claim.provider",
+        "short": "請求者の参照",
+        "definition": "請求者の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.provider.reference",
+        "path": "Claim.provider.reference",
+        "short": "請求者の参照",
+        "definition": "請求者の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "医療機関情報レコード(IR).都道府県番号、医療機関情報レコード(IR).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "医療機関情報レコード(IR).都道府県番号、医療機関情報レコード(IR).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "医療機関情報レコード(IR).都道府県番号、医療機関情報レコード(IR).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "薬局情報レコード(YK).都道府県番号、薬局情報レコード(YK).薬局コード"
+          }
+        ]
+      },
+      {
+        "id": "Claim.priority",
+        "path": "Claim.priority",
+        "short": "レセプトの優先度",
+        "definition": "レセプトの優先度です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.priority.coding",
+        "path": "Claim.priority.coding",
+        "short": "レセプトの優先度",
+        "definition": "レセプトの優先度です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.priority.coding.system",
+        "path": "Claim.priority.coding.system",
+        "short": "レセプトの優先度のURI",
+        "definition": "レセプトの優先度のURIです。",
+        "fixedUri": "http://hl7.org/fhir/ValueSet/process-priority",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.priority.coding.code",
+        "path": "Claim.priority.coding.code",
+        "short": "レセプトの優先度コード",
+        "definition": "レセプトの優先度コードです。\n1: 即時\n2: 通常\n3: 延期",
+        "comment": "「2:通常」固定とする。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.priority.coding.display",
+        "path": "Claim.priority.coding.display",
+        "short": "レセプトの優先度コードの名称",
+        "definition": "レセプトの優先度コードの名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related",
+        "path": "Claim.related",
+        "short": "事前または事後の請求",
+        "definition": "事前または事後の請求です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related.claim",
+        "path": "Claim.related.claim",
+        "short": "関連する請求の参照",
+        "definition": "関連する請求の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related.claim.reference",
+        "path": "Claim.related.claim.reference",
+        "short": "関連する請求の参照",
+        "definition": "関連する請求の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related.relationship",
+        "path": "Claim.related.relationship",
+        "short": "関連内容",
+        "definition": "関連内容です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related.relationship.coding",
+        "path": "Claim.related.relationship.coding",
+        "short": "関連内容のコード",
+        "definition": "関連内容のコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related.relationship.coding.system",
+        "path": "Claim.related.relationship.coding.system",
+        "short": "関連内容のコードのURI",
+        "definition": "関連内容のコードのURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related.relationship.coding.code",
+        "path": "Claim.related.relationship.coding.code",
+        "short": "関連内容のコード",
+        "definition": "関連内容のコードです。",
+        "comment": "1:医科歯科調剤の明細\n2:臓器提供者\n3:DPC\n4:総括\n5:総括対象DPC\n6:総括対象医科入院",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.related.relationship.coding.display",
+        "path": "Claim.related.relationship.coding.display",
+        "short": "関連内容のコードの名称",
+        "definition": "関連内容のコードの名称です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "臓器提供者レセプト情報レコード(TR)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "臓器提供者レセプト情報レコード(TR)"
+          }
+        ]
+      },
+      {
+        "id": "Claim.payee",
+        "path": "Claim.payee",
+        "short": "受取人情報",
+        "definition": "受取人の情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.payee.type",
+        "path": "Claim.payee.type",
+        "short": "受取人カテゴリ",
+        "definition": "受取人カテゴリです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.payee.type.coding",
+        "path": "Claim.payee.type.coding",
+        "short": "受取人カテゴリ",
+        "definition": "受取人カテゴリです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.payee.type.coding.system",
+        "path": "Claim.payee.type.coding.system",
+        "short": "受取人カテゴリのURI",
+        "definition": "受取人カテゴリのURIです。",
+        "fixedUri": "http://hl7.org/fhir/ValueSet/payeetype",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.payee.type.coding.code",
+        "path": "Claim.payee.type.coding.code",
+        "short": "受取人コード",
+        "definition": "受取人コードです。",
+        "comment": "「2: プロバイダー」固定とします。\n1: 支払人\n2: プロバイダー\n3: なし",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: 2:プロバイダー"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: 2:プロバイダー"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: 2:プロバイダー"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: 2:プロバイダー"
+          }
+        ]
+      },
+      {
+        "id": "Claim.payee.type.coding.display",
+        "path": "Claim.payee.type.coding.display",
+        "short": "受取人の名称",
+        "definition": "受取人の名称です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "医療機関情報レコード(TI).医療機関名称"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "医療機関情報レコード(TI).医療機関名称"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "医療機関情報レコード(TI).医療機関名称"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "薬局情報レコード(YK).薬局連絡先名称"
+          }
+        ]
+      },
+      {
+        "id": "Claim.payee.party",
+        "path": "Claim.payee.party",
+        "short": "受取人の参照",
+        "definition": "受取人の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.payee.party.reference",
+        "path": "Claim.payee.party.reference",
+        "short": "受取人の参照",
+        "definition": "受取人の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "医療機関情報レコード(TI).都道府県番号、医療機関情報レコード(TI).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "医療機関情報レコード(TI).都道府県番号、医療機関情報レコード(TI).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "医療機関情報レコード(TI).都道府県番号、医療機関情報レコード(TI).医療機関番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "薬局情報レコード(YK).都道府県番号、薬局情報レコード(YK).薬局コード"
+          }
+        ]
+      },
+      {
+        "id": "Claim.diagnosis",
+        "path": "Claim.diagnosis",
+        "short": "診察情報",
+        "definition": "診察情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.diagnosis.sequence",
+        "path": "Claim.diagnosis.sequence",
+        "short": "診察識別番号",
+        "definition": "診察識別番号です。",
+        "comment": "1から採番します。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.diagnosis.diagnosis[x]",
+        "path": "Claim.diagnosis.diagnosis[x]",
+        "short": "病名への参照",
+        "definition": "病名への参照です。",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition"
+            ]
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理コード+行番号、傷病名レコード(SY).レセプト管理コード+行番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理コード+行番号、傷病名レコード(SY).レセプト管理コード+行番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理コード+行番号、傷病名レコード(SY).レセプト管理コード+行番号"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト管理レコード(MN).レセプト管理コード+行番号、傷病名レコード(SY).レセプト管理コード+行番号"
+          }
+        ]
+      },
+      {
+        "id": "Claim.procedure",
+        "path": "Claim.procedure",
+        "short": "レセプトの手順",
+        "definition": "レセプトの手順です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.sequence",
+        "path": "Claim.procedure.sequence",
+        "short": "レセプトの手順識別番号",
+        "definition": "レセプトの手順識別番号です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.type",
+        "path": "Claim.procedure.type",
+        "short": "レセプトの手順のカテゴリ",
+        "definition": "レセプトの手順のカテゴリです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.type.coding",
+        "path": "Claim.procedure.type.coding",
+        "short": "レセプトの手順のカテゴリ",
+        "definition": "レセプトの手順のカテゴリです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.type.coding.system",
+        "path": "Claim.procedure.type.coding.system",
+        "short": "レセプトの手順のカテゴリのURI",
+        "definition": "レセプトの手順のカテゴリのURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.type.coding.code",
+        "path": "Claim.procedure.type.coding.code",
+        "short": "レセプトの手順のカテゴリコード",
+        "definition": "レセプトの手順のカテゴリコードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.type.coding.display",
+        "path": "Claim.procedure.type.coding.display",
+        "short": "レセプトの手順のカテゴリの名称",
+        "definition": "レセプトの手順のカテゴリの名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.date",
+        "path": "Claim.procedure.date",
+        "short": "レセプトの手順の日時",
+        "definition": "レセプトの手順の日時です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.procedure.procedure[x]",
+        "path": "Claim.procedure.procedure[x]",
+        "short": "レセプトの手順への参照",
+        "definition": "レセプトの手順への参照です。",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Procedure"
+            ]
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "歯科診療行為レコード(SS), 診療行為レコード(SI)、医薬品レコード(IY), 特定器材レコード(TO)"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "診療行為レコード(SI)、医薬品レコード(IY), 特定器材レコード(TO)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "診療行為レコード(SI)、医薬品レコード(IY), 特定器材レコード(TO)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "処方基本レコード(SH), 調剤情報レコード(CZ), 診療行為レコード(SI)、医薬品レコード(IY), 特定器材レコード(TO)"
+          }
+        ]
+      },
+      {
+        "id": "Claim.insurance",
+        "path": "Claim.insurance",
+        "short": "患者の保険情報",
+        "definition": "患者の保険情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.insurance.sequence",
+        "path": "Claim.insurance.sequence",
+        "short": "保険情報の識別子",
+        "definition": "保険情報の識別子です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.insurance.focal",
+        "path": "Claim.insurance.focal",
+        "short": "請求補償範囲かどうか",
+        "definition": "請求補償範囲かどうかを示したフラグです。",
+        "comment": "「true」固定です。",
+        "fixedBoolean": true,
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.insurance.coverage",
+        "path": "Claim.insurance.coverage",
+        "short": "保険情報への参照",
+        "definition": "保険情報への参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.insurance.coverage.reference",
+        "path": "Claim.insurance.coverage.reference",
+        "short": "保険情報への参照",
+        "definition": "保険情報への参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO)"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "保険者レコード(HO)"
+          }
+        ]
+      },
+      {
+        "id": "Claim.item",
+        "path": "Claim.item",
+        "short": "提供されたもの、またはサービス",
+        "definition": "提供されたもの、またはサービスを示します。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.sequence",
+        "path": "Claim.item.sequence",
+        "short": "提供アイテム識別番号",
+        "definition": "提供アイテム識別番号です。",
+        "comment": "1から採番します。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.diagnosisSequence",
+        "path": "Claim.item.diagnosisSequence",
+        "short": "該当する診断番号",
+        "definition": "該当する診断番号です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.procedureSequence",
+        "path": "Claim.item.procedureSequence",
+        "short": "該当する手順番号",
+        "definition": "該当する手順番号です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.serviced[x]",
+        "path": "Claim.item.serviced[x]",
+        "short": "サービスまたは製品の提供の時間",
+        "definition": "サービスまたは製品の提供の時間です。",
+        "type": [
+          {
+            "code": "Period"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          }
+        ]
+      },
+      {
+        "id": "Claim.item.factor",
+        "path": "Claim.item.factor",
+        "short": "価格単位",
+        "definition": "価格単位です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.net",
+        "path": "Claim.item.net",
+        "short": "製品、またはサービスのトータル価格",
+        "definition": "製品、またはサービスのトータル価格です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.net.value",
+        "path": "Claim.item.net.value",
+        "short": "金額",
+        "definition": "金額です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.net.currency",
+        "path": "Claim.item.net.currency",
+        "short": "通貨",
+        "definition": "通貨です。",
+        "comment": "「JPY」固定です。",
+        "fixedCode": "JPY",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.encounter",
+        "path": "Claim.item.encounter",
+        "short": "関連する経路(入院、外来、救急)",
+        "definition": "関連する経路(入院、外来、救急)です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail",
+        "path": "Claim.item.detail",
+        "short": "製品またはサービス",
+        "definition": "製品またはサービスです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.sequence",
+        "path": "Claim.item.detail.sequence",
+        "short": "製品またはサービスの識別番号",
+        "definition": "製品またはサービスの識別番号です。",
+        "comment": "1から採番します。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.category",
+        "path": "Claim.item.detail.category",
+        "short": "医療、医薬品、特定器材の分類",
+        "definition": "医療、医薬品、特定器材の分類です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.category.coding",
+        "path": "Claim.item.detail.category.coding",
+        "short": "医療、医薬品、特定器材の分類",
+        "definition": "医療、医薬品、特定器材の分類です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.category.coding.system",
+        "path": "Claim.item.detail.category.coding.system",
+        "short": "医療、医薬品、特定器材の分類のURI",
+        "definition": "医療、医薬品、特定器材の分類のURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.category.coding.code",
+        "path": "Claim.item.detail.category.coding.code",
+        "short": "医療、医薬品、特定器材の分類コード",
+        "definition": "医療、医薬品、特定器材の分類コードです。",
+        "comment": "1: 診療行為\n2: 医薬品\n3: 特定器材",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.category.coding.display",
+        "path": "Claim.item.detail.category.coding.display",
+        "short": "医療、医薬品、特定器材の分類名称",
+        "definition": "医療、医薬品、特定器材の分類名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.productOrService",
+        "path": "Claim.item.detail.productOrService",
+        "short": "製品、またはサービスの内容",
+        "definition": "製品、またはサービスの内容です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.productOrService.coding",
+        "path": "Claim.item.detail.productOrService.coding",
+        "short": "製品、またはサービスの内容",
+        "definition": "製品、またはサービスの内容です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.productOrService.coding.system",
+        "path": "Claim.item.detail.productOrService.coding.system",
+        "short": "製品、またはサービスの内容のURI",
+        "definition": "製品、またはサービスの内容のURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.productOrService.coding.code",
+        "path": "Claim.item.detail.productOrService.coding.code",
+        "short": "製品、またはサービスの内容のコード",
+        "definition": "製品、またはサービスの内容のコードです。",
+        "comment": "診療行為コード\n医薬品コード\n特定器材コード",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.productOrService.coding.display",
+        "path": "Claim.item.detail.productOrService.coding.display",
+        "short": "製品、またはサービスの内容の名称",
+        "definition": "製品、またはサービスの内容の名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.modifier",
+        "path": "Claim.item.detail.modifier",
+        "short": "サービス/製品の請求修飾子",
+        "definition": "サービス/製品の請求修飾子です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.modifier.coding",
+        "path": "Claim.item.detail.modifier.coding",
+        "short": "サービス/製品の請求修飾子",
+        "definition": "サービス/製品の請求修飾子です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.modifier.coding.system",
+        "path": "Claim.item.detail.modifier.coding.system",
+        "short": "サービス/製品の請求修飾子のURI",
+        "definition": "サービス/製品の請求修飾子のURIです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.modifier.coding.code",
+        "path": "Claim.item.detail.modifier.coding.code",
+        "short": "サービス/製品の請求修飾子コード",
+        "definition": "サービス/製品の請求修飾子コードです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.modifier.coding.display",
+        "path": "Claim.item.detail.modifier.coding.display",
+        "short": "サービス/製品の請求識別子の名称",
+        "definition": "サービス/製品の請求識別子の名称です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.quantity",
+        "path": "Claim.item.detail.quantity",
+        "short": "製品またはサービスの数",
+        "definition": "製品またはサービスの数です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.unitPrice",
+        "path": "Claim.item.detail.unitPrice",
+        "short": "アイテムごとの料金、料金、またはコスト",
+        "definition": "アイテムごとの料金、料金、またはコストです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.unitPrice.value",
+        "path": "Claim.item.detail.unitPrice.value",
+        "short": "アイテムごとの料金、料金、またはコスト",
+        "definition": "アイテムごとの料金、料金、またはコストです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.unitPrice.currency",
+        "path": "Claim.item.detail.unitPrice.currency",
+        "short": "通貨",
+        "definition": "通貨です。",
+        "comment": "「JPY」固定です。",
+        "fixedCode": "JPY",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.factor",
+        "path": "Claim.item.detail.factor",
+        "short": "価格倍率",
+        "definition": "価格倍率です。",
+        "comment": "「1.0」固定です。",
+        "fixedDecimal": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.net",
+        "path": "Claim.item.detail.net",
+        "short": "総アイテムコスト",
+        "definition": "総アイテムコストです。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.net.value",
+        "path": "Claim.item.detail.net.value",
+        "short": "金額",
+        "definition": "金額です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.item.detail.net.currency",
+        "path": "Claim.item.detail.net.currency",
+        "short": "通貨",
+        "definition": "通貨です。",
+        "comment": "「JPY」固定です。",
+        "fixedCode": "JPY",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.total",
+        "path": "Claim.total",
+        "short": "トータルの価格",
+        "definition": "トータルの価格です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.total.value",
+        "path": "Claim.total.value",
+        "short": "金額",
+        "definition": "金額です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Claim.total.currency",
+        "path": "Claim.total.currency",
+        "short": "通貨",
+        "definition": "「JPY」固定です。",
+        "fixedCode": "JPY",
+        "mustSupport": true
+      }
+    ]
+  }
+}

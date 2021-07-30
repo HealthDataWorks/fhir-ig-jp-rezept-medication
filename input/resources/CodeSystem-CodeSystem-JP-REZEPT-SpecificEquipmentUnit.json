@@ -1,0 +1,325 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "SpecificEquipmentUnit",
+  "id": "CodeSystem-JP-REZEPT-SpecificEquipmentUnit",
+  "title": "特定器材単位コード",
+  "description": "レセプト電算処理システムで使用されている特定器材単位コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表22 特定器材単位コード」に記載されています。\n\nDPCレセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(DPC用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_2_kiroku_dpc.pdf) の「別表32 特定器材単位コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表23 特定器材単位コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表17 特定器材単位コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-SpecificEquipmentUnit.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T03:27:30.048+00:00",
+    "source": "#RgDKv4nVa05F1RVU"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-SpecificEquipmentUnit.html",
+  "concept": [
+    {
+      "code": "001",
+      "display": "分",
+      "definition": "分"
+    },
+    {
+      "code": "002",
+      "display": "回",
+      "definition": "回"
+    },
+    {
+      "code": "003",
+      "display": "種",
+      "definition": "種"
+    },
+    {
+      "code": "004",
+      "display": "箱",
+      "definition": "箱"
+    },
+    {
+      "code": "005",
+      "display": "巻",
+      "definition": "巻"
+    },
+    {
+      "code": "006",
+      "display": "枚",
+      "definition": "枚"
+    },
+    {
+      "code": "007",
+      "display": "本",
+      "definition": "本"
+    },
+    {
+      "code": "008",
+      "display": "組",
+      "definition": "組"
+    },
+    {
+      "code": "009",
+      "display": "セット",
+      "definition": "セット"
+    },
+    {
+      "code": "010",
+      "display": "個",
+      "definition": "個"
+    },
+    {
+      "code": "011",
+      "display": "裂",
+      "definition": "裂"
+    },
+    {
+      "code": "012",
+      "display": "方向",
+      "definition": "方向"
+    },
+    {
+      "code": "013",
+      "display": "トローチ",
+      "definition": "トローチ"
+    },
+    {
+      "code": "014",
+      "display": "アンプル",
+      "definition": "アンプル"
+    },
+    {
+      "code": "015",
+      "display": "カプセル",
+      "definition": "カプセル"
+    },
+    {
+      "code": "016",
+      "display": "錠",
+      "definition": "錠"
+    },
+    {
+      "code": "017",
+      "display": "丸",
+      "definition": "丸"
+    },
+    {
+      "code": "018",
+      "display": "包",
+      "definition": "包"
+    },
+    {
+      "code": "019",
+      "display": "瓶",
+      "definition": "瓶"
+    },
+    {
+      "code": "020",
+      "display": "袋",
+      "definition": "袋"
+    },
+    {
+      "code": "021",
+      "display": "瓶(袋)",
+      "definition": "瓶(袋)"
+    },
+    {
+      "code": "022",
+      "display": "管",
+      "definition": "管"
+    },
+    {
+      "code": "023",
+      "display": "シリンジ",
+      "definition": "シリンジ"
+    },
+    {
+      "code": "024",
+      "display": "回分",
+      "definition": "回分"
+    },
+    {
+      "code": "025",
+      "display": "テスト分",
+      "definition": "テスト分"
+    },
+    {
+      "code": "026",
+      "display": "ガラス筒",
+      "definition": "ガラス筒"
+    },
+    {
+      "code": "027",
+      "display": "桿錠",
+      "definition": "桿錠"
+    },
+    {
+      "code": "028",
+      "display": "単位",
+      "definition": "単位"
+    },
+    {
+      "code": "029",
+      "display": "万単位",
+      "definition": "万単位"
+    },
+    {
+      "code": "030",
+      "display": "フィート",
+      "definition": "フィート"
+    },
+    {
+      "code": "031",
+      "display": "滴",
+      "definition": "滴"
+    },
+    {
+      "code": "032",
+      "display": "mg",
+      "definition": "mg"
+    },
+    {
+      "code": "033",
+      "display": "g",
+      "definition": "g"
+    },
+    {
+      "code": "034",
+      "display": "kg",
+      "definition": "kg"
+    },
+    {
+      "code": "035",
+      "display": "cc",
+      "definition": "cc"
+    },
+    {
+      "code": "036",
+      "display": "mL",
+      "definition": "mL"
+    },
+    {
+      "code": "037",
+      "display": "L",
+      "definition": "L"
+    },
+    {
+      "code": "038",
+      "display": "mLV",
+      "definition": "mLV"
+    },
+    {
+      "code": "039",
+      "display": "バイアル",
+      "definition": "バイアル"
+    },
+    {
+      "code": "040",
+      "display": "cm",
+      "definition": "cm"
+    },
+    {
+      "code": "041",
+      "display": "cm^2",
+      "definition": "cm^2"
+    },
+    {
+      "code": "042",
+      "display": "m",
+      "definition": "m"
+    },
+    {
+      "code": "043",
+      "display": "μCi",
+      "definition": "μCi"
+    },
+    {
+      "code": "044",
+      "display": "mCi",
+      "definition": "mCi"
+    },
+    {
+      "code": "045",
+      "display": "μg",
+      "definition": "μg"
+    },
+    {
+      "code": "046",
+      "display": "管(瓶)",
+      "definition": "管(瓶)"
+    },
+    {
+      "code": "047",
+      "display": "筒",
+      "definition": "筒"
+    },
+    {
+      "code": "048",
+      "display": "GBq",
+      "definition": "GBq"
+    },
+    {
+      "code": "049",
+      "display": "MBq",
+      "definition": "MBq"
+    },
+    {
+      "code": "050",
+      "display": "KBq",
+      "definition": "KBq"
+    },
+    {
+      "code": "051",
+      "display": "キット",
+      "definition": "キット"
+    },
+    {
+      "code": "052",
+      "display": "国際単位",
+      "definition": "国際単位"
+    },
+    {
+      "code": "053",
+      "display": "患者当り",
+      "definition": "患者当り"
+    },
+    {
+      "code": "054",
+      "display": "気圧",
+      "definition": "気圧"
+    },
+    {
+      "code": "055",
+      "display": "缶",
+      "definition": "缶"
+    },
+    {
+      "code": "056",
+      "display": "手術当り",
+      "definition": "手術当り"
+    },
+    {
+      "code": "057",
+      "display": "容器",
+      "definition": "容器"
+    },
+    {
+      "code": "058",
+      "display": "mL(g)",
+      "definition": "mL(g)"
+    },
+    {
+      "code": "059",
+      "display": "ブリスター",
+      "definition": "ブリスター"
+    },
+    {
+      "code": "060",
+      "display": "シート",
+      "definition": "シート"
+    },
+    {
+      "code": "061",
+      "display": "カセット",
+      "definition": "カセット"
+    }
+  ],
+  "count": 61
+}

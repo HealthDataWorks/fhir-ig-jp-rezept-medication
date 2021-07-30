@@ -1,0 +1,40 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "RezeptType",
+  "id": "CodeSystem-JP-REZEPT-RezeptType",
+  "title": "点数表コード",
+  "description": "レセプト電算処理システムで使用されている点数表コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表3 点数表コード」に記載されています。\n\nDPCレセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(DPC用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_2_kiroku_dpc.pdf) の「別表3 点数表コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表3 点数表コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表3 点数表コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-RezeptType.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T03:27:07.782+00:00",
+    "source": "#IASsqd3Ar0FEidyL"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptType.html",
+  "concept": [
+    {
+      "code": "1",
+      "display": "医科",
+      "definition": "医科レセプトの点数表"
+    },
+    {
+      "code": "2",
+      "display": "DPC",
+      "definition": "DPCレセプトの点数表"
+    },
+    {
+      "code": "3",
+      "display": "歯科",
+      "definition": "歯科レセプトの点数表"
+    },
+    {
+      "code": "4",
+      "display": "調剤",
+      "definition": "調剤レセプトの点数表"
+    }
+  ],
+  "count": 4
+}

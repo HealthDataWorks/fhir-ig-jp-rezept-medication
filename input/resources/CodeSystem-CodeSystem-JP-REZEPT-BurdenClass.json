@@ -1,0 +1,175 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "BurdenClass",
+  "id": "CodeSystem-JP-REZEPT-BurdenClass",
+  "title": "負担区分コード",
+  "description": "レセプト電算処理システムで使用されている負担区分コードです。\n\n医科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(医科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_1_kiroku.pdf) の「別表21 負担区分コード」に記載されています。\n\nDPCレセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(DPC用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_2_kiroku_dpc.pdf) の「別表20 負担区分コード」に記載されています。\n\n歯科レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(歯科用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_3_kiroku_dental.pdf) の「別表21 負担区分コード」に記載されています。\n\n調剤レセプトでこのコードは[オンライン又は光ディスク等による請求に係る記録条件仕様(調剤用)](https://shinryohoshu.mhlw.go.jp/shinryohoshu/file/spec/R02bt1_4_kiroku_chozai.pdf) の「別表13 負担区分コード」に記載されています。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-BurdenClass.html",
+  "meta": {
+    "versionId": "7",
+    "lastUpdated": "2021-05-07T03:19:11.859+00:00",
+    "source": "#r2DBwsz7v7SGZ9PS"
+  },
+  "valueSet": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BurdenClass.html",
+  "concept": [
+    {
+      "code": "1",
+      "display": "医保",
+      "definition": "1者(医保)のみ"
+    },
+    {
+      "code": "5",
+      "display": "公費①",
+      "definition": "1者(公費①)のみ"
+    },
+    {
+      "code": "6",
+      "display": "公費②",
+      "definition": "1者(公費②)のみ"
+    },
+    {
+      "code": "B",
+      "display": "公費③",
+      "definition": "1者(公費③)のみ"
+    },
+    {
+      "code": "C",
+      "display": "公費④",
+      "definition": "1者(公費④)のみ"
+    },
+    {
+      "code": "2",
+      "display": "医保・公費①",
+      "definition": "2者(医保・公費①)の併用"
+    },
+    {
+      "code": "3",
+      "display": "医保・公費②",
+      "definition": "2者(医保・公費②)の併用"
+    },
+    {
+      "code": "E",
+      "display": "医保・公費③",
+      "definition": "2者(医保・公費③)の併用"
+    },
+    {
+      "code": "G",
+      "display": "医保・公費④",
+      "definition": "2者(医保・公費④)の併用"
+    },
+    {
+      "code": "7",
+      "display": "公費①・公費②",
+      "definition": "2者(公費①・公費②)の併用"
+    },
+    {
+      "code": "H",
+      "display": "公費①・公費③",
+      "definition": "2者(公費①・公費③)の併用"
+    },
+    {
+      "code": "I",
+      "display": "公費①・公費④",
+      "definition": "2者(公費①・公費④)の併用"
+    },
+    {
+      "code": "J",
+      "display": "公費②・公費③",
+      "definition": "2者(公費②・公費③)の併用"
+    },
+    {
+      "code": "K",
+      "display": "公費②・公費④",
+      "definition": "2者(公費②・公費④)の併用"
+    },
+    {
+      "code": "L",
+      "display": "公費③・公費④",
+      "definition": "2者(公費③・公費④)の併用"
+    },
+    {
+      "code": "4",
+      "display": "医保・公費①・公費②",
+      "definition": "3者(医保・公費①・公費②)の併用"
+    },
+    {
+      "code": "M",
+      "display": "医保・公費①・公費③",
+      "definition": "3者(医保・公費①・公費③)の併用"
+    },
+    {
+      "code": "N",
+      "display": "医保・公費①・公費④",
+      "definition": "3者(医保・公費①・公費④)の併用"
+    },
+    {
+      "code": "O",
+      "display": "医保・公費②・公費③",
+      "definition": "3者(医保・公費②・公費③)の併用"
+    },
+    {
+      "code": "P",
+      "display": "医保・公費②・公費④",
+      "definition": "3者(医保・公費②・公費③)の併用"
+    },
+    {
+      "code": "Q",
+      "display": "医保・公費③・公費④",
+      "definition": "3者(医保・公費③・公費④)の併用"
+    },
+    {
+      "code": "R",
+      "display": "公費①・公費②・公費③",
+      "definition": "3者(公費①・公費②・公費③)の併用"
+    },
+    {
+      "code": "S",
+      "display": "公費①・公費②・公費④",
+      "definition": "3者(公費①・公費②・公費④)の併用"
+    },
+    {
+      "code": "T",
+      "display": "公費①・公費③・公費④",
+      "definition": "3者(公費①・公費③・公費④)の併用"
+    },
+    {
+      "code": "U",
+      "display": "公費②・公費③・公費④",
+      "definition": "3者(公費②・公費③・公費④)の併用"
+    },
+    {
+      "code": "V",
+      "display": "医保・公費①・公費②・公費③",
+      "definition": "4者(医保・公費①・公費②・公費③)の併用"
+    },
+    {
+      "code": "W",
+      "display": "医保・公費①・公費②・公費④",
+      "definition": "4者(医保・公費①・公費②・公費④)の併用"
+    },
+    {
+      "code": "X",
+      "display": "医保・公費①・公費③・公費④",
+      "definition": "4者(医保・公費①・公費③・公費④)の併用"
+    },
+    {
+      "code": "Y",
+      "display": "医保・公費②・公費③・公費④",
+      "definition": "4者(医保・公費②・公費③・公費④)の併用"
+    },
+    {
+      "code": "Z",
+      "display": "公費①・公費②・公費③・公費④",
+      "definition": "4者(公費①・公費②・公費③・公費④)の併用"
+    },
+    {
+      "code": "9",
+      "display": "医保・公費①・公費②・公費③・公費④",
+      "definition": "5者(医保・公費①・公費②・公費③・公費④)の併用"
+    }
+  ],
+  "count": 31
+}

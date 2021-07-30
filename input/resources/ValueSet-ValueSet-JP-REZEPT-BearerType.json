@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "BearerType",
+  "id": "ValueSet-JP-REZEPT-BearerType",
+  "title": "負担者種別コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている負担者種別コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-BearerType.html",
+  "meta": {
+    "versionId": "7",
+    "lastUpdated": "2021-06-02T05:28:24.051+00:00",
+    "source": "#H5vxPDoVOKfmcGXU"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-BearerType.html"
+      }
+    ]
+  }
+}

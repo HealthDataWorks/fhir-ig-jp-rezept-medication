@@ -1,0 +1,21 @@
+Mapping: JP-REZEPT-MEDICATION-Mapping-for-MedicationDispense
+Id: JP-REZEPT-MEDICATION-Mapping
+Title: "調剤"
+Description: "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+Source: MedicationDispense
+Target: "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo"
+* status -> "固定値: completed"
+* medication[x] -> "医薬品レコード(IY).医薬品コード"
+* subject.reference -> "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+* performer.function.coding.system -> "固定値: http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function"
+* performer.function.coding.code -> "固定値: packager"
+* performer.function.coding.display -> "固定値: Packager"
+* performer.actor.reference -> "薬局情報レコードフォーマット(YK).薬局コード"
+* type.coding.code -> "処方基本レコード(SH).剤形コード"
+* type.coding.display -> "処方基本レコード(SH).剤形コード" "剤形コードの名称"
+* quantity.value -> "調剤情報レコード(CZ).調剤数量"
+* daysSupply.value -> "医薬品レコード(IY).使用量"
+* whenPrepared -> "調剤情報レコード(CZ).調剤月日"
+* note.text -> "コメントレコード(CO).コメントコード" "コメントコードからマスタ引き当てした値＋文"
+* dosageInstruction.text -> "処方基本レコード(SH).特別指示"
+* dosageInstruction.timing.code -> "処方基本レコード(SH).用法コード"

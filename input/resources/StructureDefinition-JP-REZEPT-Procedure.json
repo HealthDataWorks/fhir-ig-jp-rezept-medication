@@ -1,0 +1,427 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-Procedure",
+  "meta": {
+    "versionId": "22",
+    "lastUpdated": "2021-06-01T11:08:38.948+00:00",
+    "source": "#lb3ToW8999VAFW9g"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Clinical.Summary"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "patient"
+    }
+  ],
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Procedure.html",
+  "version": "0.8.0",
+  "name": "Procedure",
+  "title": "診療行為情報",
+  "status": "active",
+  "description": "患者に対して行われた診療行為や関連するサービスの内容です。  \nまた、介護、リハビルやカウンセリング等も含まれます。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "workflow",
+      "uri": "http://hl7.org/fhir/workflow",
+      "name": "Workflow Pattern"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2 Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "P-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Procedure",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Procedure",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Procedure.id",
+        "path": "Procedure.id",
+        "short": "このリソースのID",
+        "definition": "このリソースのIDです。",
+        "comment": "リソースIDは自動採番されます。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.text",
+        "path": "Procedure.text",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.text.status",
+        "path": "Procedure.text.status",
+        "definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+        "fixedCode": "generated",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.text.div",
+        "path": "Procedure.text.div",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension",
+        "path": "Procedure.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:quantity",
+        "path": "Procedure.extension",
+        "sliceName": "quantity",
+        "short": "診療行為の使用量データ",
+        "definition": "診療行為の使用量データです。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureQuantity.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:numberOfTimes",
+        "path": "Procedure.extension",
+        "sliceName": "numberOfTimes",
+        "short": "診療行為の回数",
+        "definition": "診療行為の回数です。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureNumberOfTimes.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.extension:addition",
+        "path": "Procedure.extension",
+        "sliceName": "addition",
+        "short": "診療行為の加算",
+        "definition": "診療行為の加算です。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionProcedureAddition.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.partOf",
+        "path": "Procedure.partOf",
+        "short": "診療行為",
+        "definition": "診療行為です。",
+        "comment": "診療識別、枝番が同じ診療行為が1つ目以降の場合、値を設定しません。診療識別、枝番が同じ診療行為が2つ目以降の場合、1つ目の診療行為のProcedureを参照します。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.status",
+        "path": "Procedure.status",
+        "short": "診療行為の状態",
+        "definition": "診療行為の状態です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.category",
+        "path": "Procedure.category",
+        "short": "診療行為の手順の分類",
+        "definition": "診療行為の手順の分類です。"
+      },
+      {
+        "id": "Procedure.category.coding",
+        "path": "Procedure.category.coding",
+        "short": "診療行為の手順の分類",
+        "definition": "診療行為の手順の分類です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.category.text",
+        "path": "Procedure.category.text",
+        "short": "診療行為の手順の種類の名称",
+        "definition": "診療行為の手順の種類の名称です。",
+        "comment": "診療行為の手順の種類の名称は「診療識別」固定とします。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: 診療識別"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: 診療識別"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: 診療識別"
+          },
+          {
+            "identity": "P-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: 診療識別"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.code",
+        "path": "Procedure.code",
+        "short": "診療行為の手順の識別子",
+        "definition": "診療行為の手順の識別子です。",
+        "comment": "医薬品のみの診療識別のグループの場合、コードを設定せず、表示名称を\"投薬\"とします。"
+      },
+      {
+        "id": "Procedure.code.coding",
+        "path": "Procedure.code.coding",
+        "short": "診療行為の手順の識別子",
+        "definition": "診療行為の手順の識別子です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.code.text",
+        "path": "Procedure.code.text",
+        "short": "診療行為の項目の名称",
+        "definition": "診療行為の項目の名称です。",
+        "comment": "診療行為の項目の名称は「診療行為」固定とします。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: 診療行為"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: 診療行為"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: 診療行為"
+          },
+          {
+            "identity": "P-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: 診療行為"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.subject",
+        "path": "Procedure.subject",
+        "short": "患者情報の参照",
+        "definition": "患者情報の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.subject.reference",
+        "path": "Procedure.subject.reference",
+        "short": "患者情報の参照",
+        "definition": "患者情報の参照です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+          },
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+          },
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+          },
+          {
+            "identity": "P-REZEPT-MEDICAL-Mapping",
+            "map": "保険者レコード(HO).保険者番号、保険者レコード(HO).被保険者証(手帳)等の番号"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.encounter",
+        "path": "Procedure.encounter",
+        "short": "受診情報の参照",
+        "definition": "受診情報の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.encounter.reference",
+        "path": "Procedure.encounter.reference",
+        "short": "受診情報の参照",
+        "definition": "受診情報の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performed[x]",
+        "path": "Procedure.performed[x]",
+        "short": "診療行為を実施した時期",
+        "definition": "診療行為を実施した時期です。",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "コーディングデータレコード(CD).実施年月日"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          },
+          {
+            "identity": "P-REZEPT-MEDICAL-Mapping",
+            "map": "レセプト共通レコード(RE).診療年月"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.note",
+        "path": "Procedure.note",
+        "short": "追加情報",
+        "definition": "追加情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.note.text",
+        "path": "Procedure.note.text",
+        "short": "追加情報",
+        "definition": "追加情報です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "診療行為レコード(SI).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文字データを順に記載"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "診療行為レコード(SI).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "診療行為レコード(SI).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文字データを順に記載"
+          },
+          {
+            "identity": "P-REZEPT-MEDICAL-Mapping",
+            "map": "診療行為レコード(SI).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文字データを順に記載"
+          }
+        ]
+      },
+      {
+        "id": "Procedure.usedReference",
+        "path": "Procedure.usedReference",
+        "short": "使用された薬品、デバイス情報の参照",
+        "definition": "使用された薬品、デバイス情報の参照です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.usedReference.reference",
+        "path": "Procedure.usedReference.reference",
+        "short": "使用された薬品、デバイス情報の参照",
+        "definition": "使用された薬品、デバイス情報の参照です。",
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "特定器材レコード(TO)"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "特定器材レコード(TO)"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "特定器材レコード(TO)"
+          },
+          {
+            "identity": "P-REZEPT-MEDICAL-Mapping",
+            "map": "特定器材レコード(TO)"
+          }
+        ]
+      }
+    ]
+  }
+}

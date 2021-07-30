@@ -1,0 +1,143 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-ExtensionOeganizationOrganizationNo",
+  "meta": {
+    "versionId": "17",
+    "lastUpdated": "2021-05-20T13:46:50.850+00:00",
+    "source": "#9S3lGpNKgZk2WNeV"
+  },
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionOeganizationOrganizationNo.html",
+  "version": "0.8.0",
+  "name": "ExtensionOeganizationOrganizationNo",
+  "title": "保険医療機関コード",
+  "status": "active",
+  "description": "保険医療機関番号です。７桁で指定します。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+      "name": "特定健診",
+      "uri": "https://www.mhlw.go.jp/content/12400000/000672493.pdf",
+      "comment": "特定健診の電子的なデータ標準様式の特定健診情報ファイル仕様説明書の項目をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-SPECIFIC-HEALTH-GUIDANCE-Mapping",
+      "name": "特定保健指導",
+      "uri": "https://www.mhlw.go.jp/content/12400000/000617344.pdf",
+      "comment": "特定保健指導の電子的なデータ標準様式の特定保健指導情報ファイル仕様説明書をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "context": [
+    {
+      "type": "fhirpath",
+      "expression": "Organization"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "保険医療機関コードの拡張",
+        "definition": "保険医療機関コードの拡張です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "short": "保険医療機関コードの拡張を指定するURL",
+        "definition": "保険医療機関コードの拡張を指定するURLです。",
+        "fixedUri": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionOeganizationOrganizationNo.html",
+        "mustSupport": true
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "short": "保険医療機関コード",
+        "definition": "保険医療機関コードです。",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ],
+        "fixedIdentifier": {
+          "system": "urn:oid:1.2.392.100495.20.3.23"
+        },
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "医療機関情報レコード(IR).医療機関コード"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "医療機関情報レコード(IR).医療機関コード"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "臓器提供医療機関情報レコード(TI).医療機関コード"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "医療機関情報レコード(IR).医療機関コード"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "臓器提供医療機関情報レコード(TI).医療機関コード"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "薬局情報レコード(YK).薬局コード"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-CHECKUPS-Mapping",
+            "map": "XML No: 7.5.1 XPath: /ClinicalDocument/author/assignedAuthor/representedOrganization/id/@extension"
+          },
+          {
+            "identity": "JP-SPECIFIC-HEALTH-GUIDANCE-Mapping",
+            "map": "XML No: 7.5.1 XPath: /ClinicalDocument/author/assignedAuthor/representedOrganization/id/@extension"
+          }
+        ]
+      }
+    ]
+  }
+}

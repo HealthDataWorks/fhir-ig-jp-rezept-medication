@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "ReceptionCategory",
+  "id": "ValueSet-JP-REZEPT-ReceptionCategory",
+  "title": "受付等区分コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている受付等区分が含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ReceptionCategory.html",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-07T03:00:15.503+00:00",
+    "source": "#ZeIvNlbHFiCDCo6g"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ReceptionCategory.html"
+      }
+    ]
+  }
+}

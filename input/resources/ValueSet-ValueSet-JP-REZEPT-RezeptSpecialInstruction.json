@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "RezeptSpecialInstruction",
+  "id": "ValueSet-JP-REZEPT-RezeptSpecialInstruction",
+  "title": "レセプト特記事項コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されているレセプト特記事項が含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-RezeptSpecialInstruction.html",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-07T03:02:22.239+00:00",
+    "source": "#haRNIKjp2mGXHILP"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-RezeptSpecialInstructions.html"
+      }
+    ]
+  }
+}

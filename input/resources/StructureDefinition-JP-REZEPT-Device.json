@@ -1,0 +1,363 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "JP-REZEPT-Device",
+  "meta": {
+    "versionId": "31",
+    "lastUpdated": "2021-06-01T11:02:27.936+00:00",
+    "source": "#rt8TitXQ1myiaybV"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-category",
+      "valueString": "Base.Entities"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-security-category",
+      "valueCode": "business"
+    }
+  ],
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-Device.html",
+  "version": "0.8.0",
+  "name": "Device",
+  "title": "日単位の特定器材情報",
+  "status": "draft",
+  "description": "医療行為を通じて使用された器材の情報です。",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/fivews",
+      "name": "FiveWs Pattern Mapping"
+    },
+    {
+      "identity": "udi",
+      "uri": "http://fda.gov/UDI",
+      "name": "UDI Mapping"
+    },
+    {
+      "identity": "JP-REZEPT-DENTAL-Mapping",
+      "name": "歯科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(歯科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-DPC-Mapping",
+      "name": "DPC",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(DPC用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICAL-Mapping",
+      "name": "医科",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(医科用)をFHIRにマッピングします。"
+    },
+    {
+      "identity": "JP-REZEPT-MEDICATION-Mapping",
+      "name": "調剤",
+      "uri": "https://shinryohoshu.mhlw.go.jp/shinryohoshu/receMenu/doReceInfo",
+      "comment": "レセプト電算処理システムの請求に係る記録条件仕様(調剤用)をFHIRにマッピングします。"
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Device",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Device",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Device",
+        "path": "Device",
+        "short": "医療行為を通じて使用された器材の情報です。",
+        "definition": "医療行為を通じて使用された器材の情報です。\n後から医療行為に使用された器材を追えるようにする必要があります。",
+        "comment": "本リソースには日付の情報がないが、リソースを参照しているProcedureに日付情報を持たせます。"
+      },
+      {
+        "id": "Device.id",
+        "path": "Device.id",
+        "short": "このリソースのID",
+        "definition": "このリソースのIDです。",
+        "comment": "リソースIDは自動採番されます。",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.text",
+        "path": "Device.text",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "comment": "例:\n・○○イントロデューサー ９Ｆｒ ＬＬＰ９\n・血管造影用シースイントロデューサーセット（蛇行血管用） 2850円/個\n・2個 １回",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.text.status",
+        "path": "Device.text.status",
+        "definition": "このリソースの概要がリソースのコンテンツから⽣成されたことを⽰す。",
+        "fixedCode": "generated",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.text.div",
+        "path": "Device.text.div",
+        "short": "このリソースの概要",
+        "definition": "このリソースの概要です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.extension",
+        "path": "Device.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "デバイスの拡張情報",
+        "definition": "デバイスの拡張情報です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.extension:unitPrice",
+        "path": "Device.extension",
+        "sliceName": "unitPrice",
+        "short": "単価",
+        "definition": "単価です。",
+        "comment": "特定器材マスタの金額種別が「5:%加算」「9:乗算割合」の場合、設定しません。\n単価が設定されていない場合、設定しません。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceUnitPrice.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Device.extension:quantity",
+        "path": "Device.extension",
+        "sliceName": "quantity",
+        "short": "使用量",
+        "definition": "使用量です。",
+        "comment": "特定器材マスタの金額種別が「9:乗算割合」の場合、設定しません。\n使用量が入力されていない場合、設定しません。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceQuantity.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Device.extension:numberOfTimes",
+        "path": "Device.extension",
+        "sliceName": "numberOfTimes",
+        "short": "回数",
+        "definition": "回数です。",
+        "comment": "１~３１日の情報がある場合に設定しません。",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://igs.healthdataworks.net/jp-rezept-medication/StructureDefinition-JP-REZEPT-ExtensionDeviceNumberOfTimes.html"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Device.deviceName",
+        "path": "Device.deviceName",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "type"
+            }
+          ],
+          "rules": "open"
+        },
+        "short": "デバイス名",
+        "definition": "デバイス名です。",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.deviceName:user-friendly-name",
+        "path": "Device.deviceName",
+        "sliceName": "user-friendly-name",
+        "short": "デバイス名(商品名及び規格又はサイズ)",
+        "definition": "デバイス名(商品名及び規格又はサイズ)です。",
+        "comment": "商品名及び規格又はサイズがある場合に設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.deviceName:user-friendly-name.name",
+        "path": "Device.deviceName.name",
+        "short": "名称",
+        "definition": "名称です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "特定器材レコード(TO).商品名及び規格又はサイズ"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "特定器材レコード(TO).商品名及び規格又はサイズ"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "特定器材レコード(TO).商品名及び規格又はサイズ"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "特定器材レコード(TO).商品名及び規格又はサイズ"
+          }
+        ]
+      },
+      {
+        "id": "Device.deviceName:user-friendly-name.type",
+        "path": "Device.deviceName.type",
+        "short": "名称の種類",
+        "definition": "名称の種類です。",
+        "fixedCode": "user-friendly-name",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: user-friendly-name"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: user-friendly-name"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: user-friendly-name"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: user-friendly-name"
+          }
+        ]
+      },
+      {
+        "id": "Device.deviceName:model-name",
+        "path": "Device.deviceName",
+        "sliceName": "model-name",
+        "short": "デバイス名(告示名称)",
+        "definition": "デバイス名(告示名称)です。",
+        "comment": "告知名称は必ず設定します。",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.deviceName:model-name.name",
+        "path": "Device.deviceName.name",
+        "short": "名称",
+        "definition": "名称です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "特定器材レコード(TO).特定器材コードから引き当てた名称"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "コーディングデータレコード(CD).レセプト電算処理システム用コード"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "特定器材レコード(TO).特定器材コードから引き当てた名称"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "特定器材レコード(TO).特定器材コードから引き当てた名称"
+          }
+        ]
+      },
+      {
+        "id": "Device.deviceName:model-name.type",
+        "path": "Device.deviceName.type",
+        "short": "名称の種類",
+        "definition": "名称の種類です。",
+        "fixedCode": "model-name",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "固定値: model-name"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "固定値: model-name"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "固定値: model-name"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "固定値: model-name"
+          }
+        ]
+      },
+      {
+        "id": "Device.note",
+        "path": "Device.note",
+        "short": "コメント情報",
+        "definition": "コメント情報です。",
+        "comment": "コメントコード、文字データがある場合に設定します。",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.note.text",
+        "path": "Device.note.text",
+        "short": "コメントの内容",
+        "definition": "コメントの内容です。",
+        "mustSupport": true,
+        "mapping": [
+          {
+            "identity": "JP-REZEPT-DENTAL-Mapping",
+            "map": "特定器材レコード(TO).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文字データを順に記載"
+          },
+          {
+            "identity": "JP-REZEPT-DPC-Mapping",
+            "map": "特定器材レコード(TO).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文字データを順に記載"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICAL-Mapping",
+            "map": "特定器材レコード(TO).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文字データを順に記載"
+          },
+          {
+            "identity": "JP-REZEPT-MEDICATION-Mapping",
+            "map": "特定器材レコード(TO).コメントコード",
+            "comment": "コメントコードからマスタ引き当てした値＋文字データを順に記載"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "TypeOfDividedDispensing",
+  "id": "ValueSet-JP-REZEPT-TypeOfDividedDispensing",
+  "title": "分割調剤種類コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている分割調剤種類が含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-TypeOfDividedDispensing.html",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2021-05-07T03:17:08.420+00:00",
+    "source": "#WKTBZCGw67TNSBcO"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-TypeOfDividedDispensing.html"
+      }
+    ]
+  }
+}

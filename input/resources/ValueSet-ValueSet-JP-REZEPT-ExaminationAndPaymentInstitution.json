@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "ExaminationAndPaymentInstitution",
+  "id": "ValueSet-JP-REZEPT-ExaminationAndPaymentInstitution",
+  "title": "審査支払機関コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている審査支払機関コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-ExaminationAndPaymentInstitution.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T02:56:53.750+00:00",
+    "source": "#spsj8L4LWcAQVsXp"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-ExaminationAndPaymentInstitution.html"
+      }
+    ]
+  }
+}

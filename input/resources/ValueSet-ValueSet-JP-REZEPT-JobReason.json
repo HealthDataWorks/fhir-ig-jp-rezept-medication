@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "JobReason",
+  "id": "ValueSet-JP-REZEPT-JobReason",
+  "title": "職務上の事由コード",
+  "description": "このバリューセットには、レセプト電算処理システムで定義されている職務上の事由コードが含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-JobReason.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T02:58:30.026+00:00",
+    "source": "#APelkeKKqm0Ckzv1"
+  },
+  "compose": {
+    "include": [
+      {
+        "system": "https://igs.healthdataworks.net/jp-rezept-medication/CodeSystem-CodeSystem-JP-REZEPT-JobReason.html"
+      }
+    ]
+  }
+}

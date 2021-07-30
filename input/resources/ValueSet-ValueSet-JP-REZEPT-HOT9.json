@@ -1,0 +1,22 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "HOT9",
+  "id": "ValueSet-JP-REZEPT-HOT9",
+  "title": "HOT9コード",
+  "description": "このバリューセットには、HOT9コードで定義されるすべての医薬品が含まれます。",
+  "version": "0.8.0",
+  "url": "https://igs.healthdataworks.net/jp-rezept-medication/ValueSet-ValueSet-JP-REZEPT-HOT9.html",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2021-05-07T02:27:25.601+00:00",
+    "source": "#HsfuKmL28ZcQNTd7"
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "urn:ietf:rfc:3986",
+      "value": "urn:oid:1.2.392.100495.20.2.74"
+    }
+  ]
+}
